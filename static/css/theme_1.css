@@ -1,0 +1,49 @@
+html
+{
+	font-size: 12px;
+	color: #404040;
+}
+body, button, ul, li, p, dl, dd, h1, h2, h3, h4, h5, h6, img, iframe, input, form, textarea
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border: 0;
+}
+.con:after
+{
+	content: '.';
+	height: 0;
+	display: block;
+	clear: both;
+	visibility: hidden;
+}
+.con
+{
+	zoom: 1;
+}
+#bd
+{
+	width: 960px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+.con
+{
+	clear:both;
+}
+.con .col
+{
+	float: left;
+}
+.spacer
+{
+	height: 10px;
+	clear: both;
+}
+.vspacer
+{
+	width: 10px;
+	float: left;
+	height: 10px;
+}

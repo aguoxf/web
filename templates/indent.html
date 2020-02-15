@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="{% static 'js/jquery_1.8.js' %}"></script>
+    <script src="{% static 'js/jquery_cookie.js' %}"></script>
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico?v=20160901' %}" type="image/x-icon">
+    <link href="{% static 'css/shopping_cart_new.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'css/footer_150526.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="padding-bottom:82px">
+
+<link href="{% static 'css/header_960_150611.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'js/pagetop2015_0827.js' %}" charset="gb2312" type="text/javascript"></script>
+
+<div id="hd">
+<div id="tools">
+<div class="tools">
+    <div class="ddnewhead_operate" dd_name="顶链接">
+        
+        <div class="ddnewhead_welcome" display="none;">
+            <span id="nickname"><span class="hi">Hi，<a href="http://myhome.dangdang.com/" class="login_link" target="_blank"><b>{{ username }}</b></a><a href="{% url 'ddapp:index' %}?dele=dele" target="_self">[退出]</a></span></span>
+            <div class="tel_pop" style="display:none" id="__ddnav_sjdd" onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');" onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');">
+                <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i class="icon_tel"></i>手机当当</a><i class="title_shadow"></i>
+                <ul class="tel_pop_box">
+                    <li><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码"><span>当当手机客户端</span><img src="http://img3.ddimg.cn/00363/doc/erweima2.png"><span class="text">随手查订单<br>随时享优惠</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="new_head_znx" id="znx_content" style="display:none;"></div>
+    </div>
+</div>
+</div>
+<div id="header_end"></div>
+<!--CreateDate  2016-09-28 11:30:01--></div>
+{#<form action="http://search.dangdang.com/search.aspx" id="bootpagetopSearch" name="bootpagetopSearch" method="GET"></form>#}
+<script type="text/javascript">var nick_num = 0;initHeaderOperate();</script><script type="text/javascript" src="http://orderb.dangdang.com/queryunpaid?callback=Unpaid_Data"></script>
+		<div class="shoppingcart_wrapper" id="ad_cpt_11850"><div><a href="http://a.dangdang.com/tjump.php?q=ddo84XQOf357bOs8tXGg5%2F%2F0oVoDImt3DFWsMqu7ZMSVsfUMeOQJueASNiMLjq%2FdrXMLCKnVfyKEahteAh1ih%2ByKYrKGzhvL20LVbDzObRambBA0YPpivy5hR5foQ4Rt%2BTB" target="_blank" rel="nofollow"><img src="http://img62.ddimg.cn/2017/1/11/2017011111344969879.jpg"></a></div></div>
+<div class="logo_line">
+    <div class="w960">
+        <div class="shopping_procedure01 shopping_procedure "><span>我的购物车</span><span class="current">填写订单</span><span>完成订单</span></div>
+        <div class="logo"><a href="#"><img src="{% static 'images/bz_logo_car.jpg' %}" alt=""></a></div>
+    </div>
+</div>
+<div class="indent_con">
+	<div class="shdz">
+    	<h3>收货相关信息</h3>
+        <ul class="shdz_con">
+            <div class="address" id="dp_adress">
+            <span class="icon_adr">&nbsp;</span>配送地址：
+            <div class="select_add">
+                <div class="area_pop" style="display:none;">
+                </div>
+            </div>
+        </div>
+            <select name="" id="select1" onchange="change()">
+                <option value="请输入新地址">请输入地址</option>
+                {% if addr_list %}
+                    {% for ad in addr_list %}
+                        <option value="">{{ ad }}</option>
+                    {% endfor %}
+
+                {% endif %}
+            </select>
+            <p>▪ 收货地址</p>
+        	<li><label><strong>*</strong>收&nbsp;&nbsp;货&nbsp;&nbsp;人：</label><input type="text" name="ship_man" id="name1" ><span id="spn_ship_man" class="hint new_tip" style="display: block;" id="name">请填写收货人姓名</span></li>
+{#            <li>#}
+{#                <label><strong>*</strong>收货地区：</label>#}
+{#                <select id="country_id" name="country_id" onfocus="check_focus('spn_country_province_city');" onblur="check_country_province_city();" onchange="set_province(this.options[this.selectedIndex].value);" style="display: block;"><option value="9000">中国</option><option value="16767">阿尔及利亚</option><option value="11717">阿根廷</option><option value="16161">阿联酋</option><option value="12020">埃及</option><option value="12525">爱尔兰</option><option value="11919">奥地利</option><option value="10909">澳大利亚</option><option value="14747">巴基斯坦</option><option value="12828">巴拿马</option><option value="10707">巴西</option><option value="16868">白俄罗斯</option><option value="16969">保加利亚</option><option value="13535">比利时</option><option value="15656">波多黎各</option><option value="14949">波兰</option><option value="17272">玻利维亚</option><option value="14444">丹麦</option><option value="10505">德国</option><option value="15353">俄罗斯</option><option value="10404">法国</option><option value="12222">菲律宾</option><option value="12323">芬兰</option><option value="17474">古巴</option><option value="12424">关岛</option><option value="10808">韩国</option><option value="12121">荷兰</option><option value="11010">加拿大</option><option value="15151">柬埔寨</option><option value="11111">捷克</option><option value="17373">喀麦隆</option><option value="14848">科威特</option><option value="15858">老挝</option><option value="16262">黎嫩</option><option value="15959">列支敦士登</option><option value="16060">卢森堡</option><option value="17070">卢旺达</option><option value="13030">罗马尼亚</option><option value="15555">马尔代夫</option><option value="13636">马来西亚</option><option value="10101">美国</option><option value="14545">蒙古</option><option value="17171">孟加拉</option><option value="11818">秘鲁</option><option value="11212">墨西哥</option><option value="13232">南非</option><option value="16666">南斯拉夫</option><option value="16363">尼日利亚</option><option value="11313">挪威</option><option value="12929">葡萄牙</option><option value="10303">日本</option><option value="11414">瑞典</option><option value="13737">瑞士</option><option value="13838">塞浦路斯</option><option value="16464">沙特阿拉伯</option><option value="13333">斯里兰卡</option><option value="13434">泰国</option><option value="13939">坦桑尼亚</option><option value="15757">土耳其</option><option value="15252">委内瑞拉</option><option value="15050">文莱</option><option value="14040">乌克兰</option><option value="16565">乌拉圭</option><option value="11515">西班牙</option><option value="14343">希腊</option><option value="13131">新加坡</option><option value="12727">新西兰</option><option value="14141">匈牙利</option><option value="12626">牙买加</option><option value="11616">意大利</option><option value="10606">印度</option><option value="14646">印度尼西亚</option><option value="10202">英国</option><option value="14242">越南</option><option value="15454">智利</option><option value="19999">其他国家或地区</option></select>#}
+{#                <select id="province_id" name="province_id" onfocus="check_focus('spn_country_province_city');" onblur="check_country_province_city();" onchange="set_city(this.options[this.selectedIndex].value);" style="display: block;"><option value="0">--请选择--</option><option value="111">北京</option><option value="112">天津</option><option value="113">河北</option><option value="114">山西</option><option value="115">内蒙古</option><option value="121">辽宁</option><option value="122">吉林</option><option value="123">黑龙江</option><option value="131">上海</option><option value="132">江苏</option><option value="133">浙江</option><option value="134">安徽</option><option value="135">福建</option><option value="136">江西</option><option value="137">山东</option><option value="141">河南</option><option value="142">湖北</option><option value="143">湖南</option><option value="144">广东</option><option value="145">广西</option><option value="146">海南</option><option value="150">重庆</option><option value="151">四川</option><option value="152">贵州</option><option value="153">云南</option><option value="154">西藏</option><option value="161">陕西</option><option value="162">甘肃</option><option value="163">青海</option><option value="164">宁夏</option><option value="165">新疆</option><option value="171">台湾</option><option value="172">香港</option><option value="173">澳门</option><option value="33">其他省份</option></select>#}
+{#                    <select id="city_id" name="city_id"><option value="0">请选择</option></select>#}
+{#                    <select id="town_id" name="town_id" ><option value="0">请选择</option></select>#}
+{#                    <select id="quarter_id" name="quarter_id" ><option value="0">请选择</option></select></li>#}
+            <li><label><strong>*</strong>详细地址：</label><input type="text" name="ship_man" id="addr" ></li>
+            <li><label><strong>*</strong>邮政编码：</label><input type="text" name="ship_man" onblur="fn1()" id="fn1" ><span id="yb"></span></li>
+            <li><label><strong>*</strong>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</label><input type="text" name="ship_man" id="tele" onblur="fn2()" ><label>或&nbsp;&nbsp;固定电话</label><input type="text" name="ship_man" id="card" onblur="fn3()" ><span id="dh"></span></li>
+             
+        </ul>
+        <div class="balance"><p>商品金额：¥{{ cart.total_price }}</p><p class="yfze">应付总额（含运费）：<em>¥{{ cart.total_price }}</em></p><p><a href="javascript:" onclick="fn4()">提交订单</a></p></div>
+    </div>
+    <div class="shdz">
+    	<h3>订单1（百知网配送）</h3>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr style="height:30px; line-height:30px;">
+                <th width="34%">商品名称</th>
+                <th width="11%">所在仓库</th>
+                <th width="13%">百知价</th>
+                <th width="11%">促销价</th>
+                <th width="9%">数量</th>
+                <th width="11%">小计</th>
+                <th width="11%">操作</th>
+            </tr>
+                    {% for foo in cart.cart_items %}
+                        <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ foo.book.title }}</td>
+                        <td align="center">{{ foo.book.press }}</td>
+                        <td align="center">¥{{ foo.book.discount }}</td>
+                        <td align="center">--</td>
+                        <td align="center">{{ foo.count }}</td>
+                        <td align="center">￥{{ foo.xiaoji }}</td>
+                        <td align="center"><a href="#">放回购物车</a></td>
+
+                    </tr>
+                    {% endfor %}
+
+                
+
+                     <tr>
+                        <td colspan="2"><input type="checkbox" >此订单作为礼品赠送他人</td>
+                        <td colspan="2"><strong>运费：</strong>当确认送货方式后显示</td>
+                        <td class="table_zj" colspan="3"><strong>小计总额：</strong><em>¥{{ cart.total_price }}</em></td>
+                    </tr>
+                
+            
+                
+            
+        </tbody></table>
+    </div>
+     
+</div>
+
+<div id="footer">
+<div class="footer">
+	<div class="footer_nav_box">
+		<div class="footer_copyright"><span>Copyright (C) 当当网 2004-2014, All Rights Reserved</span><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001051000098" target="_blank" class="footer_img" rel="nofollow"><img src="http://img4.dangdang.com/bottom/validate.gif"></a><span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span>出版物经营许可证&nbsp;新出发京批字第直0673号</span></div>
+	</div>
+</div>
+</div>
+    <div class="foot_tip_ad">广告</div>
+    <style>
+        .foot_tip_ad { width:40px; height:40px; font:12px/40px "simsun"; text-align:center; color:#fff; background-color:#474747; position:fixed; right:0; bottom:10px;_position:absolute; _bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+    </style>
+<script>
+    var a=0;
+    function fn1() {
+        var yb=document.getElementById('fn1').value;
+        var re = /^\d{6}$/;
+            if (! re.test(yb)){
+                document.getElementById('yb').innerHTML="请输入正确的邮政编码";
+            a=0}
+            else{
+        document.getElementById('yb').innerHTML="";
+        a=1
+            }
+    }
+    var b=0;
+    function fn2() {
+        var tele=document.getElementById('tele').value;
+        var tel=/^1(3|4|5|6|7|8|9)\d{9}$/;
+        if(! tel.test(tele)){
+            document.getElementById('dh').innerHTML="请输入正确的手机号";
+            b=0
+        }else{
+            document.getElementById('dh').innerHTML="";
+            b=1
+        }
+    }
+    var c=0;
+    function fn3() {
+        var card=document.getElementById('card').value;
+        var isPhone = /^([0-9]{3,4}-)?[0-9]{7,8}$/;
+        if(! isPhone.test(card)){
+            document.getElementById('dh').innerHTML="请输入正确的固定电话";
+            c=0
+        }else{
+            document.getElementById('dh').innerHTML="";
+            c=1
+        }
+    }
+
+    function fn4() {
+        var name1=document.getElementById('name1').value;
+        var addr=document.getElementById('addr').value;
+        var yb=document.getElementById('fn1').value;
+        var tp=document.getElementById('tele').value;
+        var card=document.getElementById('card').value;
+        var re = /^\d{6}$/;
+        var tel=/^1(3|4|5|6|7|8|9)\d{9}$/;
+        var isPhone = /^([0-9]{3,4}-)?[0-9]{7,8}$/;
+        console.log(name1,addr,yb,tp,card);
+        if(name1==''){
+            alert('请填写收货人姓名')
+        }else if(addr==''){
+            alert('请填写详细地址')
+        }else if(yb==''){
+            alert('请填写邮政编码')
+        }else if(! re.test(yb)){
+            alert('请输入正确的邮政编码')
+        }
+        else if (tel.test(tp)|| isPhone.test(card)) {
+            var xhr;
+                if(window.XMLHttpRequest){
+                    xhr=new XMLHttpRequest()
+                }else if (window.ActiveXObject){
+                xhr=new ActiveXObject('Microsoft.XMLHTTP')
+        }
+        var url="{% url 'ddapp:indent_add' %}";
+        xhr.open('post',url,true);
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhr.setRequestHeader('X-CSRFToken','{{ csrf_token }}');
+        xhr.send('name1='+name1+'&addr='+addr+'&yb='+yb+'&tp='+tp+'&card='+card+'&count='+{{ cart.total_price }});
+        xhr.onreadystatechange=function () {
+            console.log(xhr.readyState);
+            if(xhr.readyState===4&&xhr.status===200){
+                var sresult=xhr.responseText;
+                if(sresult==1){
+                window.location.href='{% url 'ddapp:indent_ok' %}'
+                }
+                }
+    }
+        }else{alert('请核对手机号或固定电话')}
+    }
+    
+    function change() {
+        var name1=document.getElementById('name1');
+        var addr=document.getElementById('addr');
+        var yb=document.getElementById('fn1');
+        var tp=document.getElementById('tele');
+        var card=document.getElementById('card');
+        var chann = document.getElementById('select1');
+        var chan1=chann.selectedIndex;
+        var chan=chann.options[chan1].text;
+        console.log(chan);
+        var xhr;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest()
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP')
+        }
+        {#    发送请求之前配置 三个参数#}
+        var url = "{% url 'ddapp:change' %}?chan=" +chan;
+        xhr.open('get', url, true);
+        xhr.send();
+        {#    接收响应  事件监听当前服务器端处理状态#}
+        xhr.onreadystatechange = function () {
+            {#console.log(xhr.readyState);#}
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var sresult = xhr.responseText;
+                console.log(typeof sresult);
+                console.log(sresult);
+                var arr = JSON.parse(sresult);
+                if (arr.length>0) {
+
+                    name1.value = arr[0]['uname'];
+                    addr.value = arr[0]['addr'];
+                    yb.value = arr[0]['zip_code'];
+                    tp.value = arr[0]['telephone'];
+                    card.value = arr[0]['phone'];
+                    name1.readOnly = 'readonly';
+                    addr.readOnly = 'readonly';
+                    yb.readOnly = 'readonly';
+                    tp.readOnly = 'readonly';
+                    card.readOnly = 'readonly';
+                } else {
+                    name1.value='';
+                    addr.value='';
+                    yb.value = '';
+                    tp.value = '';
+                    card.value = '';
+                    name1.removeAttribute('readOnly');
+                    addr.removeAttribute('readOnly');
+                    yb.removeAttribute('readOnly');
+                    tp.removeAttribute('readOnly');
+                    card.removeAttribute('readOnly');
+                }
+
+
+            }
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

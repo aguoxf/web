@@ -1,0 +1,869 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+            <head>
+            <base href="" />
+            <title>百知教育</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <meta name="description" content="" />
+            <meta name="keywords" content="" />
+            <meta name="ddclick_guan" content="1" />
+            <link rel="stylesheet" type="text/css" href="{% static 'css/category_pub.css' %}" />
+            <link rel="stylesheet" type="text/css" href="{% static 'css/header_150803.css' %}"/>
+            <link rel="stylesheet" type="text/css" href="{% static 'css/book details.css' %}"/>
+            <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/tab.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'js/jquery1.4.2.js' %}"></script>
+            <script type="text/javascript">
+			function player1(id){
+			var id=document.getElementById(id)
+			id.style.display="block";
+			}
+			function clocer1(id){
+			var id=document.getElementById(id)
+			id.style.display="none";
+			}
+			</script>
+            </head>
+            <body>
+<style>
+
+</style>
+<div id="hd">
+              <div id="tools">
+    <div class="tools">
+                  <div class="ddnewhead_operate" dd_name="顶链接">
+        
+        <div class="new_head_znx" id="znx_content" style="display:none;"></div>
+                      {% if name %}
+                             <span id="nickname"><span class="hi">Hi，<a href="http://myhome.dangdang.com/" class="login_link"
+                                                               target="_blank"><b>{{ name }}</b></a><a
+                            href="{% url 'ddapp:car' %}?dele=dele" target="_self">[退出]</a></span></span>
+                          {% else %}
+                           <div class="ddnewhead_welcome" display="none;"> <span id="nickname"><span class="hi hi_none">欢迎光临当当，请</span><a href="{% url 'ddapp:login' %}" class="login_link">登录</a><a href="{% url 'ddapp:regist' %}">免费注册</a></span>
+                      {% endif %}
+
+                      <div class="tel_pop" style="display:none" id="__ddnav_sjdd"  onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');" onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');"> <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i class="icon_tel"></i>手机当当</a><i class="title_shadow"></i>
+            <ul class="tel_pop_box">
+                          <li><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码"><span>当当手机客户端</span><img src="http://img3.ddimg.cn/00363/doc/erweima2.png"><span class="text">随手查订单<br>
+                          随时享优惠</span></a></li>
+                        </ul>
+          </div>
+                    </div>
+        
+      </div>
+                </div>
+  </div>
+              <div id="header_end"></div>
+              <div style="position:relative;" class="logo_line_out">
+    <div class="logo_line" dd_name="搜索框">
+                  <div class="logo"><img src="{% static 'images/DDlogoNEW.gif' %}" usemap="#logo_link"/>
+        <map name="logo_link" id="logo_link" dd_name="logo区">
+                      <area shape="rect" coords="0,18,200,93" href="http://www.dangdang.com" title="当当" onfocus="this.blur();">
+                      <area shape="rect" coords="200,18,320,93" href="http://www.dangdang.com/" title="" target="_blank" onfocus="this.blur();">
+                    </map>
+      </div>
+                  <div class="search">
+        <form action="http://search.dangdang.com" name="searchform"  id="form_search_new" onsubmit="return searchsubmit();"  method="GET">
+{#                      <label  for="key_S" class="label_search" id="label_key" onclick="this.style.color='rgb(255, 255, 255)';" style="visibility: visible; color: rgb(102, 102, 102);" >跟乐嘉学性格色彩2</label>#}
+{#                      <input type="text" class="text gray"  name="key" ID="key_S" autocomplete="off" onclick="key_onclick(event);" onfocus="key_onfocus(event);"  onblur="key_onblur();" onbeforepaste="onpaste_search();"/>#}
+{#                      <a href="javascript:void(0);" onclick="clearkeys();" class="del-keywords"></a><span class="select"  onmouseover="allCategoryShow();"  onmouseleave="allCategoryHide();" onmouseout='if("\v"!="v"){ allCategoryHide();}'><span id="Show_Category_Name" dd_name="全部分类">全部分类</span><span class="icon"></span>#}
+{#          <div id="search_all_category" class="select_pop" style="height:0px;padding: 0px;border-width: 0px;" dd_name="搜索分类"> <a href="javascript:void(0);" onclick="selectCategory('',this);" ><span id="Show_Category_Name" dd_name="全部分类">全部分类</span></a> <a href="javascript:void(0);" onclick="selectCategory('100000',this);" dd_name="尾品汇"><span>尾品汇</span></a> <a href="javascript:void(0);" onclick="selectCategory('01.00.00.00.00.00',this);" dd_name="图书"><span>图书</span></a> <a href="javascript:void(0);" onclick="selectCategory('98.00.00.00.00.00',this);" dd_name="电子书"><span>电子书</span></a> <a href="javascript:void(0);" onclick="selectCategory('03.00.00.00.00.00',this);" dd_name="音像"><span>音像</span></a> <a href="javascript:void(0);" onclick="selectCategory('05.00.00.00.00.00',this);" dd_name="影视"><span>影视</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002074,this);" dd_name="时尚美妆"><span>时尚美妆</span></a> <a href="javascript:void(0);" onclick="selectCategory(4001940,this);" dd_name="母婴用品"><span>母婴用品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002061,this);" dd_name="玩具"><span>玩具</span></a> <a href="javascript:void(0);" onclick="selectCategory(4004866,this);" dd_name="孕婴服饰"><span>孕婴服饰</span></a> <a href="javascript:void(0);" onclick="selectCategory(4004344,this);" dd_name="童装童鞋"><span>童装童鞋</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003900,this);" dd_name="家居日用"><span>家居日用</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003760,this);" dd_name="家具装饰"><span>家具装饰</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003844,this);" dd_name="服装"><span>服装</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003872,this);" dd_name="鞋"><span>鞋</span></a> <a href="javascript:void(0);" onclick="selectCategory(4001829,this);" dd_name="箱包皮具"><span>箱包皮具</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003639,this);" dd_name="手表饰品"><span>手表饰品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003728,this);" dd_name="运动户外"><span>运动户外</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002429,this);" dd_name="汽车用品"><span>汽车用品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002145,this);" dd_name="食品"><span>食品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4006497,this);" dd_name="手机通讯"><span>手机通讯</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003613,this);" dd_name="数码影音"><span>数码影音</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003819,this);" dd_name="电脑办公"><span>电脑办公</span></a> <a href="javascript:void(0);" onclick="selectCategory(4007241,this);" dd_name="大家电"><span>大家电</span></a> <a href="javascript:void(0);" onclick="selectCategory(4001001,this);" dd_name="家用电器"><span>家用电器</span></a> </div>#}
+          </span>
+                      <input type="hidden" id="default_key" value="跟乐嘉学性格色彩2"/>
+                      <input type="submit" id="search_btn" dd_name="搜索按钮"  style="display:none"/>
+                      <input id="SearchFromTop" style="display:none" type="hidden" name="SearchFromTop" value="1"/>
+                      <input type="button" id="suggest_product_btn" name="suggestproduct_btn"  style="display:none" onclick="void(0)"/>
+                      <input type="button" id="suggest_class_btn" name="suggestclass_btn"  style="display:none" onclick="void(0)"/>
+                      <input type="submit" id="suggest_searchkey_btn" name="suggestsearchkey_btn"  style="display:none" dd_name="搜索按钮"/>
+                      <input type="hidden" id="catalog_S" name="catalog" value="" >
+{#                      <input type="button" class="button" dd_name="搜索按钮" onclick="javascript:document.getElementById('search_btn').click();"/>#}
+                    </form>
+      </div>
+                  
+                  <div id="suggest_key" class="suggest_key" style="display:none;" ></div>
+                  <div class="ddnew_cart"><a href="{% url 'ddapp:car' %}" name="购物车" dd_name="购物车"><i class="icon_card"></i>购物车<b id="cart_items_count"></b></a></div>
+                  <div class="ddnew_order"><a target="_blank" href="http://orderb.dangdang.com/myallorders.aspx" name="我的订单" dd_name="我的订单" rel="nofollow">我的订单<b id="unpaid_num" style="color:#ff2832;font:bold 12px Arial;"></b></a></div>
+                </div>
+  </div>
+              
+              <div class="home_nav_l_box">
+    <div class="home_nav_l" id="nav_l" style="display:none;">
+                  <div class="new_pub_nav_box"  style="display:none;" id="__ddnav_sort" onmouseover="showdiv(event,'__ddnav_sort');" onmouseout="hiddenCategory(event,'__ddnav_sort');"> <span class="new_pub_line_a"></span> <span class="new_pub_line_b"></span>
+        <div class="new_pub_nav_shadow" id="menu_list">
+                      <ul class="new_pub_nav" id="menulist_content">
+            <li class="n_b first" dd_name="图书童书" id="li_label_1" data-submenu-id="__ddnav_sort1" data_index="1" data_key="34102" data_type="'goods'"> <span class="nav" id="categoryh_1"> <a name="newcate1" dd_name="图书童书,图书" id="cate_34242" href="http://book.dangdang.com" target="_blank">图书</a>、<a name="newcate1" dd_name="图书童书,童书" id="cate_34252" href="http://book.dangdang.com/children?ref=book-01-A" target="_blank">童书</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="电子书"  id="li_label_2" data-submenu-id="__ddnav_sort2" data_index="2" data_key="56262" data_type="'book'" > <span class="nav" id="categoryh_2"> <a name="newcate2"  dd_name="电子书,电子书" id="cate_56263" href="http://e.dangdang.com/index_page.html" target="_blank">电子书</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="创意文具当当拍卖"  id="li_label_3" data-submenu-id="__ddnav_sort3" data_index="3" data_key="55442" data_type="'goods'" > <span class="nav" id="categoryh_3"> <a name="newcate3"  dd_name="创意文具当当拍卖,创意文具" id="cate_55469" href="http://category.dangdang.com/cid10009416.html" target="_blank">创意文具</a>、<a name="newcate3"  dd_name="创意文具当当拍卖,当当拍卖" id="cate_56020" href="http://paimai.dangdang.com/" target="_blank">当当拍卖</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="服饰内衣"  id="li_label_4" data-submenu-id="__ddnav_sort4" data_index="4" data_key="34202" data_type="'goods'" > <span class="nav" id="categoryh_4"> <a name="newcate4"  dd_name="服饰内衣,服饰" id="cate_45522" href="http://fashion.dangdang.com/" target="_blank">服饰</a>、<a name="newcate4"  dd_name="服饰内衣,内衣" id="cate_53062" href="http://fashion.dangdang.com/underwear" target="_blank">内衣</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="鞋靴箱包"  id="li_label_5" data-submenu-id="__ddnav_sort5" data_index="5" data_key="34212" data_type="'goods'" > <span class="nav" id="categoryh_5"> <a name="newcate5"  dd_name="鞋靴箱包,鞋靴" id="cate_45532" href="http://fashion.dangdang.com/shoes" target="_blank">鞋靴</a>、<a name="newcate5"  dd_name="鞋靴箱包,箱包" id="cate_53072" href="http://fashion.dangdang.com/bags" target="_blank">箱包</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="运动户外"  id="li_label_6" data-submenu-id="__ddnav_sort6" data_index="6" data_key="34232" data_type="'goods'" > <span class="nav" id="categoryh_6"> <a name="newcate6"  dd_name="运动户外,运动户外" id="cate_45552" href="http://fashion.dangdang.com/sports" target="_blank">运动户外</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="孕婴童"  id="li_label_7" data-submenu-id="__ddnav_sort7" data_index="7" data_key="34112" data_type="'goods'" > <span class="nav" id="categoryh_7"> <a name="newcate7"  dd_name="孕婴童,孕" id="cate_35772" href="http://mama.dangdang.com/" target="_blank">孕</a>、<a name="newcate7"  dd_name="孕婴童,婴" id="cate_35782" href="http://baby.dangdang.com/" target="_blank">婴</a>、<a name="newcate7"  dd_name="孕婴童,童" id="cate_35792" href="http://kids.dangdang.com/" target="_blank">童</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="家居家纺汽车"  id="li_label_8" data-submenu-id="__ddnav_sort8" data_index="8" data_key="34142" data_type="'goods'" > <span class="nav" id="categoryh_8"> <a name="newcate8"  dd_name="家居家纺汽车,家居" id="cate_38642" href="http://living.dangdang.com/" target="_blank">家居</a>、<a name="newcate8"  dd_name="家居家纺汽车,家纺" id="cate_53032" href="http://living.dangdang.com/textile" target="_blank">家纺</a>、<a name="newcate8"  dd_name="家居家纺汽车,汽车" id="cate_38662" href="http://automobile.dangdang.com/" target="_blank">汽车</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="家具家装康体"  id="li_label_9" data-submenu-id="__ddnav_sort9" data_index="9" data_key="34132" data_type="'goods'" > <span class="nav" id="categoryh_9"> <a name="newcate9"  dd_name="家具家装康体,家具" id="cate_52282" href="http://living.dangdang.com/furniture" target="_blank">家具</a>、<a name="newcate9"  dd_name="家具家装康体,家装" id="cate_54045" href="http://living.dangdang.com/decoration" target="_blank">家装</a>、<a name="newcate9"  dd_name="家具家装康体,康体" id="cate_54046" href="http://health.dangdang.com/" target="_blank">康体</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="美妆个人护理成人"  id="li_label_10" data-submenu-id="__ddnav_sort10" data_index="10" data_key="34122" data_type="'goods'" > <span class="nav" id="categoryh_10"> <a name="newcate10"  dd_name="美妆个人护理成人,美妆" id="cate_37332" href="http://cosmetic.dangdang.com/" target="_blank">美妆</a>、<a name="newcate10"  dd_name="美妆个人护理成人,个人护理" id="cate_54231" href="http://cosmetic.dangdang.com/" target="_blank">个人护理</a>、<a name="newcate10"  dd_name="美妆个人护理成人,成人" id="cate_54230" href="http://sex.dangdang.com/" target="_blank">成人</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="食品茶酒生鲜"  id="li_label_11" data-submenu-id="__ddnav_sort11" data_index="11" data_key="34152" data_type="'goods'" > <span class="nav" id="categoryh_11"> <a name="newcate11"  dd_name="食品茶酒生鲜,食品" id="cate_40152" href="http://food.dangdang.com/" target="_blank">食品</a>、<a name="newcate11"  dd_name="食品茶酒生鲜,茶酒" id="cate_53794" href="http://food.dangdang.com/alcohol" target="_blank">茶酒</a>、<a name="newcate11"  dd_name="食品茶酒生鲜,生鲜" id="cate_40162" href="http://food.dangdang.com/fresh" target="_blank">生鲜</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="腕表珠宝饰品眼镜"  id="li_label_12" data-submenu-id="__ddnav_sort12" data_index="12" data_key="34222" data_type="'goods'" > <span class="nav" id="categoryh_12"> <a name="newcate12"  dd_name="腕表珠宝饰品眼镜,腕表" id="cate_54859" href="http://fashion.dangdang.com/watch" target="_blank">腕表</a>、<a name="newcate12"  dd_name="腕表珠宝饰品眼镜,珠宝饰品" id="cate_45542" href="http://fashion.dangdang.com/jewelry" target="_blank">珠宝饰品</a>、<a name="newcate12"  dd_name="腕表珠宝饰品眼镜,眼镜" id="cate_53122" href="http://category.dangdang.com/cid4009587.html" target="_blank">眼镜</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="手机数码"  id="li_label_13" data-submenu-id="__ddnav_sort13" data_index="13" data_key="34162" data_type="'goods'" > <span class="nav" id="categoryh_13"> <a name="newcate13"  dd_name="手机数码,手机" id="cate_41592" href="http://3c.dangdang.com/mobile" target="_blank">手机</a>、<a name="newcate13"  dd_name="手机数码,数码" id="cate_41602" href="http://3c.dangdang.com/digital" target="_blank">数码</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="电脑办公"  id="li_label_14" data-submenu-id="__ddnav_sort14" data_index="14" data_key="34172" data_type="'goods'" > <span class="nav" id="categoryh_14"> <a name="newcate14"  dd_name="电脑办公,电脑办公" id="cate_42602" href="http://3c.dangdang.com/pc" target="_blank">电脑办公</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="家用电器"  id="li_label_15" data-submenu-id="__ddnav_sort15" data_index="15" data_key="34182" data_type="'goods'" > <span class="nav" id="categoryh_15"> <a name="newcate15"  dd_name="家用电器,家用电器" id="cate_44162" href="http://3c.dangdang.com/appliance" target="_blank">家用电器</a></span><span class="sign"></span> </li>
+            <li class="n_b"  dd_name="当当礼品卡生活服务"  id="li_label_16" data-submenu-id="__ddnav_sort16" data_index="16" data_key="54895" data_type="'goods'" > <span class="nav" id="categoryh_16"> <a name="newcate16"  dd_name="当当礼品卡生活服务,当当礼品卡" id="cate_54896" href="http://giftcard.dangdang.com/" target="_blank">当当礼品卡</a>、<a name="newcate16"  dd_name="当当礼品卡生活服务,生活服务" id="cate_55733" href="http://category.dangdang.com/cid11618.html" target="_blank">生活服务</a></span><span class="sign"></span> </li>
+          </ul>
+                      <div class="new_pub_nav_pop" style="display: none;" id="con_one_1"> <a>我是郭雅雪</a> </div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort2"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort3"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort4"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort5"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort6"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort7"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort8"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort9"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort10"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort11"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort12"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort13"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort14"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort15"></div>
+                      <div class="new_pub_nav_pop" style="display: none;" id="__ddnav_sort16"></div>
+                    </div>
+      </div>
+                </div>
+  </div>
+              
+            </div>
+<div id="bd_auto" name="9149">
+              <div class="top_ad_banner"><a href="#"><img src="{% static 'images/1200x65_sk_1229.jpg' %}" width="1200" height="65" /></a></div>
+              <div class="breadcrumb" id="B"> <a href="http://www.dangdang.com">当当</a> <span>&gt;</span> <a href="/cp01.00.00.00.00.00.html" name="B">图书</a><span>&gt;</span> <a href="/cp01.22.00.00.00.00.html" name="B">管理</a><span>&gt;</span> <span class="current">市场/营销</span> </div>
+              <div class="product_main clearfix" dd_name="单品区域">
+    <div class="pic_info"> 
+                  <!-- 大图区开始 -->
+                  <div class="preview">
+	<div id="vertical" class="bigImg">
+		<img src="{% static book.pictures %}" width="320" height="320" alt="" id="midimg" />
+		<div style="display:none;" id="winSelector"></div>
+	</div><!--bigImg end-->	
+	<div class="smallImg">
+		<div class="scrollbutton smallImgUp disabled"></div>
+		<div id="imageMenu">
+			<ul>
+				<li id="onlickImg"><img src="{% static book.pictures %}" width="68" height="68" alt="洋妞"/></li>
+				<li><img src="{% static book.pictures %}" width="68" height="68" alt="洋妞"/></li>
+				<li><img src="{% static book.pictures %}" width="68" height="68" alt="洋妞"/></li>
+				<li><img src="{% static book.pictures %}" width="68" height="68" alt="洋妞"/></li>
+				<li><img src="{% static book.pictures %}" width="68" height="68" alt="洋妞"/></li>
+				<li><img src="{% static book.pictures %}" width="68" height="68" alt="洋妞"/></li>
+				<li><img src="{% static book.pictures %}" width="68" height="68" alt="洋妞"/></li>
+			</ul>
+		</div>
+		<div class="scrollbutton smallImgDown"></div>
+	</div><!--smallImg end-->	
+	<div id="bigView" style="display:none;"><img width="800" height="800" alt="" src="" /></div>
+</div>
+<!--preview end-->
+<script type="text/javascript">
+$(document).ready(function(){
+	// 图片上下滚动
+	var count = $("#imageMenu li").length - 4; /* 显示 6 个 li标签内容 */
+	var interval = $("#imageMenu li:first").width();
+	var curIndex = 0;
+	
+	$('.scrollbutton').click(function(){
+		if( $(this).hasClass('disabled') ) return false;
+		
+		if ($(this).hasClass('smallImgUp')) --curIndex;
+		else ++curIndex;
+		
+		$('.scrollbutton').removeClass('disabled');
+		if (curIndex == 0) $('.smallImgUp').addClass('disabled');
+		if (curIndex == count-1) $('.smallImgDown').addClass('disabled');
+		
+		$("#imageMenu ul").stop(false, true).animate({"marginLeft" : -curIndex*interval + "px"}, 600);
+	});	
+	// 解决 ie6 select框 问题
+	$.fn.decorateIframe = function(options) {
+        if ($.browser.msie && $.browser.version < 7) {
+            var opts = $.extend({}, $.fn.decorateIframe.defaults, options);
+            $(this).each(function() {
+                var $myThis = $(this);
+                //创建一个IFRAME
+                var divIframe = $("<iframe />");
+                divIframe.attr("id", opts.iframeId);
+                divIframe.css("position", "absolute");
+                divIframe.css("display", "none");
+                divIframe.css("display", "block");
+                divIframe.css("z-index", opts.iframeZIndex);
+                divIframe.css("border");
+                divIframe.css("top", "0");
+                divIframe.css("left", "0");
+                if (opts.width == 0) {
+                    divIframe.css("width", $myThis.width() + parseInt($myThis.css("padding")) * 2 + "px");
+                }
+                if (opts.height == 0) {
+                    divIframe.css("height", $myThis.height() + parseInt($myThis.css("padding")) * 2 + "px");
+                }
+                divIframe.css("filter", "mask(color=#fff)");
+                $myThis.append(divIframe);
+            });
+        }
+    }
+    $.fn.decorateIframe.defaults = {
+        iframeId: "decorateIframe1",
+        iframeZIndex: -1,
+        width: 0,
+        height: 0
+    }
+    //放大镜视窗
+    $("#bigView").decorateIframe();
+    //点击到中图
+    var midChangeHandler = null;
+	
+    $("#imageMenu li img").bind("click", function(){
+		if ($(this).attr("id") != "onlickImg") {
+			midChange($(this).attr("src").replace("small", "mid"));
+			$("#imageMenu li").removeAttr("id");
+			$(this).parent().attr("id", "onlickImg");
+		}
+	}).bind("mouseover", function(){
+		if ($(this).attr("id") != "onlickImg") {
+			window.clearTimeout(midChangeHandler);
+			midChange($(this).attr("src").replace("small", "mid"));
+			$(this).css({ "border": "3px solid #959595" });
+		}
+	}).bind("mouseout", function(){
+		if($(this).attr("id") != "onlickImg"){
+			$(this).removeAttr("style");
+			midChangeHandler = window.setTimeout(function(){
+				midChange($("#onlickImg img").attr("src").replace("small", "mid"));
+			}, 1000);
+		}
+	});
+    function midChange(src) {
+        $("#midimg").attr("src", src).load(function() {
+            changeViewImg();
+        });
+    }
+    //大视窗看图
+    function mouseover(e) {
+        if ($("#winSelector").css("display") == "none") {
+            $("#winSelector,#bigView").show();
+        }
+        $("#winSelector").css(fixedPosition(e));
+        e.stopPropagation();
+    }
+    function mouseOut(e) {
+        if ($("#winSelector").css("display") != "none") {
+            $("#winSelector,#bigView").hide();
+        }
+        e.stopPropagation();
+    }
+    $("#midimg").mouseover(mouseover); //中图事件
+    $("#midimg,#winSelector").mousemove(mouseover).mouseout(mouseOut); //选择器事件
+
+    var $divWidth = $("#winSelector").width(); //选择器宽度
+    var $divHeight = $("#winSelector").height(); //选择器高度
+    var $imgWidth = $("#midimg").width(); //中图宽度
+    var $imgHeight = $("#midimg").height(); //中图高度
+    var $viewImgWidth = $viewImgHeight = $height = null; //IE加载后才能得到 大图宽度 大图高度 大图视窗高度
+
+    function changeViewImg() {
+        $("#bigView img").attr("src", $("#midimg").attr("src").replace("mid", "big"));
+    }
+    changeViewImg();
+    $("#bigView").scrollLeft(0).scrollTop(0);
+    function fixedPosition(e) {
+        if (e == null) {
+            return;
+        }
+        var $imgLeft = $("#midimg").offset().left; //中图左边距
+        var $imgTop = $("#midimg").offset().top; //中图上边距
+        X = e.pageX - $imgLeft - $divWidth / 2; //selector顶点坐标 X
+        Y = e.pageY - $imgTop - $divHeight / 2; //selector顶点坐标 Y
+        X = X < 0 ? 0 : X;
+        Y = Y < 0 ? 0 : Y;
+        X = X + $divWidth > $imgWidth ? $imgWidth - $divWidth : X;
+        Y = Y + $divHeight > $imgHeight ? $imgHeight - $divHeight : Y;
+
+        if ($viewImgWidth == null) {
+            $viewImgWidth = $("#bigView img").outerWidth();
+            $viewImgHeight = $("#bigView img").height();
+            if ($viewImgWidth < 200 || $viewImgHeight < 200) {
+                $viewImgWidth = $viewImgHeight = 800;
+            }
+            $height = $divHeight * $viewImgHeight / $imgHeight;
+            $("#bigView").width(400);
+            $("#bigView").height(400);
+        }
+        var scrollX = X * $viewImgWidth / $imgWidth;
+        var scrollY = Y * $viewImgHeight / $imgHeight;
+        $("#bigView img").css({ "left": scrollX * -1, "top": scrollY * -1 });
+        $("#bigView").css({ "top": 0, "left": $(".preview").width() + 5 });
+
+        return { left: X, top: Y };
+    }
+});
+</script>
+                  <div class="share_div clearfix">
+        <div class="share_icon" id="share_div" dd_name="分享"> <a href="javascript:;" class="btn_fxd"><i></i>分享</a> <!-- 回调分享数据 -->
+                      <ul id="share-url" style="display:none">
+            <li data-dstweb="qqzone" dd_name="分享到QQ空间"><a class="share_qzone" title="qq空间" href="javascript:;"></a></li>
+            <li data-dstweb="sina" dd_name="分享到新浪微博"><a class="share_sina" title="新浪微博" name="__sina" href="javascript:;"></a></li>
+          </ul>
+                    </div>
+        <span class="btn_sjf" id="points-tag" rel="nofollow" dd_name="送积分" style="display: none;"> <i></i>送积分<a href="http://help.dangdang.com/details/page52" target="_blank" id="pointsTag" name="__operation_jifen" rel="nofollow">651</a> </span> <a href="javascript:;" class="btn_scsp" title="收藏" dd_name="收藏商品" data-prd="24058065" id="collect_left"><i></i>收藏商品 </a> </div>
+                  <div class="masks" id="modalMainImg" style="display:none">
+        <div class="masks_bg">
+                      <iframe></iframe>
+                    </div>
+        <div class="large_image"> <a href="javascript:;" class="close" id="masksClose"></a>
+                      <div onselectstart="return false;" unselectable="on" class="large_image_pic">
+            <div class="large_l" id="mask-left"> </div>
+            <div class="large_r" id="mask-right"> </div>
+            <img alt="" src="http://img3x5.ddimg.cn/75/36/24058065-1_u_21.jpg" title="" id="modalBigImg"> </div>
+                      <div class="large_wrap_right"> <a href="javascript:;" class="btn_a prev" id="mask-up" style="display: none;"></a> <a href="javascript:;" class="btn_a next" id="mask-down" style="display: none;"></a>
+            <div class="img_list" id="mask-small-list" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; height: 540px;">
+                          <ul id="mask-small-list-slider" style="margin: 0px; padding: 0px; position: relative; list-style: none; z-index: 1; height: 1620px; top: -540px;">
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-1_u_21.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-1_m_21.jpg"> </a></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-2_u_17.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-2_m_17.jpg"> </a></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-3_u_6.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-3_m_6.jpg"> </a></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li idx="0" style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 1;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-1_u_21.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-1_m_21.jpg"> </a></li>
+                <li idx="1" style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-2_u_17.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-2_m_17.jpg"> </a></li>
+                <li idx="2" style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-3_u_6.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-3_m_6.jpg"> </a></li>
+                <li idx="3" style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li idx="4" style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li idx="5" style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-1_u_21.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-1_m_21.jpg"> </a></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-2_u_17.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-2_m_17.jpg"> </a></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"><a href="javascript:;" data-imghref="http://img3x5.ddimg.cn/75/36/24058065-3_u_6.jpg"> <img src="http://img3x5.ddimg.cn/75/36/24058065-3_m_6.jpg"> </a></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+                <li style="overflow: hidden; float: none; width: 82px; height: 82px; opacity: 0.5;"></li>
+              </ul>
+                        </div>
+          </div>
+                    </div>
+      </div>
+                  <!-- 大图区结束 --> </div>
+    <div class="show_info">
+                  <div class="sale_box clearfix">
+        <div class="sale_box_left"> 
+                      <!-- 标题区begin -->
+                      <div class="name_info"> 
+            <!-- 主标题 -->
+            <h1 title="醉玲珑：十年珍藏版">{{ book.title }}</h1>
+            <!-- 副标题、促销语 -->
+            <h2> <span class="head_title_name" title="当当独家限量签名本随机发。《花千骨》原班人马打造同名电视剧，陈伟霆、刘诗诗领衔主演。穿越小说经典代表作之一。逐字编修新增数万字，迄今为止*完美版本。赠送海报1张、藏书票1张、书签1张&nbsp;青春动漫图书满100减30、满200减60、满300减100 点击查看>>&nbsp;"> {{ book.book_intro }}</span> <span class="hot" title="当当独家限量签名本随机发。《花千骨》原班人马打造同名电视剧，陈伟霆、刘诗诗领衔主演。穿越小说经典代表作之一。逐字编修新增数万字，迄今为止*完美版本。赠送海报1张、藏书票1张、书签1张&nbsp;青春动漫图书满100减30、满200减60、满300减100 点击查看>>&nbsp;"> <a href="http://book.dangdang.com/20170111_jnnv">青春动漫图书满100减30、满200减60、满300减100 点击查看&gt;&gt;</a> </span> <span class="yushou" id="presale-title" style="display: none;"> </span> </h2>
+          </div>
+                      <!-- 标题区 end--> 
+                      <!-- 出版物begin --> 
+                      <!-- 图书信息区 -->
+                      <div class="messbox_info"> <span class="t1" id="author" dd_name="作者">作者:<a href="http://www.dangdang.com/author/%CA%AE%CB%C4%D2%B9_1" target="_blank" dd_name="作者">{{ book.author }}</a></span><span class="t1" dd_name="出版社">出版社:<a href="http://www.dangdang.com/publish/%D5%E3%BD%AD%CE%C4%D2%D5%B3%F6%B0%E6%C9%E7_1" target="_blank" dd_name="出版社">{{ book.press }}</a></span><span class="t1">出版时间:{{ book.publication_time }}&nbsp;</span> <!-- 评论数 -->
+           <br /> <span class="t1"><a href="">{{ book.review_count }}</a>条评论</span>
+          </div>
+                      <!-- 出版物 end--> 
+                      <!-- 价格区begin -->
+                      <div class="price_info clearfix"> 
+            <!-- 手机专享价 -->
+            <div class="price_ph" id="mobile-price" style="display:none">
+                          <p class="t">手机专享价</p>
+                          <p class="pr"> <span class="yen">￥</span> </p>
+                          <div class="price_ph_erwei"> <i></i> <img src=""> </div>
+                        </div>
+            <!-- 手机专享价 end -->
+            
+            <div class="price_pc" id="pc-price">
+                          <div class="price_d">
+                <p class="t" id="dd-price-text">当当价</p>
+                <p id="dd-price"><span class="yen">￥</span>{{ book.discount }}</p>
+              </div>
+                          <div class="price_zhe" id="dd-zhe"></div>
+                          <div class="price_m price_m_t" id="original-price-text">定价</div>
+                          <div class="price_m" id="original-price"><span class="yen">￥</span>{{ book.price }}</div>
+                          <div class="price_vip" style="display:none" id="dd-vip"> <span></span> </div>
+                        </div>
+          </div>
+                      <div class="price_time" style="display:none">
+            <div class="yushou" id="promo-more" style="display:none"> <a href="javascript:void(0)" class="awhite" target="_blank" dd_name="查看更多限时抢商品">查看更多限时抢商品&gt;&gt;</a> </div>
+            <div id="duration-time"> <span>倒计时</span><b>11</b><span>天</span><b>99</b><span>小时</span><b>33</b><span>分</span><b>33</b><span>秒</span> </div>
+          </div>
+                      
+                      <!-- 价格区 end--> 
+                      <!-- 虚拟捆绑子商品区begin --> 
+                      <!-- 虚拟捆绑子商品列表 --> 
+                      <!-- 虚拟捆绑子商品区 end--> 
+                      <!-- 促销区 -->
+                      
+                      
+                      <!-- 促销区 end--> 
+                      <!-- 礼券 -->
+                      <div class="cuxiao_info  lingquan_info clearfix" style="display:none" dd_name="礼券" id="coupon-node">
+            <div class="left letter02">领券</div>
+            <div class="right J-right" id="coupon-right">
+                          <ul class="clearfix lingquan" id="coupon-list">
+              </ul>
+                        </div>
+            <script type="text/html" id="tpl-page">
+            {@each coupon as coup}
+            <li>
+                <a href="javascript:;">
+                {@if coup.couponMinUseValue == 0}
+                ${coup.couponValue}减${coup.couponValue}    
+                {@else}
+                ${coup.couponMinUseValue}减${coup.couponValue}
+                {@/if}
+                </a>
+            </li>
+            {@/each}
+    </script> 
+          </div>
+                    
+                      <!-- 按钮区 -->
+                      <div class="buy_box clearfix">
+            <div class="num">
+                          <input id="buy-num" class="text" value="1" type="text" >
+                          <a href="javascript:;" class="num_add" id="num_add" dd_name="数量加" onclick="jia()"></a>
+                <a href="javascript:;" class="num_del num_disabled" id="num_del" dd_name="数量减" onclick="jian()"></a> </div>
+            <div class="buy_box_btn"><a href="javascript:;" class="btn btn_b btn_b_red" id="sign_no_stock" dd_name="到货通知" style="display: none;">到货通知</a> <a href="javascript:" id="part_buy_button" onclick="car_add()" class="btn btn_red" dd_name="加入购物车" go-uri="//shopping.dangdang.com/shoppingcart/cart_append_new?product_ids=" style="display: block;"><i class="cart"></i>加入购物车</a>
+                          <div class="btn_pop" id="installment_buy_button" style="display:none"> <a href="javascript:;" id="installment_buy_button_a" class="btn btn_blue" dd_name="分期付款">分期付款</a>
+                <div class="pop_fenqi">
+                              <h3>体验分期付款吧<a href="//help.dangdang.com/details/page27" class="help" target="_blank"><i></i>帮助</a></h3>
+                              <div class="fenqi_info">
+                    <ul class="clearfix">
+                                </ul>
+                    <div class="text">招行手续费收取规则：全部手续费在第一期一次性收取</div>
+                  </div>
+                            </div>
+              </div>
+                          <a href="javascript:;" id="buy_now_button" class="btn btn_b btn_b_red" dd_name="立即购买" style="" go-uri="//checkoutb.dangdang.com/checkout.aspx?checkout_type=10&amp;">立即购买</a> <a href="javascript:;" id="deposit_buy_button" rel="nofollow" class="btn btn_green" dd_name="支付定金" style="display: none"></a>
+                          <div class="btn_pop btn_pop_click" style="z-index:30" id="deposit-share"> <a href="##" class="btn btn_b btn_orange02" style="display: none" id="invite_friend_button">邀请好友</a>
+                <div class="btn_yaoqing" id="deposit-share-url"> <span>邀请好友参加吧</span> <span> <a href="javascript:void(0)" class="qq" data-dstweb="qqzone" dd_name="分享到QQ空间" title="分享到QQ空间"></a> <a href="javascript:void(0)" class="sina" data-dstweb="sina" dd_name="分享到新浪微博" title="分享到新浪微博"></a> </span> </div>
+              </div>
+                          <a href="javascript:;" id="btn_buy_now" rel="nofollow" class="btn btn_b btn_b_red" dd_name="收藏商品" style="display: none">收藏商品</a> </div>
+            <div id="buy-tip" class="text"></div>
+          </div>
+                      <!-- 按钮区 end--> 
+                    </div>
+        
+      </div>
+                </div>
+  </div>
+    <script>
+        {#var num=document.getElementById('num').value;#}
+        {#console.log(num)#}
+
+        function jia() {
+            var n=document.getElementById('buy-num').value;
+            if (Number(n)>99){
+                alert('超出当前最大库存')
+                var num = document.getElementById('buy-num');
+            num.value=1
+            }else{
+            var num = document.getElementById('buy-num');
+            num.value=Number(num.value)+1}
+        }
+
+        function jian() {
+            var n=document.getElementById('buy-num').value;
+            if (Number(n)>0){
+            var num = document.getElementById('buy-num');
+            num.value=Number(num.value)-1
+            }else if(n==1){
+                alert('不能再减了，臣妾做不到啊~');
+            }
+            else{
+                alert('不能再减了，臣妾做不到啊~');
+                var num = document.getElementById('buy-num');
+            num.value=1
+            }
+        }
+
+        function car_add() {
+            var num =document.getElementById('buy-num').value;
+            console.log(num)
+            var reg=/^\d{1,}$/;
+            if(! reg.test(num)){
+                alert('你不输对数，臣妾还是做不到啊~')
+            }else if(num>99){
+                alert('超出当前最大库存')
+            }
+            else if(num==0){
+                alert('你爱买不买')
+            } else {
+                var xhr;
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest()
+                } else if (window.ActiveXObject) {
+                    xhr = new ActiveXObject('Microsoft.XMLHTTP')
+                }
+                {#    发送请求之前配置 三个参数#}
+                {#var val = document.getElementById('txt_vcode').value;#}
+                var url = "{% url 'ddapp:book_de2' %}?num=" + num+'&id='+{{ id }};
+                xhr.open('get', url, true);
+                xhr.send();
+                {#    接收响应  事件监听当前服务器端处理状态#}
+                xhr.onreadystatechange = function () {
+                    console.log(xhr.readyState);
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var sresult = xhr.responseText;
+                        alert('添加成功')
+                    }
+                }
+            }}
+
+    </script>
+              <div class="product_content">
+    <div class="t_box" id="product_tab">
+                  <div id="tab-panels" class="tab_panel">
+        <div class="tab_panel_kf"> <span class="icon dang"></span> <span class="name">当当自营</span> <span class="live800" dd_name="人工客服（黏性导航）"> <span class="onlines" id="live800" title="点此与客服交流" style="display: none"><a href="javascript:void(0)" title="点此与客服交流">联系商家</a></span> </span> <span class="icon_dj" style="display:block" dd_name="机器人客服（黏性导航）">小当家</span> </div>
+        <ul class="tab clearfix">
+                      <li class="hover" id="five1" onclick="setTab('five',1,3)"  > 商品详情 </li>
+                   
+                    </ul>
+        <div class="tab_panel_btn" id="buyarea_tab"><a href="javascript:;" class="btn btn_red" dd_name="加入购物车" go-uri="//shopping.dangdang.com/shoppingcart/cart_append_new?product_ids=" style="display: block;" id="tab_pannel_btn"><i class="cart"></i>加入购物车</a> <span class="price" id="buyarea_price">当当价:<span class="price_d">￥65.10</span></span> </div>
+      </div>
+                  <div class="t_box_left" id="con_five_1" >
+        <div class="pro_content" id="detail_describe">
+                      <ul class="key clearfix">
+            <li>版 次：{{ book.edition }}</li>
+            <li>页 数：{{ book.page_count }}</li>
+            <li>字 数：{{ book.word_count }}</li>
+            <li>印刷时间：{{ book.printing_time }}</li>
+            <li>开 本：{{ book.book_size }}开</li>
+            <li>纸 张：{{ book.paper_type }}</li>
+            <li>印 次：{{ book.impression }}</li>
+            <li>包 装：{{ book.packaging }}</li>
+            <li>是否套装：1</li>
+            <li>国际标准书号ISBN：{{ book.isbn }}a+</li>
+            <li class="clearfix fenlei" dd_name="详情所属分类" id="detail-category-path">
+                          <label>所属分类：</label>
+                          <span class="lie"><a target="_bland" href="http://category.dangdang.com/cp01.00.00.00.00.00.html" class="green" data-category-id="1805">图书</a>&gt;<a target="_bland" href="http://category.dangdang.com/cp01.01.00.00.00.00.html" class="green" data-category-id="11559">青春文学</a>&gt;<a target="_bland" href="http://category.dangdang.com/cp01.01.14.00.00.00.html" class="green" data-category-id="50525">古代言情</a></span></li>
+          </ul>
+                    </div>
+      
+        <!-- detail 说明 -->
+        <div class="section" id="detail" isloaded="1">
+                      <div id="abstract" class="section">
+            <div class="title"><span>编辑推荐</span></div>
+            <div class="descrip"><span id="abstract-show"><br>
+              {{ book.editor_recommend }}
+              </span><span id="abstract-show-all" style="display:none;"></span>
+                          <textarea style="display:none" id="abstract-textarea">&lt;p&gt;&lt;img src="http://img59.ddimg.cn/99999990000694009.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;《醉玲珑》十周年珍藏版
+书迷影迷必看五大理由。 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/p&gt;
+&lt;p&gt;
+★理由一："醉"奇幻权谋的双时空烈恋电视剧 期待剧版影谜可以提前阅读原著。&lt;/p&gt;
+&lt;p&gt;由唐丽君担任制片人，林玉芬执导《花千骨》原班人马打造同名电视剧，陈伟霆、刘诗诗领衔主演。&lt;/p&gt;
+&lt;p&gt;刘诗诗出演巫族圣巫女凤卿尘；陈伟霆
+出演双面帝王元凌；徐海乔 出演温文尔雅元湛。刘诗诗、陈伟霆这对"醉"鲜搭档，真是very"因醉诗霆"（interesting）幕后更是空前集结了电影级顶配大师团队。势必成为继《步步惊心》《琅琊榜》《花千骨》《老九门》之后又一荧屏经典。&lt;/p&gt;
+&lt;p&gt;★理由二："醉"经典穿越小说代表作
+&lt;/p&gt;
+&lt;p&gt;《醉玲珑》是晋江网美籍华人作家十四夜唯美开山之作，穿越小说经典代表作之一。以精巧笔墨，贯穿历史，如绘美图，古韵悠长，宜灯下静读，一卷在手，回味无穷。
+江山玲珑如棋局，天命九转几世醉。&lt;/p&gt;
+&lt;p&gt;★理由三："醉"完美收藏版本&lt;/p&gt;
+&lt;p&gt;作者对全文逐字逐句三轮修订，新增数万字，力图给读者完美版本细腻入心的阅读快感。&lt;/p&gt;
+&lt;p&gt;★理由四："醉"爱情成长&lt;/p&gt;
+&lt;p&gt;*好的爱情是在相同价值观基础上滋生的共同成长，卿尘和四哥如同两棵树，共同迎接朝阳，共同抵御风霜，根在地下紧握，枝在空中相偎，一个遮天蔽日，一个翠色浓郁，因为彼此，他们变成了更好的自己。这种爱情成就了他们，也温暖了我们。&lt;/p&gt;
+&lt;p&gt;&nbsp;"红尘三生熙熙攘攘，于千万人中转身，便看到了你，那一刻似早已等了千年。这千年，为你而过，这一回眸，因你展颜。"&lt;/p&gt;
+&lt;p&gt;★理由五："醉"感人大礼包&lt;/p&gt;
+&lt;p&gt;赠品 1、唐卡手绘醉玲珑绝美大海报。2、收藏价值藏书票一枚。3、山水画书签一张。&lt;/p&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;p&gt;更多星文作品&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://product.dangdang.com/23940355.html"&gt;《凤囚凰》 古风言情的不二经典，亿万读者追棒完美男主，一见容止误终生&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://product.dangdang.com/24103516.html"&gt;《桃花尽处起长歌》侧侧轻寒长篇虐心古言。舍一生自由，耗心机算尽，却只得歌尽桃花阴差阳错。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://product.dangdang.com/24048156.html"&gt;《三千鸦杀・典藏版》十四郎成名代表作，读者口口相传的仙侠经典&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://product.dangdang.com/23985101.html"&gt;《28岁未成年》霍建华、倪妮、马苏、王大陆等领衔主演，电影原著小说&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://product.dangdang.com/24024364.html"&gt;《光芒纪・微光》&lt;/a&gt;&lt;a href="http://product.dangdang.com/24024365.html"&gt;《光芒纪・斑斓》&lt;/a&gt;&lt;a href="http://product.dangdang.com/24105180.html"&gt;《光芒纪・颖耀》&lt;/a&gt;侧侧轻寒继《簪中录》后的时尚言情励志之作&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://product.dangdang.com/24060123.html"&gt;《金沙古卷1・青铜之门》揭开被重重铁幕包裹的人类文明之谜&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://product.dangdang.com/23961469.html"&gt;《九州・斛珠夫人》江南、马伯庸力荐，全新番外，十年经典回归。一部帝国兴衰与倾城红颜的绝世传奇&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;&nbsp;</textarea>
+                          <div class="section_show_more"><a href="#abstract" class="section_show_more" id="abstract-btn" dd_name="显示全部信息">显示全部信息</a></div>
+                        </div>
+          </div>
+                      <div id="content" class="section">
+            <div class="title"><span>内容推荐</span></div>
+            <div class="descrip"><span id="content-all"></span>
+            {{ book.content_recommend }}
+            </div>
+          </div>
+                      <div id="authorIntroduction" class="section">
+            <div class="title"><span>作者简介</span></div>
+            <div class="descrip"><span id="authorIntroduction-all"></span>
+            {{ book.author_intro }}
+            </div>
+          </div>
+                      <div id="catalog" class="section">
+            <div class="title"><span>目　　录</span></div>
+            <div class="descrip"><span id="catalog-show">
+                {{ book.catalog }}
+            </span><span id="catalog-show-all" style="display:none;"></span>
+                          <textarea style="display:none" id="catalog-textarea">&lt;p&gt;《醉玲珑》上卷&lt;br /&gt;
+第一章&nbsp;&nbsp;&nbsp; 玲珑九转几世醉&lt;br /&gt;
+第二章&nbsp;&nbsp;&nbsp; 萍水相逢天涯人&lt;br /&gt;
+第三章&nbsp;&nbsp;&nbsp; 锦瑟无端五十弦&lt;br /&gt;
+第四章&nbsp;&nbsp;&nbsp; 万里星辰万里心&lt;br /&gt;
+第五章&nbsp;&nbsp;&nbsp; 火海风波平地起&lt;br /&gt;
+第六章&nbsp;&nbsp;&nbsp; 风流零落从此始&lt;br /&gt;
+第七章&nbsp;&nbsp;&nbsp; 漠北西风瀚海沙&lt;br /&gt;
+第八章&nbsp;&nbsp;&nbsp; 前尘今生几度情&lt;br /&gt;
+第九章&nbsp;&nbsp;&nbsp; 笛音深处水云天&lt;br /&gt;
+第十章&nbsp;&nbsp;&nbsp; 接天莲叶无穷碧&lt;br /&gt;
+第十一章&nbsp;&nbsp;&nbsp; 山有木兮木有枝&lt;br /&gt;
+第十二章&nbsp;&nbsp;&nbsp; 莫道天命知几许&lt;br /&gt;
+第十三章&nbsp;&nbsp;&nbsp; 浅碧轻红复卿卿&lt;br /&gt;
+第十四章&nbsp;&nbsp;&nbsp; 驰骋不让须眉意&lt;br /&gt;
+第十五章&nbsp;&nbsp;&nbsp; 蝶衣翩跹流光色&lt;br /&gt;
+第十六章&nbsp;&nbsp;&nbsp; 名门钟鼎玉马堂&lt;br /&gt;
+第十七章&nbsp;&nbsp;&nbsp; 紫藤花轻是谁家&lt;br /&gt;
+第十八章&nbsp;&nbsp;&nbsp; 繁华过后成一梦&lt;br /&gt;
+第十九章&nbsp;&nbsp;&nbsp; 熙熙攘攘天涯行&lt;br /&gt;
+第二十章&nbsp;&nbsp;&nbsp; 歌舞升平今宵曲&lt;br /&gt;
+第二十一章&nbsp;&nbsp;&nbsp; 万马千军只等闲&lt;br /&gt;
+第二十二章&nbsp;&nbsp;&nbsp; 素手兰心弦中意&lt;br /&gt;
+第二十三章&nbsp;&nbsp;&nbsp; 一剑光寒十四州&lt;br /&gt;
+第二十四章&nbsp; &nbsp;&nbsp;三秋楚堰江水长&lt;br /&gt;
+第二十五章&nbsp;&nbsp;&nbsp; 只道江湖是江湖&lt;br /&gt;
+第二十六章&nbsp;&nbsp;&nbsp; 云破日出青山远&lt;br /&gt;
+第二十七章&nbsp;&nbsp;&nbsp; 梅香雪影春离落&lt;br /&gt;
+第二十八章&nbsp;&nbsp;&nbsp; 扑朔迷离起萧墙&lt;br /&gt;
+第二十九章&nbsp;&nbsp;&nbsp; 玉洁冰清冽寒深&lt;br /&gt;
+第三十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 纵马击鞠奔月场&lt;br /&gt;
+第三十一章&nbsp;&nbsp;&nbsp; 花令缤纷各自春&lt;br /&gt;
+第三十二章&nbsp;&nbsp;&nbsp; 城深血泪故人心&lt;br /&gt;
+第三十三章&nbsp;&nbsp;&nbsp; 登山踏雾凌绝顶&lt;br /&gt;
+第三十四章&nbsp;&nbsp;&nbsp; 只怨生在帝王家&lt;br /&gt;
+第三十五章&nbsp;&nbsp;&nbsp; 无情不似多情苦&lt;br /&gt;
+第三十六章&nbsp;&nbsp;&nbsp; 风云凌肆银枪冷&lt;br /&gt;
+第三十七章&nbsp;&nbsp;&nbsp; 宫闱娇枝不堪俏&lt;br /&gt;
+第三十八章&nbsp;&nbsp;&nbsp; 路漫漫其修远兮&lt;br /&gt;
+第三十九章&nbsp; &nbsp;&nbsp;吾将上下而求索&lt;br /&gt;
+第四十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一朝选在君王侧&lt;br /&gt;
+第四十一章&nbsp;&nbsp;&nbsp; 金銮高处不胜寒&lt;br /&gt;
+第四十二章&nbsp;&nbsp;&nbsp; 太液莲池未央柳&lt;br /&gt;
+第四十三章&nbsp;&nbsp;&nbsp; 奈何此事误苍生&lt;br /&gt;
+第四十四章&nbsp;&nbsp;&nbsp; 情字心底苦自知&lt;br /&gt;
+第四十五章&nbsp;&nbsp;&nbsp; 瀚海阑干百丈冰&lt;br /&gt;
+第四十六章&nbsp;&nbsp;&nbsp; 正在有情无思间&lt;br /&gt;
+第四十七章&nbsp;&nbsp;&nbsp; 竹箫寂寥沧海笑&lt;br /&gt;
+第四十八章&nbsp;&nbsp;&nbsp; 九峰晴色散溪流&lt;br /&gt;
+第四十九章&nbsp;&nbsp;&nbsp; 争似是非弹指间&lt;br /&gt;
+第五十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 拨云开雾见月明&lt;br /&gt;
+第五十一章&nbsp;&nbsp;&nbsp; 怜取苍生千载泪&lt;br /&gt;
+第五十二章&nbsp;&nbsp;&nbsp; 我笑他人看不穿&lt;br /&gt;
+第五十三章&nbsp;&nbsp;&nbsp; 碧血青天赤子心 &lt;br /&gt;
+第五十四章&nbsp;&nbsp;&nbsp; 笑里江山风满楼 &lt;br /&gt;
+第五十五章&nbsp;&nbsp;&nbsp; 相共凭栏看月升 &lt;br /&gt;
+第五十六章&nbsp;&nbsp;&nbsp; 天生我材必有用 &lt;br /&gt;
+第五十七章&nbsp;&nbsp;&nbsp; 只舟行见水穷处 &lt;br /&gt;
+第五十八章&nbsp;&nbsp;&nbsp; 如寄空翠渺烟霏 &lt;br /&gt;
+第五十九章&nbsp;&nbsp;&nbsp; 抽刀断水水更流 &lt;br /&gt;
+第六十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 醉笑陪君三千场 &lt;br /&gt;
+第六十一章&nbsp;&nbsp;&nbsp; 释得缘故春风生 &lt;br /&gt;
+第六十二章&nbsp;&nbsp;&nbsp; 明眸慧心窥先机 &lt;br /&gt;
+第六十三章&nbsp;&nbsp;&nbsp; 地动山摇天珠落 &lt;br /&gt;
+第六十四章&nbsp;&nbsp;&nbsp; 乾坤始知九霄清 &lt;br /&gt;
+第六十五章&nbsp;&nbsp;&nbsp; 十里红尘迎卿来
+&lt;br /&gt;
+《醉玲珑》中卷 &lt;br /&gt;
+第一章&nbsp;&nbsp;&nbsp; 落花流水春去也 &lt;br /&gt;
+第二章&nbsp;&nbsp;&nbsp; 斗转星移奇算数 &lt;br /&gt;
+第三章&nbsp;&nbsp;&nbsp; 芙蓉帐暖度春宵 &lt;br /&gt;
+第四章&nbsp;&nbsp;&nbsp; 比翼连枝当日愿 &lt;br /&gt;
+第五章&nbsp;&nbsp;&nbsp; 善恶悲欢其心苦 &lt;br /&gt;
+第六章&nbsp;&nbsp;&nbsp; 千帆过尽长江水 &lt;br /&gt;
+第七章&nbsp;&nbsp;&nbsp; 一池波静小屏山 &lt;br /&gt;
+第八章&nbsp;&nbsp;&nbsp; 乱生春色本无意 &lt;br /&gt;
+第九章&nbsp;&nbsp;&nbsp; 等闲变却故人心 &lt;br /&gt;
+第十章&nbsp;&nbsp;&nbsp; 红绡帐底卧鸳鸯 &lt;br /&gt;
+第十一章&nbsp;&nbsp;&nbsp; 往来姻缘谁是非 &lt;br /&gt;
+第十二章&nbsp;&nbsp;&nbsp; 心痴至此意难平 &lt;br /&gt;
+第十三章&nbsp;&nbsp;&nbsp; 三千青丝为君留 &lt;br /&gt;
+第十四章&nbsp;&nbsp;&nbsp; 千古江流百回澜 &lt;br /&gt;
+第十五章&nbsp;&nbsp;&nbsp; 惊雷动地移山海 &lt;br /&gt;
+第十六章&nbsp;&nbsp;&nbsp; 三愿如同梁上燕 &lt;br /&gt;
+第十七章&nbsp;&nbsp;&nbsp; 但愿长醉不愿醒 &lt;br /&gt;
+第十八章&nbsp;&nbsp;&nbsp; 奇谋险兵定蜀川&lt;br /&gt;
+第十九章&nbsp;&nbsp;&nbsp; 昨夜西风凋碧树 &lt;br /&gt;
+第二十章&nbsp;&nbsp;&nbsp; 却说心事平戎策 &lt;br /&gt;
+第二十一章&nbsp;&nbsp;&nbsp; 不意长风送雪飘 &lt;br /&gt;
+第二十二章&nbsp;&nbsp;&nbsp; 断马斜风江湖剑 &lt;br /&gt;
+第二十三章&nbsp;&nbsp;&nbsp; 烟云翻转几重山 &lt;br /&gt;
+第二十四章&nbsp;&nbsp;&nbsp; 山河半壁冷颜色 &lt;br /&gt;
+第二十五章&nbsp;&nbsp;&nbsp; 山阴夜雪满孤峰 &lt;br /&gt;
+第二十六章&nbsp;&nbsp;&nbsp; 横岭云长共北征 &lt;br /&gt;
+第二十七章&nbsp;&nbsp;&nbsp; 轻笛折柳知为何 &lt;br /&gt;
+第二十八章&nbsp;&nbsp;&nbsp; 婉翼清兮长相顾 &lt;br /&gt;
+第二十九章&nbsp;&nbsp;&nbsp; 双峰万刃惊云水 &lt;br /&gt;
+第三十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 此身应是逍遥客 &lt;br /&gt;
+第三十一章&nbsp;&nbsp;&nbsp; 多情自古空余恨 &lt;br /&gt;
+第三十二章&nbsp;&nbsp;&nbsp; 黑云压城城欲摧
+&lt;br /&gt;
+第三十三章&nbsp;&nbsp;&nbsp; 但使此心能蔽日 &lt;br /&gt;
+第三十四章&nbsp;&nbsp;&nbsp; 百丈原前百丈冰 &lt;br /&gt;
+第三十五章&nbsp;&nbsp;&nbsp; 满目山河空念远 &lt;br /&gt;
+第三十六章&nbsp;&nbsp;&nbsp; 人生长恨水长东 &lt;br /&gt;
+第三十七章&nbsp;&nbsp;&nbsp; 重来回首已三秋 &lt;br /&gt;
+第三十八章&nbsp;&nbsp;&nbsp; 边城纵马单衣薄 &lt;br /&gt;
+第三十九章&nbsp;&nbsp;&nbsp; 青山何处埋忠骨 &lt;br /&gt;
+第四十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一片幽情冷处浓 &lt;br /&gt;
+第四十一章&nbsp;&nbsp;&nbsp; 英雄肝胆笑昆仑 &lt;br /&gt;
+第四十二章&nbsp;&nbsp;&nbsp; 树欲静而风不止 &lt;br /&gt;
+第四十三章&nbsp;&nbsp;&nbsp; 子欲养而亲不待
+&lt;br /&gt;
+《醉玲珑》下卷 &lt;br /&gt;
+第一章&nbsp;&nbsp;&nbsp; 机关算尽太聪明 &lt;br /&gt;
+第二章&nbsp;&nbsp;&nbsp; 明朝更觅朱陵路 &lt;br /&gt;
+第三章&nbsp;&nbsp;&nbsp; 踏遍紫云犹未旋 &lt;br /&gt;
+第四章&nbsp;&nbsp;&nbsp; 杜曲梨花杯上雪 &lt;br /&gt;
+第五章&nbsp;&nbsp;&nbsp; 前程两袖黄金泪 &lt;br /&gt;
+第六章&nbsp;&nbsp;&nbsp; 何处逢春不惆怅 &lt;br /&gt;
+第七章&nbsp;&nbsp;&nbsp; 山登绝顶我为峰 &lt;br /&gt;
+第八章&nbsp;&nbsp;&nbsp; 公案三生白骨禅 &lt;br /&gt;
+第九章&nbsp;&nbsp;&nbsp; 千尘雪底东风破 &lt;br /&gt;
+第十章&nbsp;&nbsp;&nbsp; 无限月前沧波意 &lt;br /&gt;
+第十一章&nbsp;&nbsp;&nbsp; 一川明辉光流渚 &lt;br /&gt;
+第十二章&nbsp;&nbsp;&nbsp; 桂宫长恨不记春 &lt;br /&gt;
+第十三章&nbsp;&nbsp;&nbsp; 水随天去秋无际 &lt;br /&gt;
+第十四章&nbsp;&nbsp;&nbsp; 伤心一树梅花影 &lt;br /&gt;
+第十五章&nbsp;&nbsp;&nbsp; 万里同心别九重 &lt;br /&gt;
+第十六章&nbsp;&nbsp;&nbsp; 玉寒雪冷轩辕台 &lt;br /&gt;
+第十七章&nbsp;&nbsp;&nbsp; 激浊浪兮风飞扬 &lt;br /&gt;
+第十八章&nbsp;&nbsp;&nbsp; 山明落日水明沙 &lt;br /&gt;
+第十九章 &nbsp;&nbsp;&nbsp;莫损心头一寸天 &lt;br /&gt;
+第二十章&nbsp;&nbsp;&nbsp; 麒麟吐玉盛阳春 &lt;br /&gt;
+第二十一章&nbsp;&nbsp;&nbsp; 万树桃花月满天 &lt;br /&gt;
+第二十二章&nbsp;&nbsp;&nbsp; 暮雨潇潇闻子规 &lt;br /&gt;
+第二十三章&nbsp;&nbsp;&nbsp; 琼台金殿起秋尘&lt;br /&gt;
+第二十四章&nbsp;&nbsp;&nbsp; 长宵永夜花解语&lt;br /&gt;
+第二十五章&nbsp;&nbsp;&nbsp; 兰池春暖露华浓&lt;br /&gt;
+第二十六章&nbsp;&nbsp;&nbsp; 曾经沧海难为水&lt;br /&gt;
+第二十七章&nbsp;&nbsp;&nbsp; 除却巫山不是云&lt;br /&gt;
+第二十八章&nbsp;&nbsp;&nbsp; 世事如棋局局新&lt;br /&gt;
+第二十九章&nbsp;&nbsp;&nbsp; 云去苍梧湘水深&lt;br /&gt;
+第三十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 碧落黄泉为君狂&lt;br /&gt;
+第三十一章&nbsp;&nbsp;&nbsp; 天河落处长州路&lt;br /&gt;
+第三十二章&nbsp;&nbsp;&nbsp; 奇花凝血白灵脂&lt;br /&gt;
+第三十三章&nbsp;&nbsp;&nbsp; 玉漏无声画屏冷&lt;br /&gt;
+第三十四章&nbsp;&nbsp;&nbsp; 傲骨冰心彻明寒&lt;br /&gt;
+第三十五章&nbsp;&nbsp;&nbsp; 九天阊阖风云动&lt;br /&gt;
+第三十六章&nbsp;&nbsp;&nbsp; 袖里乾坤卧潜龙&lt;br /&gt;
+第三十七章&nbsp;&nbsp;&nbsp; 华容翠影怜香冷&lt;br /&gt;
+第三十八章&nbsp;&nbsp;&nbsp; 昆山玉碎凤凰鸣&lt;br /&gt;
+第三十九章&nbsp;&nbsp;&nbsp; 千古江山万古情&lt;br /&gt;
+第四十章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 海到尽头天作岸&lt;br /&gt;
+后记&nbsp;&lt;/p&gt;</textarea>
+                          <div class="section_show_more"><a href="#catalog" class="section_show_more" id="catalog-btn" dd_name="显示全部信息">显示全部信息</a></div>
+                        </div>
+          </div>
+                      <div id="mediaFeedback" class="section">
+            <div class="title"><span>媒体评论</span></div>
+            <div class="descrip"><span id="mediaFeedback-all"></span>
+            {{ book.review }}
+            </div>
+          </div>
+                      <div id="extract" class="section">
+            <div class="title"><span>在线试读部分章节</span></div>
+            <div class="descrip"><span id="extract-show">{{ book.onlline_content }}</span><span id="extract-show-all" style="display:none;"></span>
+                          <textarea style="display:none" id="extract-textarea">&lt;p&gt;&nbsp;&lt;/p&gt;</textarea>
+                          <div class="section_show_more"><a href="#extract" class="section_show_more" id="extract-btn" dd_name="显示全部信息">显示全部信息</a></div>
+                        </div>
+          </div>
+                    </div>
+        
+        <!-- detail 说明end --> 
+      </div>
+                  
+                  <!-- 详情页完 --> 
+                  <!-- 评论区begin --> 
+                  <!-- 商品评论 begin -->
+                 
+                </div>
+  </div>
+            </div>
+<div id="footer">
+              <link href="{% static 'css/footer_150526.css' %}" rel="stylesheet" type="text/css">
+              <div class="footer" dd_name="页尾">
+    <div class="footer_pic_new">
+                  <div class="footer_pic_new_inner"> <a name="foot_1" href="http://help.dangdang.com/details/page13" target="_blank" class="footer_pic01"><span>正规渠道正品保障</span></a> <a name="foot_2" class="footer_pic02" href="http://help.dangdang.com/details/page21" target="_blank"><span>放心购物货到付款</span></a> <a name="foot_3" class="footer_pic03" href="http://help.dangdang.com/details/page16" target="_blank"><span>150城市次日送达</span></a> <a name="foot_4" class="footer_pic04" href="http://help.dangdang.com/details/page29" target="_blank"><span>上门退货当场退款</span></a> </div>
+                </div>
+    <div class="public_footer_new">
+                  <div class="footer_sort footer_nvice"> <span class="f_title">购物指南</span>
+        <ul>
+                      <li><a name="foot_gouwu" href="http://help.dangdang.com/details/page2" target="_blank" class="main" rel="nofollow">购物流程</a></li>
+                      <li><a name="foot_jifen" href="http://help.dangdang.com/details/page6" target="_blank" rel="nofollow">发票制度</a></li>
+                      <li><a name="foot_fapiao" href="http://safe.dangdang.com" target="_blank" rel="nofollow">账户管理</a></li>
+                      <li><a name="foot_mydangdang" href="http://help.dangdang.com/details/page8" target="_blank" rel="nofollow">会员优惠</a></li>
+                    </ul>
+      </div>
+                  <div class="footer_sort footer_pay"> <span class="f_title">支付方式</span>
+        <ul>
+                      <li><a name="foot_tuihuanhuoliucheng" href="http://help.dangdang.com/details/page21" target="_blank" rel="nofollow">货到付款</a></li>
+                      <li><a name="foot_tuihuanhuo" href="http://help.dangdang.com/details/page22" target="_blank" rel="nofollow">网上支付</a></li>
+                      <li><a name="foot_huanhuo" href="http://help.dangdang.com/details/page24" target="_blank" rel="nofollow">礼品卡支付</a></li>
+                      <li><a name="foot_tuihuo" href="http://help.dangdang.com/details/page23" target="_blank" rel="nofollow">银行转帐</a></li>
+                    </ul>
+      </div>
+                  <div class="footer_sort footer_characteristic"> <span class="f_title">订单服务</span>
+        <ul>
+                      <li><a name="foot_jifen" href="http://help.dangdang.com/details/page19" target="_blank" class="main" rel="nofollow">订单配送查询</a></li>
+                      <li><a name="foot_lipinka" href="http://help.dangdang.com/details/page4" target="_blank" rel="nofollow">订单状态说明</a></li>
+                      <li><a name="foot_ershoushu" href="http://orderb.dangdang.com/myallorders.aspx" target="_blank" rel="nofollow">自助取消订单</a></li>
+                      <li><a name="foot_shouji" href="http://orderb.dangdang.com/myallorders.aspx" target="_blank" rel="nofollow">自助修改订单</a></li>
+                    </ul>
+      </div>
+                  <div class="footer_sort footer_distribution"> <span class="f_title">配送方式</span>
+        <ul>
+                      <li><a name="foot_huodaofukuan" href="http://help.dangdang.com/details/page14" target="_blank" class="main" rel="nofollow">配送范围及免邮标准</a></li>
+                      <li><a name="foot_yinhangzhuanzhang" href="http://help.dangdang.com/details/page15" target="_blank" class="main" rel="nofollow">当日递/次日达</a></li>
+                      <li><a name="foot_dangdanglijuan" href="http://help.dangdang.com/details/page18" target="_blank" rel="nofollow">订单自提</a></li>
+                      <li><a name="foot_dangdanglijuan" href="http://help.dangdang.com/details/page20" target="_blank" rel="nofollow">验货与签收</a></li>
+                    </ul>
+      </div>
+                  <div class="footer_sort footer_help"> <span class="f_title">退换货</span>
+        <ul>
+                      <li><a name="foot_faq" href="http://help.dangdang.com/details/page28" target="_blank" rel="nofollow">退换货政策</a></li>
+                      <li><a name="foot_zhaohuimima" href="http://return.dangdang.com/reverseapplyselect.aspx" target="_blank" rel="nofollow">自助申请退换货</a></li>
+                      <li><a name="foot_huikuandan" href="http://return.dangdang.com/reverseapplylist.aspx" target="_blank" rel="nofollow">退换货进度查询</a></li>
+                      <li><a name="foot_tuiding" href="http://help.dangdang.com/details/page31" target="_blank" rel="nofollow">退款方式和时间</a></li>
+                    </ul>
+      </div>
+                  <div class="footer_sort footer_shangjia"> <span class="f_title">商家服务</span>
+        <ul>
+                      <li><a name="foot_zhaohuimima" href="http://shop.dangdang.com/shangjia" target="_blank" rel="nofollow">商家中心</a></li>
+                      <li><a name="foot_huikuandan" href="http://outlets.dangdang.com/merchants_cooperation" target="_blank" rel="nofollow">运营服务</a></li>
+                      <li><a name="foot_tuiding" href="http://outlets.dangdang.com/merchants_outlets" target="_blank" rel="nofollow">加入尾品汇</a></li>
+                    </ul>
+      </div>
+                </div>
+    <div class="footer_nav_box">
+                  <div class="footer_nav"><a href="http://static.dangdang.com/topic/2227/176801.shtml" target="_blank" rel="nofollow">公司简介</a><span class="sep">| </span><a href="http://ir.dangdang.com/" target="_blank">Investor Relations</a><span class="sep">|</span><a href="http://zhaopin.dangdang.com" target="_blank">诚聘英才</a><span class="sep">|</span><a href="http://union.dangdang.com/" target="_blank">网站联盟</a><span class="sep">|</span><a href="http://outlets.dangdang.com/merchants_open" target="_blank">当当招商</a><span class="sep">|</span><a href="http://misc.dangdang.com/groupbuy/Default.aspx" target="_blank" rel="nofollow">机构销售</a><span class="sep">|</span><a href="http://static.dangdang.com/topic/744/200778.shtml" target="_blank">手机当当</a><span class="sep">|</span><a href="http://blog.dangdang.com/" target="_blank">官方
+                    
+                    Blog</a> <span class="sep">|</span>
+        <div class="footer_hot_search"><a href="http://www.dangdang.com/sales/brands/" target="_blank" class="footer_a" id="hot_search" onmouseover="showghotsearch('hot_search','hot_search_content')" onmouseout="hidehotsearch('hot_search','hot_search_content');">热词搜索</a>
+                      <div class="pos_a_box" style="display: none;" id="hot_search_content" onmouseover="showghotsearch('hot_search','hot_search_content')" onmouseout="hidehotsearch('hot_search','hot_search_content');"> <a href="http://www.dangdang.com/sales/brands/a-1.html" target="_blank">A</a><a href="http://www.dangdang.com/sales/brands/b-1.html" target="_blank">B</a><a href="http://www.dangdang.com/sales/brands/c-1.html" target="_blank">C</a><a href="http://www.dangdang.com/sales/brands/d-1.html" target="_blank">D</a><a href="http://www.dangdang.com/sales/brands/e-1.html" target="_blank">E</a><a href="http://www.dangdang.com/sales/brands/f-1.html" target="_blank">F</a><a href="http://www.dangdang.com/sales/brands/g-1.html" target="_blank">G</a> <a href="http://www.dangdang.com/sales/brands/h-1.html" target="_blank">H</a><a href="http://www.dangdang.com/sales/brands/i-1.html" target="_blank">I</a><a href="http://www.dangdang.com/sales/brands/j-1.html" target="_blank">J</a><a href="http://www.dangdang.com/sales/brands/k-1.html" target="_blank">K</a><a href="http://www.dangdang.com/sales/brands/l-1.html" target="_blank">L</a><a href="http://www.dangdang.com/sales/brands/m-1.html" target="_blank">M</a><a href="http://www.dangdang.com/sales/brands/n-1.html" target="_blank">N</a> <a href="http://www.dangdang.com/sales/brands/o-1.html" target="_blank">O</a><a href="http://www.dangdang.com/sales/brands/p-1.html" target="_blank">P</a><a href="http://www.dangdang.com/sales/brands/q-1.html" target="_blank">Q</a><a href="http://www.dangdang.com/sales/brands/r-1.html" target="_blank">R</a><a href="http://www.dangdang.com/sales/brands/s-1.html" target="_blank">S</a><a href="http://www.dangdang.com/sales/brands/t-1.html" target="_blank">T</a><a href="http://www.dangdang.com/sales/brands/u-1.html" target="_blank">U</a> <a href="http://www.dangdang.com/sales/brands/v-1.html" target="_blank">V</a><a href="http://www.dangdang.com/sales/brands/w-1.html" target="_blank">W</a><a href="http://www.dangdang.com/sales/brands/x-1.html" target="_blank">X</a><a href="http://www.dangdang.com/sales/brands/y-1.html" target="_blank">Y</a><a href="http://www.dangdang.com/sales/brands/z-1.html" target="_blank">Z</a><a href="http://www.dangdang.com/sales/brands/other-1.html" target="_blank">0-9</a> <i></i></div>
+                    </div>
+        <script>
+    var setTo = null;
+    function showghotsearch(){
+        clearTimeout(setTo);
+        document.getElementById("hot_search_content").style.display="block";
+    }
+    function hidehotsearch(){
+        setTo = setTimeout(function(){
+          document.getElementById("hot_search_content").style.display="none";
+        },100)                        
+    }
+</script> 
+      </div>
+                  <div class="footer_copyright"><span>Copyright (C) 当当网 2004-2016, All Rights Reserved</span><a href="http://www.hd315.gov.cn/beian/view.asp?
+
+bianhao=010202001051000098" target="_blank" class="footer_img" rel="nofollow"><img src="http://img60.ddimg.cn/upload_img/00459/index/validate.gif"></a><span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span>出版物经营许可证 新出发京批字第直0673号</span></div>
+                </div>
+  </div>
+            </div>
+<script src="{% static 'js/pagetop2015_0827.js' %}" charset="gb2312" type="text/javascript"></script>
+
+</body>
+</html>

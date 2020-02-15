@@ -1,0 +1,462 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <script src="{% static 'js/jquery_1.8.js' %}"></script>
+    <script src="{% static 'js/jquery_cookie.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico?v=20160901' %}" type="image/x-icon">
+    <link href="{% static 'css/shopping_cart_new.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/footer_150526.css' %}" rel="stylesheet" type="text/css"/>
+    <script src="{% static 'js/zhuce/jquery-1.11.1.js' %}"></script>
+<script>
+
+    {#        删除#}
+
+    function del(a) {
+        $.ajax({
+            type: "get",
+            url: "{% url 'ddapp:del_car' %}",
+            data: 'id=' + a,
+            success: function (msg) {
+                alert("删除成功");
+                location.href = "{% url 'ddapp:car' %}"
+
+            }
+        })
+    }
+
+    {#    输入数量#}
+
+    function change(a, id, discount) {
+        var inp = $(a).val();
+        var re = /\d+/;
+        if (!inp) {
+            alert('别闹~输数字')
+        } else if (!re.test(inp)) {
+            alert('别闹~输数字');
+            $('#number').val(1)
+        }else if(inp>99){
+            alert('超过当前最大库存')
+             $('#number').val(1)
+        }
+        else if (inp == 0) {
+            alert('别闹~0不行');
+            $('#number').val(1)
+        }
+        $.ajax({
+            type: "get",
+            url: "{% url 'ddapp:change_car' %}",
+            data: "id=" + id + "&number=" + inp,
+            success: function (msg) {
+                tota = Number(discount) * Number(inp);
+                tota1 = $(a).parent().parent().next().children().html('￥' + tota);
+                {# 一种书籍的总价 #}
+                sum_price = msg.split('-')[0];
+                {# 切割，使用’-‘分隔开，再以’-‘切割 #}
+                sav_price = msg.split('-')[1];
+                $('#total').html('￥' + sum_price);
+                {# 店铺合计 #}
+                $('#payAmount').html('￥' + sum_price);
+                {# 结算合计 #}
+                $('#totalFavor').html('￥' + sav_price);
+                {# 节省金额 #}
+                var ipn = $(a).val();
+            }
+        })
+    }
+
+    {#增加#}
+
+    function add_car(a, id, discount, price) {
+        number1 = Number($(a).prev().val()) + 1;
+        console.log()
+        $(a).prev().val(number1);
+        $.ajax({
+            type: "get",
+            url: "{% url 'ddapp:change_car' %}",
+            data: "id=" + id + "&number=" + number1,
+            success: function (msg) {
+                console.log(msg)
+                tota4 = number1 * Number(discount);
+                tota5 = $(a).parent().parent().next().children().html('￥' + tota4);
+                 {#一种书的总价格 #}
+                sum_price = msg.split('-')[0];
+                console.log(sum_price)
+                 {#切割，使用’-‘分隔开，再以’-‘切割 #}
+                sav_price = msg.split('-')[1];
+                console.log(sav_price)
+                $('#total').html('￥' + sum_price);
+                 {#店铺合计 #}
+                $('#payAmount').html('￥' + sum_price);
+                 {#结算合计 #}
+                $('#totalFavor').html('￥' + sav_price);
+                 {#节省金额 #}
+            }
+        })
+    }
+
+        {#减#}
+
+    function minus(a, id, discount, price) {
+        var number = Number($(a).next().val()) - 1;
+        if (number < 1) {
+            number = 1
+            alert('已经到了最低数量呦~')
+        }
+        $(a).next().val(number)
+        $.ajax({
+            type: "get",
+            url: "{% url 'ddapp:change_car' %}",
+            data: "id=" + id + "&number=" + number,
+            success: function (msg) {
+                tota2 = number * Number(discount);
+                tota3 = $(a).parent().parent().next().children().html('￥' + tota2);
+                 {#一种书的总价格#}
+                sum_price = msg.split('-')[0];
+                 {#切割，使用’-‘分隔开，再以’-‘切割#}
+                sav_price = msg.split('-')[1];
+                $('#total').html('￥' + sum_price);
+                 {#店铺合计#}
+                $('#payAmount').html('￥' + sum_price);
+                 {#结算合计 #}
+                $('#totalFavor').html('￥' + sav_price);
+                 {#节省金额#}
+            }
+        })
+    }
+
+    {#结算#}
+
+    function closing() {
+        $.ajax({
+            type: "get",
+            url: "{% url 'ddapp:closing' %}",
+            success: function (msg) {
+                if (msg === 'ok') {
+                    location.href = "{% url 'ddapp:indent' %}"
+                }else if(msg=='ojbk'){
+                    alert('请先添加书籍')
+                }
+                else if (msg === 'bad') {
+                    location.href = "{% url 'ddapp:login' %}?tiao=tiao"
+                }
+            }
+        })
+    }
+</script>
+</head>
+
+<body style="padding-bottom:82px">
+
+<link href="{% static 'css/header_960_150611.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'js/pagetop2015_0827.js' %}" charset="gb2312" type="text/javascript"></script>
+
+<div id="tools">
+    <div class="tools">
+        <div class="ddnewhead_operate" dd_name="顶链接">
+
+            <div class="ddnewhead_welcome" display="none;">
+                {% if na %}
+                    <span id="nickname"><span class="hi">Hi，<a href="http://myhome.dangdang.com/" class="login_link"
+                                                               target="_blank"><b>{{ na }}</b></a><a
+                            href="{% url 'ddapp:car' %}?dele=dele" target="_self">[退出]</a></span></span>
+                {% else %}
+                    <div class="ddnewhead_welcome" display="none;">
+                    <span id="nickname"><span class="hi hi_none">欢迎光临当当，请</span><a href="{% url 'ddapp:login' %}"
+                                                                                   class="login_link">登录</a><a
+                            href="{% url 'ddapp:regist' %}">免费注册</a></span>
+                {% endif %}
+
+                <div class="tel_pop" style="display:none" id="__ddnav_sjdd"
+                     onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');"
+                     onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');">
+                    <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i class="icon_tel"></i>手机当当</a><i
+                        class="title_shadow"></i>
+                    <ul class="tel_pop_box">
+                        <li><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码"><span>当当手机客户端</span><img
+                                src="http://img3.ddimg.cn/00363/doc/erweima2.png"><span
+                                class="text">随手查订单<br>随时享优惠</span></a></li>
+                    </ul>
+                </div>
+                </div>
+                <div class="new_head_znx" id="znx_content" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+    <div id="header_end"></div>
+    <!--CreateDate  2016-09-28 11:30:01--></div>
+<form action="http://search.dangdang.com/search.aspx" id="bootpagetopSearch" name="bootpagetopSearch"
+      method="GET"></form>
+<script type="text/javascript">var nick_num = 0;
+initHeaderOperate();</script>
+<script type="text/javascript" src="http://orderb.dangdang.com/queryunpaid?callback=Unpaid_Data"></script>
+<div class="shoppingcart_wrapper" id="ad_cpt_11850">
+    <div>
+        <a href="http://a.dangdang.com/tjump.php?q=ddo84XQOf357bOs8tXGg5%2F%2F0oVoDImt3DFWsMqu7ZMSVsfUMeOQJueASNiMLjq%2FdrXMLCKnVfyKEahteAh1ih%2ByKYrKGzhvL20LVbDzObRambBA0YPpivy5hR5foQ4Rt%2BTB"
+           target="_blank" rel="nofollow"><img src="http://img62.ddimg.cn/2017/1/11/2017011111344969879.jpg"></a></div>
+</div>
+<div class="logo_line">
+    <div class="w960">
+        <div class="shopping_procedure"><span class="current">我的购物车</span><span>填写订单</span><span>完成订单</span></div>
+        <div class="logo"><a href="#"><img src="{% static 'images/bz_logo_car.jpg' %}" alt=""></a></div>
+    </div>
+</div>
+<div class="add_line" id="district">
+    <div class="w960">
+        <div class="address" id="dp_adress">
+            <div class="select_add">
+                <div class="area_pop" style="display:none;">
+                    <a href="javascript:district.close()" class="close"></a>
+                    <ul class="tab">
+                        <li id="ap_province" class="fn-show-province"><a href="javascript:void(0)"
+                                                                         id="selected_111">北京</a></li>
+                        <li id="ap_city" class="fn-show-city"><a href="javascript:district.show_city_init(this)"
+                                                                 id="selected_1">北京市</a></li>
+                        <li id="ap_area" class="fn-show-area choose"><a href="javascript:district.show_area_init(this)"
+                                                                        id="selected_1110101">东城区</a></li>
+                        <li id="ap_village" style="display:none" class="fn-show-village"><a
+                                href="javascript:district.show_village_init(this)" id="selected_-1">请选择</a></li>
+                    </ul>
+                    <ul class="list list_notaligned fn-adress">
+
+                    </ul>
+                </div>
+            </div>
+            <!--<a href="#" class="tip"></a>-->
+            <span class="tip_c" style="display:none;">针对不同配送地址，您的货物可能出现缺货或无货状态，敬请谅解。</span>
+        </div>
+    </div>
+</div>
+<div class="w960" id="showTip">
+
+
+    <!-- 结算时 商品SPU限购提示窗口 start-->
+    <div id="spuPromoLimitDiv" class="pop"
+         style="left:50%; top:50%; margin:-200px 0 0 -253px; position: fixed; z-index: 1004; display: none;">
+        <a class="close"></a>
+        <div class="pop_title">商品限购</div>
+        <div class="popup_limit"></div>
+        <div class="btn_bar limit_bar">
+            <a class="btn_red">确定</a><a class="pop_btn">取消</a>
+        </div>
+    </div>
+    <!-- 结算时 商品SPU限购提示窗口 end-->
+
+
+    <div id="giftDiv" class="pop_tip gift_select"
+         style="left:50%; top:50%; margin:-200px 0 0 -302px; position: fixed; z-index: 1001; display: none;">
+        <div class="head_title">
+            <div class="title_name">您购物车中以下商品可选为赠品</div>
+            <div class="close"></div>
+        </div>
+        <div class="products_sort" id="giftArea">
+
+        </div>
+        <a href="javascript:void(0)" class="btn_b fn-back-cart">返回购物车选赠品</a><a id="gift_checkout" href="#"
+                                                                               class="btn_b">继续结算，土豪任性不要了</a>
+    </div>
+    <div class="login_tip" style="display: none;">
+        <span class="icon"></span>
+    </div>
+    <div id="remove_pop" class="login_tip" style="display: none;">
+        <span class="icon"></span>
+    </div>
+    <div id="clear_pop" class="login_tip" style="display: none;">
+        <span class="icon"></span>
+    </div>
+</div>
+<div class="w960" id="cart">
+    <ul class="shopping_title" id="j_carttitle">
+        <li class="f1"><a id="j_selectall" href="javascript:void(0)" class="checknow fn-checkall check_on" dd_name="全选">选中</a>全选
+        </li>
+        <li class="f2">商品信息</li>
+        <li class="f3">单价（元）</li>
+        <li class="f4">数量</li>
+        <li class="f4">金额（元）</li>
+        <li class="f5">操作</li>
+    </ul>
+    <div class="fn-shops" id="J_cartContent">
+        <div class="fn-shop">
+            <table border="0" cellspacing="0" cellpadding="0" class="shop_title">
+                <tbody>
+                <tr>
+                    <td><a href="javascript:void(0)" dd_name="选中店铺" class="checknow fn-shop-checkall check_on">选中</a>
+                    </td>
+                    <td><span class="shop_icon"></span></td>
+                    <td><a href="http://www.dangdang.com" target="_blank">当当自营</a></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="shopping_list">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody data-stock="22388" data-offline="false" data-productid="24147882"
+                           data-timestamp="1484488454000" data-orderforspupormo="0">
+                    {% for c in cart.cart_items %}
+                        <tr id="tr_424893864" class="  ">
+                            <td class="row1"><a href="javascript:void(0)" data-item="424893864"
+                                                class="fn-product-check checknow check_on">选中</a></td>
+                            <td class="row_img">
+                                <a href="http://product.dangdang.com/24147882.html" target="_blank" dd_name="查看详情"> <img
+                                        onmouseout="$(this).parent().next().hide()"
+                                        onmouseover="$(this).parent().next().show()" src="{% static c.book.pictures %}"
+                                        width="80" height="80"> </a>
+                                <div style="display: none;" class="img_big"><a
+                                        href="http://product.dangdang.com/24147882.html" dd_name="查看详情" target="_blank">
+                                    <img src="http://img3x2.ddimg.cn/0/17/24147882-1_b.jpg"></a><span
+                                        class="arrow"></span></div>
+                            </td>
+                            <td class="row_name">
+                                <div class="name">
+                                    <a href="http://product.dangdang.com/24147882.html" title="跟乐嘉学性格色彩2（乐嘉2017年全新力作）"
+                                       target="_blank" dd_name="查看详情"
+                                       style="word-break:break-all;  word-wrap:break-word;">{{ c.book.title }}</a></div>
+                            </td>
+                            <td class="row3"><span>¥{{ c.book.discount }}</span></td>
+                            <td data-minbuy="0" class="fn-count-tip row3 "><span class="amount fn-updatecount "
+                                                                                 data-value="1"><a dd_name="减少数量"
+                                                                                                   href="javascript:void(0)"
+                                                                                                   onclick="minus(this,{{ c.book.id }},{{ c.book.discount }},{{ c.book.price }})">-</a>
+                <input data-value="1" value="{{ c.count }}" type="text" id="number"
+                       onkeyup="change(this,{{ c.book.id }},{{ c.book.discount }})">
+                <a dd_name="增加数量" href="javascript:void(0)"
+                   onclick="add_car(this,{{ c.book.id }},{{ c.book.discount }},{{ c.book.price }})">+</a></span></td>
+                            <td class="row4">
+
+                <span class="redd" style="color: red">￥{{ c.xiaoji }}
+
+                </span></td>
+                            <td class="row5 "><span><a href="javascript:void(0)" data-item="424893864"
+                                                       class="fn-add-wish" dd_name="加入收藏按钮">移入收藏</a>
+            </span><span><a href="javascript:void(0)" data-item="424893864" class="fn-remove-product" dd_name="删除普通品"
+                            onclick="del({{ c.book.id }})">删除</a></span></td>
+                        </tr></tbody>
+                        <tbody data-stock="5077" data-offline="false" data-productid="24156322"
+                               data-timestamp="1484488395000" data-orderforspupormo="0">
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr class="total">
+                        <td class="row1">&nbsp;
+                        </td>
+                        <td class="row_img">店铺合计</td>
+                        <td colspan="2">&nbsp;
+                        </td>
+                        <td colspan="3" class="row4"><span class="red big ooline alignright"
+                                                           id="total">¥{{ cart.total_price }}</span></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="shipping_add" style="display:none;"></div>
+        </div>
+    </div>
+    <div class="shoppingcart_loading" id="J_cartLoading" style="display: none;"><img height="30" width="30"
+                                                                                     src="{% static 'images/loading.gif' %}">
+    </div>
+</div>
+<div class="w960" id="weipinboxarea" style="display: none">
+    <div class="login_tip"><span class="icon"></span>购物车中有<a id="weipinhui" href="http://v.dangdang.com"
+                                                             class="icon_eve weipin" style="display: none;">尾品汇</a><a
+            id="zuizhidang" href="http://z.dangdang.com" class="icon_eve zhidang"
+            style="display: none;">z值当</a>商品，请在<span class="time" id="J_limitedMinute"></span><span class="time"
+                                                                                                    id="J_limitedSecond"></span>内结算.<a
+            herf="javascript:;" class="more fn-vnewz-tips">了解限时结算&gt;&gt;</a></div>
+</div>
+<div id="hide_div" style="height:0px;visibility:hidden;"></div>
+<div style="position:static;bottom:-20px;z-index: 101;width:100%;left:0px;">
+    <div class="shopping_total" id="J_totalMoneyBlock">
+        <div class="shopping_total_right">
+            <a class="total_btn fn-checkout" href="javascript:;" id="checkout_btn" dd_name="结算" onclick="closing()">结&nbsp;&nbsp;算</a>
+            <div class="subtotal">
+                <p><span class="cartsum">总计(不含运费)：</span><span id="payAmount" class="price"
+                                                               id="payAmount">¥{{ cart.total_price }}</span></p>
+
+                <p><span class="cartsum">已节省：</span><span id="totalFavor" id="totalFavor">¥{{ cart.save_price }}</span>
+                </p>
+            </div>
+            <div class="pop_del pop_ebook fn-ck" id="ck_tip" style="display:none">
+                <h1>电子书重复购买提示</h1>
+                <p></p>
+                <a id="ck_link" href="#" class="pop_btn">朕知道了</a>
+            </div>
+        </div>
+        <div class="shopping_total_left" id="J_leftBar">
+            <a id="j_selectall2" href="javascript:void(0)" class="checknow fn-checkall check_on" dd_name="全选">选中</a>全选
+            <a id="j_removeproducts" href="javascript:void(0)" class="fn-batch-remove" dd_name="批量删除按钮">批量删除</a>
+            <span>已选择<font color="red">{{ len_car }}</font>件商品</span>
+            <div id="J_batchRemoveProductBox" style="display: none;z-index:-1;left:0px;" class="pop_del"><p>
+                您确定要批量删除商品吗？</p><a href="javascript:;" class="pop_btn fn-confirm-batchremovebox">确定</a><a
+                    href="javascript:;" class="pop_btn fn-close-batchremovebox">取消</a></div>
+            <div id="J_batchAddWishBox" style="display: none;z-index:-1;left:85px;" class="pop_del col "><p>
+                您确定要批量移入收藏吗？</p><a href="javascript:;" class="pop_btn fn-confirm-batchaddwish">确定</a><a
+                    href="javascript:;" class="pop_btn fn-close-batchwishbox">取消</a></div>
+        </div>
+    </div>
+</div>
+<div id="J_errorBox" style="display: none;z-index:102" class="pop_del col">
+    <p></p>
+    <a class="pop_btn fn-close-removebox" href="javascript:;">确定</a>
+</div>
+<div id="J_addToWishTipHtml" style="display: none; position: absolute;"></div>
+<div id="J_addWishBox" style="display: none" class="pop_del col "><p>移入收藏后，将不在购物车显示，是否继续操作？</p><a href="javascript:;"
+                                                                                                  class="pop_btn fn-confirm-addwish">确定</a><a
+        href="javascript:;" class="pop_btn fn-close-wishbox">取消</a></div>
+<div id="J_removeProductBox" style="display: none;" class="pop_del"><p>您确定要删除商品吗？</p><a href="javascript:;"
+                                                                                        class="pop_btn fn-confirm-removebox">确定</a><a
+        href="javascript:;" class="pop_btn fn-close-removebox">取消</a></div>
+<div id="J_removeGiftBox" style="display: none;" class="pop_del"><p>您确定要删除赠品吗？</p><a href="javascript:;"
+                                                                                     class="pop_btn fn-confirm-removegiftbox">确定</a><a
+        href="javascript:;" class="pop_btn fn-close-removebox">取消</a></div>
+<div class="w960">
+    <div class="empty" id="empty" style="display:none">
+        <p>您的购物车还是空的，您可以：</p>
+        <a href="http://www.dangdang.com" class="btn">去逛逛</a>
+    </div>
+
+</div>
+
+<div class="pop_del pop_ebook" style="left:460px; right:auto; top:-130px;display: none;" id="J_vnewzTipBox">
+    <a href="#" class="close"></a>
+    <h1>限时说明</h1>
+    <p>由于尾品会和新品汇的商品库存有限，我们只能为您保留<span class="red">20分钟</span>，否则尾品会及新品汇的商品将被删除，请尽快结算。</p>
+</div>
+
+
+
+
+<div id="footer">
+    <div class="footer">
+        <div class="footer_nav_box">
+            <div class="footer_copyright"><span>Copyright (C) 当当网 2004-2014, All Rights Reserved</span><a
+                    href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001051000098" target="_blank"
+                    class="footer_img" rel="nofollow"><img src="http://img4.dangdang.com/bottom/validate.gif"></a><span><a
+                    href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span>出版物经营许可证&nbsp;新出发京批字第直0673号</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="foot_tip_ad">广告</div>
+<style>
+    .foot_tip_ad {
+        width: 40px;
+        height: 40px;
+        font: 12px/40px "simsun";
+        text-align: center;
+        color: #fff;
+        background-color: #474747;
+        position: fixed;
+        right: 0;
+        bottom: 10px;
+        _position: absolute;
+        _bottom: auto;
+        _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+    }
+</style>
+
+
+</body>
+</html>

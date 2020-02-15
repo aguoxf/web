@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" href="{% static 'css/register_150706.css' %}" rel="stylesheet">
+<link href="{% static 'css/unite_header_1129.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'js/zhuce/pagetop_20121010.js' %}" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="ddnewhead_wrap">
+    <div class="ddnewhead_content ddnewhead_content2">
+        <div class="ddnewhead_operate" id="__ddnav_menu">
+          
+          <p id="nickname">欢迎光临当当网，请<a name="ddnav_login" href="https://login.dangdang.com/signin.aspx?returnurl=https%3A//login.dangdang.com/register.php%3Freturnurl%3Dhttp%3A//book.dangdang.com/" target="_self" class="login_link">登录</a><a name="ddnav_register" href="https://login.dangdang.com/Register.aspx" target="_self" class="login_link">免费注册</a></p>
+    </div>
+              <div class="ddnewhead_logo"><a href="http://www.dangdang.com" title="返回首页" name="ddnav_logo"><img src="{% static 'images/zc_logo.jpg' %}" alt="百知网"></a></div>
+      <div class="clear"></div>
+    </div>
+     <div class="ddnewcarthead_bottom"></div>
+</div>
+<form id="register_form" method="post" action="{% url 'ddapp:regist_logic' %}" onsubmit="return true;">{% csrf_token %}
+        	<input style="display: none;" type="password">
+            <div id="bd">
+				<!--默认-->
+				<div class="shadow_box">
+					<div class="register_box">
+						<div class="head">
+							<span class="dd_more"><a href="http://www.dangdang.com" class="home">当当首页</a><a href="http://help.dangdang.com/details/page2">注册帮助</a></span>
+							<a href="javascript:void(0);" class="head_a head_a1">新用户注册</a>
+							<!--<a href="register_company.php?returnurl=http://book.dangdang.com/" class="head_a">企业用户注册</a>-->
+						</div>
+						<div class="body">
+							<div id="J_cheatProofTop" class="new_tip" style="display:none;">贴心提示：请勿设置与邮箱密码相同的账户登录密码或支付密码，防止不法分子窃取您的当当账户信息，<a href="http://blog.dangdang.com/?p=22276">谨防诈骗</a>！</div>
+							<table width="100%" cellspacing="0" cellpadding="0" border="0">
+								<tbody><tr>
+									<td class="t">邮箱／手机号码</td>
+									<td class="z_index2">
+										<input name="txt_username" id="txt_username" autocomplete="off" maxlength="40" tabindex="1" value="" placeholder="请输入您的邮箱或手机号码" class="text" type="text" onblur="fn1()">
+                                        <span id="spn_username_ok"><img src="" alt="" id="img1"></span>
+										<span id="J_tipUsername" class="cue"></span>
+										<ul class="email_select" id="select_emaildomain" style="display: none;"><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin=""></li><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@qq.com"></li><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@163.com"></li>
+                                        <li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@126.com"></li><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@sina.com"></li> <li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@hotmail.com"></li><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@sohu.com"></li> <li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@gmail.com"></li><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@tom.com"></li> <li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@139.com"></li><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@21cn.com"></li> <li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@yeah.net"></li><li onmouseout="this.className=&quot;&quot;" onmouseover="this.className=&quot;hover_domain&quot;" title="" domin="@sina.cn"></li></ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="t">登录密码</td>
+									<td>
+										<input name="txt_password" id="txt_password" onpaste="return true;" tabindex="2" class="text" maxlength="20" type="password" onblur="fn2()">
+                                        <img src="" alt="" id="img2">
+										<span id="spn_password_ok" class="icon_yes" style="display: none;"></span>
+										<span id="J_tipPassword" class="cue warn"></span>										
+										<span id="J_tipUpperCaseBox" class="prompt" style="display: none;"><span class="icon"></span>键盘大写锁定已打开，请注意大小写!</span>
+										<span id="spnPwdStrongTips">
+											<span id="spnPwdStrong1" class="cue warn j_pwdStrong" style="display: none;">
+												<span class="msg_level"><span class="s1"></span><span></span><span></span></span>密码过于简单
+											</span>										 
+											<span id="spnPwdStrong2" class="cue warn j_pwdStrong" style="display: none;">
+												<span class="msg_level"><span class="s1"></span><span class="s2"></span><span></span></span>试试字母、符号、数字的组合更安全
+											</span>
+											<span id="spnPwdStrong3" class="cue warn j_pwdStrong" style="display: none;">
+												<span class="msg_level"><span class="s1"></span><span class="s2"></span><span class="s3"></span></span>密码设置安全，放心使用
+											</span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="t">确认密码</td>
+									<td>
+										<input id="txt_repassword" name="txt_repassword" onpaste="return false" tabindex="3" class="text" maxlength="20" type="password" onblur="fn3()"><span id="spn_repassword_ok" class="icon_wrong" style="display: none;"></span>
+                                        <img src="" alt="" id="img3">
+                                        <span id="J_tipSurePassword" class="cue"></span>
+									</td>
+								</tr>								
+								<tr id="J_mobileV" style="display:none">
+									<td class="t">手机验证</td>
+									<td>
+										<input name="mobile" id="txt_mobile" maxlength="11" tabindex="4" class="text" placeholder="请输入你要验证的手机号码" type="text"><span id="spn_mobile_ok" class="icon_yes" style="display: none;"></span>
+										<span id="J_tipMobile" class="cue warn"></span>
+									</td>
+								</tr>
+								<tr>
+									<!-- 图形验证码 -->
+									<td class="t j-vcode">验证码</td>
+									<td class="j-vcode">
+										<input class="text pin" id="txt_vcode" name="txt_vcode" autocomplete="off" placeholder="请输入验证码" maxlength="4" tabindex="5" type="text" onblur="fn4()">
+										<a class="code_pic" id="vcodeImgWrap" name="change_code_img" href="javascript:void(0);">
+											<img id="imgVcode" title="点击更换验证码" alt="点击更换验证码" src="{% url 'ddapp:getcaptcha' %}" width="84" height="37">
+										</a>
+										<a id="vcodeImgBtn" name="change_code_link" class="code_picww" href="javascript:;" onclick="document.getElementById('imgVcode').src = '{% url 'ddapp:getcaptcha' %}?'+(new Date()).getTime()">换张图</a>
+                                           <img src="" alt="" id="img4">
+										<span id="spn_vcode_ok" class="icon_yes pin_i" style="display: none;"></span>
+										<span id="J_tipVcode" class="cue warn"></span>
+										<!--<span class="icon_wrong pin_i"></span>-->
+									</td>
+									<!-- 短信验证码 -->
+									<td class="t j-phoneVcode" style="display: none">短信验证码</td>
+									<td class="j-phoneVcode" style="display: none">
+										<input id="J_MobileCode" name="txt_pop_sms_vcode" autocomplete="off" maxlength="6" tabindex="6" class="text pin" placeholder="请填写短信验证码" type="text">
+										<a class="get_pin get_pinUnClick" id="J_countDownTip" href="javascript:void(0);" style="display: none;" tabindex="5">2分钟后重新获取</a>
+										<a class="get_pin" id="sendMobileCode" href="javascript:void(0);" tabindex="5">获取短信验证码</a>
+										<span id="spn_mobileCode_ok" class="icon_yes" style="display: none;"></span>
+										<span id="J_tipMobileCode" class="cue"></span>
+									</td>
+								</tr>															
+								<tr>
+									<td class="t">&nbsp;</td>
+									<td class="clause">
+										<span class="float_l">
+											<input id="chb_agreement" name="chb_agreement" onmouseover="this.style.cursor='pointer';this.style.cursor='hand';" tabindex="7"  type="checkbox" onchange="fn5()">我已阅读并同意
+											<a target="_blank" href="http://help.dangdang.com/details/page12" tabindex="8">《当当交易条款》</a>和
+											<a target="_blank" href="http://help.dangdang.com/details/page42" tabindex="9">《当当社区条款》</a>
+										</span>
+										<span id="J_tipAgreement" class="cue"></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="t">&nbsp;</td>
+									<td><a id="J_submitRegister" href="javascript:" class="btn_login" tabindex="10" onclick="fn6()">立即注册</a><a id="J_submitRegisterUnclick" style="display: none;" class="btn_login">注册中...</a></td>
+{#								    <td><input type="submit" class="btn_login" value="立即注册" ></td>#}
+                                </tr>
+							</tbody></table>
+						</div>
+					</div>
+				</div>
+			</div>
+            <input id="btn_confirm" style="display: none" type="submit">
+			<input name="hdn_username" id="hdn_username" type="hidden">
+			<input name="hdn_mobile" id="hdn_mobile" type="hidden">
+			<input name="hdn_password" id="hdn_password" type="hidden">
+			<input name="action_post" id="action_post" value="register" type="hidden">
+			<input name="returnurl" id="returnurl" value="http://book.dangdang.com/" type="hidden">
+        </form>
+        <style type="text/css">
+    .footer_nav_box{border-top: 1px solid #ebebeb;width:100%;_width:expression(this.scrollWidth < 960 ? "960px" : "auto");min-width: 960px;padding: 17px 0 50px;}
+    .footer_nav_box a,.footer_nav_box{color: #8c8c8c;font-size: 12px;text-decoration: none;}
+    .footer_nav_box a:hover{color: #f48570;text-decoration: underline;}
+    .footer_nav_box .footer_nav{text-align: center;line-height: 20px;padding-bottom: 17px;padding-top: 25px;}
+    .footer_nav_box .footer_nav span.sep{margin: 0 17px 0 19px;}
+    .footer_nav_box .footer_copyright{line-height: 20px;text-align: center;width: 960px;margin: 0 auto;}
+    .footer_nav_box .footer_copyright span.sep{margin:0 17px 0 19px;}
+    .footer_nav_box .footer_icon{padding: 10px 0 0 340px;width: 640px;margin: 0 auto;height: 77px;}
+    .footer_nav_box .validator,.footer_nav_box .knet{float:left;display:inline;padding:15px 5px 15px;width:135px;height:47px;}
+
+    .footer_copyright {padding: 10px 0 0 0; margin: 0 auto;float: none; width: auto;text-align: center;color: #8c8c8c;}
+    .footer_copyright span, .public_footer .footer_copyright a.footer_img { display: inline-block; float: none; }
+    .footer_copyright a { padding: 0 4px; color: #8c8c8c;font-size: 12px;text-decoration: none;}
+    .footer_copyright a:hover{color: #f48570;text-decoration: underline;}
+    .footer_nav_box .footer_nav .footer_hot_search{display:inline-block;*display:inline;width:50px;position:relative}
+    .footer_nav_box .footer_nav .pos_a_box{position:absolute;left:-251px;top:22px;background-color:#f48570;width:300px;border-radius:8px;text-align:center;height:14px;line-height:14px}
+    .footer_nav_box .footer_nav .pos_a_box a,.footer_nav_box .footer_nav .pos_a_box a:hover,.footer_nav_box .footer_nav .pos_a_box span{padding:0 2px;color:#fff;text-decoration:none}
+    .footer_nav_box .footer_nav .pos_a_box i{display:block;width:0;height:0;line-height:0;font-size:0;border-width:0 4px 4px;border-style:solid;border-color:#fff #fff #f48570 #fff;position:absolute;right:20px;top:-4px}
+</style>
+<script>
+    var hehe1=0;
+    var hehe2=0;
+    var hehe3=0;
+    var hehe4=0;
+    var hehe5=0;
+function fn1() {
+    var name=document.getElementById('txt_username').value;
+    var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+    var tel=/^1(3|4|5|6|7|8|9)\d{9}$/;
+    if(reg.test(name) || tel.test(name)){
+		    document.getElementById('img1').src='{% static 'images/z.gif' %}';
+        {#创建ajax核心对象#}
+        var xhr;
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest()
+        }else if (window.ActiveXObject){
+            xhr=new ActiveXObject('Microsoft.XMLHTTP')
+        }
+        {#发送请求之前配置 三个参数#}
+        var name=document.getElementById('txt_username').value;
+        var url="{% url 'ddapp:regist_logic' %}?name=" + name ;
+        xhr.open('post',url,true);
+        {#发送请求之前设置表头#}
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        {#设置请求方式#}
+        xhr.setRequestHeader('X-CSRFToken','{{ csrf_token }}');
+        xhr.send('name='+name);
+        {#接收响应  事件监听当前服务器端处理状态#}
+        xhr.onreadystatechange=function () {
+            console.log(xhr.readyState);
+            if(xhr.readyState===4 && xhr.status===200){
+                var sresult=xhr.responseText;
+                console.log(sresult);
+                {#获得自符串形式的响应数据#}
+                if (sresult == '该账号已存在'){
+                    document.getElementById('img1').src='{% static 'images/xxx.png' %}';
+                    document.getElementById('J_tipUsername').innerHTML='此手机号已注册，请更换其它手机号，或使用该&nbsp;<a href="{% url 'ddapp:login' %}">手机号登录</a>';
+                }else{
+                    document.getElementById('img1').src='{% static 'images/dd.png' %}';
+                    hehe1=1;
+                    if (document.getElementById('J_tipUsername').innerHTML === '此手机号已注册，请更换其它手机号，或使用该&nbsp;<a href="{% url 'ddapp:login' %}">手机号登录</a>'){
+                        document.getElementById('J_tipUsername').innerHTML='';
+                         hehe1=1;
+                    }
+                }
+            }
+            }
+        }else{
+		    document.getElementById('img1').src='{% static 'images/xxx.png' %}';
+        }
+    };
+
+    function fn2() {
+        pwd=document.getElementById('txt_password').value;
+        var pattern = /^[\w_-]{6,16}$/;
+        if(pattern.test(pwd)){
+            document.getElementById('img2').src='{% static 'images/dd.png' %}';
+            hehe2=1
+        }else{
+            document.getElementById('img2').src='{% static 'images/xxx.png' %}';
+        }
+    }
+
+    function fn3() {
+        pwd=document.getElementById('txt_password').value;
+        pwd2=document.getElementById('txt_repassword').value;
+        if (pwd === pwd2){
+            document.getElementById('img3').src='{% static 'images/dd.png' %}';
+            hehe3=1
+        } else{
+            document.getElementById('img3').src='{% static 'images/xxx.png' %}';
+        }
+    }
+
+    function fn4() {
+        document.getElementById('img4').src='{% static 'images/z.gif' %}';
+    {#    创建ajax核心对象#}
+        var xhr;
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest()
+        }else if (window.ActiveXObject){
+            xhr=new ActiveXObject('Microsoft.XMLHTTP')
+        }
+    {#    发送请求之前配置 三个参数#}
+        var val=document.getElementById('txt_vcode').value;
+        var url="{% url 'ddapp:yzm_logic' %}?yzm="+val;
+        xhr.open('post',url,true);
+    {#    发送请求之前设置表头#}
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    {#    设置请求方式#}
+        xhr.setRequestHeader('X-CSRFToken','{{ csrf_token }}');
+        xhr.send('yzm='+val);
+    {#    接收响应  事件监听当前服务器端处理状态#}
+        xhr.onreadystatechange=function () {
+            console.log(xhr.readyState);
+            if(xhr.readyState===4&&xhr.status===200){
+                var sresult=xhr.responseText;
+                console.log(sresult);
+                if (sresult==1){
+                    document.getElementById('img4').src='{% static 'images/dd.png' %}';
+                    hehe4=1
+                }else{
+                 document.getElementById('img4').src='{% static 'images/xxx.png' %}';
+                }
+            }
+        }
+    }
+
+    function fn5() {
+        var ck=document.getElementById('chb_agreement').checked;
+        console.log(ck);
+        if (ck){
+            hehe5=1;
+        }
+    }
+
+        function fn6() {
+               console.log(hehe1,hehe2,hehe3,hehe4,hehe5);
+            if (hehe1+hehe2+hehe3+hehe4+hehe5==5){
+                                var xhr;
+                if(window.XMLHttpRequest){
+                    xhr=new XMLHttpRequest()
+                }else if (window.ActiveXObject){
+                xhr=new ActiveXObject('Microsoft.XMLHTTP')
+        }
+        var name=document.getElementById('txt_username').value;
+        var pwd=document.getElementById('txt_password').value;
+        var url="{% url 'ddapp:regist_l' %}?name="+name+'&pwd='+pwd;
+        xhr.open('post',url,true);
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhr.setRequestHeader('X-CSRFToken','{{ csrf_token }}');
+        xhr.send('name='+name+'&pwd='+pwd);
+        xhr.onreadystatechange=function () {
+            console.log(xhr.readyState);
+            if(xhr.readyState===4&&xhr.status===200){
+                var sresult=xhr.responseText;
+                console.log(sresult)
+                if(sresult=='1'){
+                window.location.href='{% url 'ddapp:register_ok' %}'}
+            else{
+                window.location.href='{% url 'ddapp:indent' %}'
+                }
+            }
+        }
+        }else{
+            alert('请核对信息')
+        }
+        }
+
+
+    
+</script>
+<div class="footer_nav_box">
+    <div class="footer_nav"><a href="http://static.dangdang.com/topic/2227/176801.shtml" target="_blank" rel="nofollow">公司简介</a><span class="sep">|</span><a href="http://ir.dangdang.com/" target="_blank">Investor Relations</a><span class="sep">|</span><a href="http://zhaopin.dangdang.com" target="_blank">诚聘英才</a><span class="sep">|</span><a href="http://static.dangdang.com/topic/744/200778.shtml" target="_blank">手机当当</a><span class="sep">|</span><a href="http://union.dangdang.com/" target="_blank">网站联盟</a><span class="sep">|</span><a href="http://outlets.dangdang.com/merchants_open" target="_blank">当当招商</a><span class="sep">|</span><a href="http://misc.dangdang.com/groupbuy/Default.aspx" target="_blank" rel="nofollow">机构销售</a><span class="sep">|</span><a href="http://blog.dangdang.com/" target="_blank">官方Blog</a>
+        <script>
+            var setTo = null;
+            function showghotsearch() {
+                clearTimeout(setTo);
+                document.getElementById("hot_search_content").style.display = "block";
+            }
+            function hidehotsearch() {
+                setTo = setTimeout(function() {
+                    document.getElementById("hot_search_content").style.display = "none";
+                }, 100)
+            }
+        </script>   		
+    </div>
+    <div class="footer_copyright"><span>Copyright (C) 当当网 2004-2017, All Rights Reserved</span></div>
+    <div class="footer_copyright"><span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span class="sep">|</span><span>出版物经营许可证 新出发京批字第直0673号</span><span class="sep">|</span><span>食品流通许可证：SP1101011010021855(1-1)</span><br><span>互联网药品信息服务资格证编号：(京)-非经营性-2012-0016</span><span class="sep">|</span><span>京公网安备110101000001号</span></div>
+    <!-- 有三个icon的时候加footer_icon2 -->
+    <div class="footer_icon footer_icon2" style="padding-left: 55px;">
+        <div class="validator"><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001051000098" target="_blank" class="footer_img"><img src="{% static 'images/validate.gif' %}"></a></div>
+        <div class="knet"><!-- 可信网站LOGO安装开始 -->
+            <script type="text/JavaScript">
+                function CNNIC_change(eleId) {
+                var str = document.getElementById(eleId).href;
+                var str1 = str.substring(0, (str.length - 6));
+                str1 += CNNIC_RndNum(6);
+                document.getElementById(eleId).href = str1;
+                }
+
+                function CNNIC_RndNum(k) {
+                var rnd = "";
+                for (var i = 0; i < k; i++)
+                rnd += Math.floor(Math.random() * 10);
+                return rnd;
+                }
+            </script>
+            <a href="https://ss.knet.cn/verifyseal.dll?sn=2010091900100002234&amp;pa=2940051" tabindex="-1" id="urlknet" target="_blank" rel="nofollow"><img alt="可信网站" name="CNNIC_seal" src="../static/images/knetSealLogo.png" oncontextmenu="return false;" onclick="CNNIC_change('urlknet')" width="128" height="47" border="true"></a><!-- 可信网站LOGO安装结束 -->
+        </div>
+        <div class="validator"><a href="http://bj429.com.cn/" target="_blank" class="footer_img"><img src="{% static 'images/7d593c48-48f6-4fc9-85e0-7d6e10dfc2a2.hpvgUvc9' %}"></a></div>
+        <div class="validator"><a id="_pingansec_bottomimagesmall_brand" href="http://si.trustutn.org/info?sn=302161014024825726885&amp;certType=1" target="_blank"><img src="{% static 'images/brand_128_47.png' %}"></a></div>
+        <div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>

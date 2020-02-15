@@ -1,0 +1,64 @@
+html{font-size:12px;color:#404040;}
+body,button,ol,ul,li,p,dl,dd,h1,h2,h3,h4,h5,h6,img,iframe,input,form,textarea{margin:0;padding:0;list-style-type:none;border:0;}
+#bd{width:960px;margin:10px auto;}
+#bd_auto { margin:0 auto }
+ul:after,.fbox:after,.clearfix:after{content:".";height:0;display:block;clear:both;visibility:hidden;}
+ul,.fbox,.clearfix{zoom:1;}
+a{color:#1a66b3;text-decoration:none;}
+a:hover{text-decoration:underline;}
+.arial{font-family:arial;}
+.agio{color:#5ea593;}
+.red{color:#c30;}
+.spacer{clear:both;width:10%;height:10px;font-size:0;}
+.eng{font-family:Arial;}
+.pic .icon_pop{display:block;position:absolute;z-index:2;top:-4px;right:-4px;width:54px;height:54px;}
+.product_list { margin-bottom:20px; }
+.product_list ul{padding-top:16px;}
+.product_list ul li { display:inline; width:170px; float:left; margin:0px 5px 10px 15px;}
+.product_list h3 { height:36px; margin-bottom:5px;overflow:hidden;}
+.product_list h3 a { display:block; font-size:14px; font-weight:normal; line-height:18px;color:#404040; }
+.product_list h3 a:hover { color:#1a66b3; text-decoration:underline; }
+.product_list .pic { padding:9px 9px 5px; width:152px; display:block; position:relative;}
+.product_list .pic a { display:block; border:solid 1px #fff; width:150px; height:150px; }
+.product_list .pic .label { position:absolute; top:0; left:0; width:60px; height:60px; text-indent:-9999px; }
+.product_list .ddPrice,.product_list .marketPrice,.product_list .purchasePrice,.product_list .onePrice { margin-left:20px; font-size:12px; line-height:18px; font-family:Arial;}
+.product_list .marketPrice { color:#808080;display:inline-block;height:16px; }
+.product_list .one { text-decoration:none; }
+.product_list .action { width:100px; height:20px; margin:3px auto 0; clear:both; }
+.product_list .action a { display:block; background-image:url(http://img4.ddimg.cn/00016/basic/templatev_100921_icon.png); padding:3px 0 0 30px; *padding:4px 0 0 30px;color:#1a66b3; font-size:12px; }
+.product_list .addCart a { background-position:-300px top; }
+.product_list .addCart a:hover { background-position:-300px -20px; color:#cc0000; }
+.product_list .showDetail a { background-position:-300px -46px; }
+.product_list .showDetail a:hover { background-position:-300px -66px; color:#cc0000; }
+.product_list .over { width:44px; height:20px; margin-top:7px; }
+.product_list .over a { background-image:none; background-color:#878787; color:#fff; padding:0; text-align:center; }
+.product_list .over a:hover { text-decoration:none; }
+.product_list .purchasePrice,.product_list .ddPrice{color:#c30;}
+.product_list li .eng span{font-size:18px;}
+.ebox{width:960px;margin:0 auto;}
+.ebox .head,.ebox h2,.ebox .head .more{height:35px;background:url(../images/cms_t_bg.png) no-repeat;line-height:32px;}
+.ebox .head{background-position:left bottom;background-repeat:repeat-x;}
+.ebox h2{float:left;display:inline-block;background-position: left -35px;padding-left:16px;font-size:14px; font-weight:bold;}
+.ebox .head .more{background-position:right top;padding-right:20px;}
+.ebox .pic img{display:block;margin: 0 auto;}
+.ebox .pic{position:relative;}
+html{font-size:12px;color:#404040;}
+body,button,ol,ul,li,p,dl,dd,h1,h2,h3,h4,h5,h6,img,iframe,input,form,textarea{margin:0;padding:0;list-style-type:none;border:0;font-size:100%;}
+.clearfix:after{clear:both;content:" ";display:block;font-size:0;height:0;visibility:hidden;}
+.clearfix{zoom:1;}
+a{text-decoration:none;color:#666;}
+a:hover{text-decoration:underline;}
+.product_tags{width:56px!important;height:56px!important;;position:absolute;right:-5px;top:0px;color:#fff;font:bold 12px/18px Arial;overflow:hidden;text-align:center;text-decoration:none;}
+.hot{color:#f60;}
+.price_m{background:url(../images/bg_del.png) repeat-x 0 9px;font:12px Arial;color:#9c9c9c;}
+.price_m b{font:bold 12px Arial!important;}
+.tag_other_1,.tag_other_2,.tag_other_3,.tag_other_4,.tag_other_5,.tag_other_6,.tag_other_7,.tag_other_8,.tag_other_9,.tag_other_zhe{width:56px!important;height:56px!important;;position:absolute;right:0;top:0;font:bold 12px/54px "\5FAE\8F6F\96C5\9ED1";overflow:hidden;text-align:center;background:url(http://img4.ddimg.cn/00109/popicon/tag_other.png) no-repeat 0 0; _background-image:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00109/popicon/tag_other.png',sizingMethod='noscale'); cursor:pointer;color:#fff;text-decoration:none;}
+.tag_other_1 i,.tag_other_2 i,.tag_other_3 i,.tag_other_4 i,.tag_other_5 i,.tag_other_6 i,.tag_other_7 i,.tag_other_8 i,.tag_other_9 i,.tag_other_zhe i{font-size:18px; font-family:Arial;}
+.tag_other_3 i{font-size:16px;}
+.tag_other_4{font-size:11px;}
+.tag_other_4 i{font-size:15px;}
+.tag_other_zhe{font-size:14px;}
+.tag_other_zhe i{font-size:24px;}
+.tag_other_5{font-size:11px;font-weight:normal;}
+.tag_other_5 i{font-size:10px;}
+

@@ -1,0 +1,15 @@
+/* 防欺诈pop */
+.masks{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10010;_position:absolute;_top:expression(eval(document.documentElement.scrollTop));_height:expression(eval(document.documentElement.clientHeight));}
+.masks .masks_bg{border:0;height:100%;width:100%;background-color:#000;filter:alpha(opacity=10);opacity:0.1;}
+.pop_cheat{position:absolute;padding-bottom:30px;overflow:hidden;border:1px solid #E6E6E6;font-size:12px;color:#646464;background-color:#fff;top:50%;left:50%;width:492px;margin-left:-246px;margin-top:-141px;}
+.pop_cheat h3{ text-align:center; height:40px;line-height:40px;font-size:14px;background-color:#F5F5F5;}
+.pop_cheat_info{padding:16px 15px 0 20px;line-height:24px;font-size:12px;}
+.pop_cheat_info .title{ font-weight:bold;}
+.pop_cheat_info i{ float:left;width:16px; height:16px; overflow:hidden; background:url(../images/icon_zp.png) no-repeat 0 0; margin-top:4px;}
+.pop_cheat_info .right{ float:left;width:435px;padding-left:5px;}
+.pop_cheat_info b{color:#ff2832; font-weight:bold;}
+.pop_cheat_info .tel{ font:bold 12px Verdana;}
+.pop_cheat_info a,.pop_cheat_info a:hover{color:#1a66b3;}
+.pop_cheat .btn{display:block;margin:25px auto 0;height:24px; text-align:center; clear:both;}
+.pop_cheat .btn a,.pop_cheat .btn a:hover{display:inline-block;color:#fff;text-decoration:none;height:24px;line-height:24px;background-color:#FF2832;padding:0 10px;border-radius:3px;}
+.pop_cheat .btn a:hover{background-color:#F00000;}

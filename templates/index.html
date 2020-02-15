@@ -1,0 +1,844 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<base href="" />
+<title>百知教育</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="ddclick_guan" content="1" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/theme_1.css' %}"/>
+<link rel="Stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/index-style.css'%}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/header_150803.css' %}"/>
+<script type="text/javascript" src="{% static 'js/tab.js' %}"></script>
+<script type="text/javascript">
+            function player1(id){
+            var id=document.getElementById(id)
+            id.style.display="block";
+            }
+            function clocer1(id){
+            var id=document.getElementById(id)
+            id.style.display="none";
+            }
+            </script>
+<script type="text/javascript" src="{% static 'js/jquery1.4.2.js' %}"></script>
+<script  type="text/javascript">
+                var firstbyteTime=new Date().getTime();
+                var firstScreenStartTime=new Date().getTime();
+                var mix_imglist=[];
+            </script>
+</head>
+<body>
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<div id="hd">
+  <div id="tools">
+    <div class="tools">
+      <div class="ddnewhead_operate" dd_name="顶链接">
+        
+        <div class="new_head_znx" id="znx_content" style="display:none;"></div>
+          {% if name %}
+                      <div class="ddnewhead_welcome" display="none;"> <span id="nickname"><span class="hi hi_none">欢迎光临,用户：</span>{{ name }} <a href="{% url 'ddapp:index' %}?dele=dele">退出</a></span>
+              {% else %}
+                      <div class="ddnewhead_welcome" display="none;"> <span id="nickname"><span class="hi hi_none">欢迎光临当当，请</span><a href="{% url 'ddapp:login' %}" class="login_link">登录</a><a href="{% url 'ddapp:regist' %}">免费注册</a></span>
+          {% endif %}
+          <div class="tel_pop" style="display:none" id="__ddnav_sjdd"  onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');" onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');"> <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i class="icon_tel"></i>手机当当</a><i class="title_shadow"></i>
+            <ul class="tel_pop_box">
+              <li><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码"><span>当当手机客户端</span><img src="http://img3.ddimg.cn/00363/doc/erweima2.png"><span class="text">随手查订单<br>
+                随时享优惠</span></a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div id="header_end"></div>
+  <div style="position:relative;" class="logo_line_out">
+    <div class="logo_line" dd_name="搜索框">
+      <div class="logo"><img src="{% static 'images/DDlogoNEW.gif' %}" usemap="#logo_link"/>
+        <map name="logo_link" id="logo_link" dd_name="logo区">
+          <area shape="rect" coords="0,18,200,93" href="http://www.dangdang.com" title="当当" onfocus="this.blur();">
+          <area shape="rect" coords="200,18,320,93" href="http://www.dangdang.com/" title="" target="_blank" onfocus="this.blur();">
+        </map>
+      </div>
+      <div class="search">
+        <form action="http://search.dangdang.com" name="searchform"  id="form_search_new" onsubmit="return searchsubmit();"  method="GET">
+          <label  for="key_S" class="label_search" id="label_key" onclick="this.style.color='rgb(255, 255, 255)';" style="visibility: visible; color: rgb(102, 102, 102);" >跟乐嘉学性格色彩2</label>
+          <input type="text" class="text gray"  name="key" ID="key_S" autocomplete="off" onclick="key_onclick(event);" onfocus="key_onfocus(event);"  onblur="key_onblur();" onbeforepaste="onpaste_search();"/>
+          <a href="javascript:void(0);" onclick="clearkeys();" class="del-keywords"></a><span class="select"  onmouseover="allCategoryShow();"  onmouseleave="allCategoryHide();" onmouseout='if("\v"!="v"){ allCategoryHide();}'><span id="Show_Category_Name" dd_name="全部分类">全部分类</span><span class="icon"></span>
+          <div id="search_all_category" class="select_pop" style="height:0px;padding: 0px;border-width: 0px;" dd_name="搜索分类"> <a href="javascript:void(0);" onclick="selectCategory('',this);" ><span id="Show_Category_Name" dd_name="全部分类">全部分类</span></a> <a href="javascript:void(0);" onclick="selectCategory('100000',this);" dd_name="尾品汇"><span>尾品汇</span></a> <a href="javascript:void(0);" onclick="selectCategory('01.00.00.00.00.00',this);" dd_name="图书"><span>图书</span></a> <a href="javascript:void(0);" onclick="selectCategory('98.00.00.00.00.00',this);" dd_name="电子书"><span>电子书</span></a> <a href="javascript:void(0);" onclick="selectCategory('03.00.00.00.00.00',this);" dd_name="音像"><span>音像</span></a> <a href="javascript:void(0);" onclick="selectCategory('05.00.00.00.00.00',this);" dd_name="影视"><span>影视</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002074,this);" dd_name="时尚美妆"><span>时尚美妆</span></a> <a href="javascript:void(0);" onclick="selectCategory(4001940,this);" dd_name="母婴用品"><span>母婴用品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002061,this);" dd_name="玩具"><span>玩具</span></a> <a href="javascript:void(0);" onclick="selectCategory(4004866,this);" dd_name="孕婴服饰"><span>孕婴服饰</span></a> <a href="javascript:void(0);" onclick="selectCategory(4004344,this);" dd_name="童装童鞋"><span>童装童鞋</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003900,this);" dd_name="家居日用"><span>家居日用</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003760,this);" dd_name="家具装饰"><span>家具装饰</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003844,this);" dd_name="服装"><span>服装</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003872,this);" dd_name="鞋"><span>鞋</span></a> <a href="javascript:void(0);" onclick="selectCategory(4001829,this);" dd_name="箱包皮具"><span>箱包皮具</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003639,this);" dd_name="手表饰品"><span>手表饰品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003728,this);" dd_name="运动户外"><span>运动户外</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002429,this);" dd_name="汽车用品"><span>汽车用品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4002145,this);" dd_name="食品"><span>食品</span></a> <a href="javascript:void(0);" onclick="selectCategory(4006497,this);" dd_name="手机通讯"><span>手机通讯</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003613,this);" dd_name="数码影音"><span>数码影音</span></a> <a href="javascript:void(0);" onclick="selectCategory(4003819,this);" dd_name="电脑办公"><span>电脑办公</span></a> <a href="javascript:void(0);" onclick="selectCategory(4007241,this);" dd_name="大家电"><span>大家电</span></a> <a href="javascript:void(0);" onclick="selectCategory(4001001,this);" dd_name="家用电器"><span>家用电器</span></a> </div>
+          </span>
+          <input type="hidden" id="default_key" value="跟乐嘉学性格色彩2"/>
+          <input type="submit" id="search_btn" dd_name="搜索按钮"  style="display:none"/>
+          <input id="SearchFromTop" style="display:none" type="hidden" name="SearchFromTop" value="1"/>
+          <input type="button" id="suggest_product_btn" name="suggestproduct_btn"  style="display:none" onclick="void(0)"/>
+          <input type="button" id="suggest_class_btn" name="suggestclass_btn"  style="display:none" onclick="void(0)"/>
+          <input type="submit" id="suggest_searchkey_btn" name="suggestsearchkey_btn"  style="display:none" dd_name="搜索按钮"/>
+          <input type="hidden" id="catalog_S" name="catalog" value="" >
+          <input type="button" class="button" dd_name="搜索按钮" onclick="javascript:document.getElementById('search_btn').click();"/>
+        </form>
+      </div>
+      
+      <div id="suggest_key" class="suggest_key" style="display:none;" ></div>
+      <div class="ddnew_cart"><a href="{% url 'ddapp:car' %}" name="购物车" dd_name="购物车"><i class="icon_card"></i>购物车<b id="cart_items_count"></b></a></div>
+      <div class="ddnew_order"><a target="_blank" href="http://orderb.dangdang.com/myallorders.aspx" name="我的订单" dd_name="我的订单" rel="nofollow">我的订单<b id="unpaid_num" style="color:#ff2832;font:bold 12px Arial;"></b></a></div>
+    </div>
+  </div>
+  
+  <div class="home_nav_l_box">
+    <div class="home_nav_l" id="nav_l" style="display:none;">
+      <div class="new_pub_nav_box"  style="display:none;" id="__ddnav_sort" onmouseover="showdiv(event,'__ddnav_sort');" onmouseout="hiddenCategory(event,'__ddnav_sort');"> <span class="new_pub_line_a"></span> <span class="new_pub_line_b"></span>
+        <div class="new_pub_nav_shadow" id="menu_list">
+
+          <div class="new_pub_nav_pop" style="display: none;" id="con_fltab_1">
+            <div class="left_box">
+              <div class="new_pub_pop_guan"><a href="#" target="_blank" name="newguan_1_1" dd_name="图书童书,图书馆" class="">图书馆</a><a href="#" target="_blank" name="newguan_1_2" dd_name="图书童书,童书馆" class="">童书馆</a></div>
+              <ul class="left left_03">
+                <li class="brand_list">
+                  <h4>排行榜</h4>
+                  <div class="ph"><a href="#" target="_blank" name="newband_1" dd_name="图书童书,排行榜,童书榜">童书榜&nbsp;&gt;&gt;</a><a href="#" target="_blank" name="newband_2" dd_name="图书童书,排行榜,新书热卖榜">新书热卖榜&nbsp;&gt;&gt;</a><a href="#" target="_blank" name="newband_3" dd_name="图书童书,排行榜,图书畅销榜" >图书畅销榜&nbsp;&gt;&gt;</a><a href="#" target="_blank" name="newband_4" dd_name="图书童书,排行榜,图书飙升榜"  >图书飙升榜&nbsp;&gt;&gt;</a><a href="#" target="_blank" name="newband_5" dd_name="图书童书,排行榜,五星图书榜"  >五星图书榜&nbsp;&gt;&gt;</a></div>
+                </li>
+              </ul>
+              <ul class="left left_01">
+                <li id="category_1_0" onmouseover="li_On(0,1,1);" onmouseout="li_Out(0,1,1);">
+                  <h4>文艺</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_1_1" style="color:;" dd_name="图书童书,文艺,小说">小说</a><a href="#" target="_blank" name="newcate1_1_2" style="color:;" dd_name="图书童书,文艺,文学">文学</a><a href="#" target="_blank" name="newcate1_1_3" style="color:;" dd_name="图书童书,文艺,传记">传记</a><a href="#" target="_blank" name="newcate1_1_4" style="color:;" dd_name="图书童书,文艺,青春文学">青春文学</a><a href="#" target="_blank" name="newcate1_1_5" style="color:;" dd_name="图书童书,文艺,动漫/幽默">动漫/幽默</a><a href="#" target="_blank" name="newcate1_1_6" style="color:;" dd_name="图书童书,文艺,艺术">艺术</a><a href="#" target="_blank" name="newcate1_1_7" style="color:;" dd_name="图书童书,文艺,摄影">摄影</a><a href="#" target="_blank" name="newcate1_1_8" style="color:;" dd_name="图书童书,文艺,偶像明星">偶像明星</a><a href="#" target="_blank" name="newcate1_1_9" style="color:;" dd_name="图书童书,文艺,涂色/填色">涂色/填色</a></div>
+                </li>
+                <li id="category_1_1" onmouseover="li_On(1,1,1);" onmouseout="li_Out(1,1,1);">
+                  <h4>人文社科</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_2_1" style="color:;" dd_name="图书童书,人文社科,哲学宗教">哲学宗教</a><a href="#" target="_blank" name="newcate1_2_2" style="color:;" dd_name="图书童书,人文社科,历史">历史</a><a href="#" target="_blank" name="newcate1_2_3" style="color:;" dd_name="图书童书,人文社科,政治军事">政治军事</a><a href="#" target="_blank" name="newcate1_2_4" style="color:;" dd_name="图书童书,人文社科,文化">文化</a><a href="#" target="_blank" name="newcate1_2_5" style="color:;" dd_name="图书童书,人文社科,社会科学">社会科学</a><a href="#" target="_blank" name="newcate1_2_6" style="color:;" dd_name="图书童书,人文社科,心理学">心理学</a><a href="#" target="_blank" name="newcate1_2_7" style="color:;" dd_name="图书童书,人文社科,古籍">古籍</a><a href="#" target="_blank" name="newcate1_2_8" style="color:;" dd_name="图书童书,人文社科,法律">法律</a><a href="#" target="_blank" name="newcate1_2_9" style="color:;" dd_name="图书童书,人文社科,经济">经济</a></div>
+                </li>
+                <li id="category_1_2" onmouseover="li_On(2,1,1);" onmouseout="li_Out(2,1,1);">
+                  <h4><a href="#" target="_blank" name="newcate1_3" style="color:;" dd_name="图书童书,童书">童书</a></h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_3_1" style="color:;" dd_name="图书童书,童书,0-2岁">0-2岁</a><a href="#" target="_blank" name="newcate1_3_2" style="color:;" dd_name="图书童书,童书,3-6岁">3-6岁</a><a href="#" target="_blank" name="newcate1_3_3" style="color:;" dd_name="图书童书,童书,7-10岁">7-10岁</a><a href="#" target="_blank" name="newcate1_3_4" style="color:;" dd_name="图书童书,童书,11-14岁">11-14岁</a><a href="#" target="_blank" name="newcate1_3_5" style="color:;" dd_name="图书童书,童书,中国儿童文学">中国儿童文学</a><a href="#" target="_blank" name="newcate1_3_6" style="color:;" dd_name="图书童书,童书,外国儿童文学">外国儿童文学</a><a href="#" target="_blank" name="newcate1_3_7" style="color:;" dd_name="图书童书,童书,精装图画书">精装图画书</a><a href="#" target="_blank" name="newcate1_3_8" style="color:;" dd_name="图书童书,童书,平装图画书">平装图画书</a><a href="#" target="_blank" name="newcate1_3_9" style="color:;" dd_name="图书童书,童书,科普/百科">科普/百科</a><a href="#" target="_blank" name="newcate1_3_10" style="color:;" dd_name="图书童书,童书,婴儿读物">婴儿读物</a><a href="#" target="_blank" name="newcate1_3_11" style="color:;" dd_name="图书童书,童书,幼儿启蒙">幼儿启蒙</a><a href="#" target="_blank" name="newcate1_3_12" style="color:;" dd_name="图书童书,童书,益智游戏">益智游戏</a><a href="#" target="_blank" name="newcate1_3_13" style="color:;" dd_name="图书童书,童书,玩具书">玩具书</a><a href="#" target="_blank" name="newcate1_3_14" style="color:;" dd_name="图书童书,童书,动漫/卡通">动漫/卡通</a><a href="#" target="_blank" name="newcate1_3_15" style="color:;" dd_name="图书童书,童书,少儿英语">少儿英语</a><a href="#" target="_blank" name="newcate1_3_16" style="color:;" dd_name="图书童书,童书,进口儿童书">进口儿童书</a><a href="#" target="_blank" name="newcate1_3_17" style="color:;" dd_name="图书童书,童书,少儿期刊">少儿期刊</a></div>
+                </li>
+              </ul>
+              <ul class="left left_02">
+                <li id="category_1_4" onmouseover="li_On(4,1,1);" onmouseout="li_Out(4,1,1);">
+                  <h4>经管</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_4_1" dd_name="图书童书,经管,经济"  >经济</a><a href="#" target="_blank" name="newcate1_4_2" dd_name="图书童书,经管,管理"  >管理</a><a href="#" target="_blank" name="newcate1_4_3" dd_name="图书童书,经管,投资理财"  >投资理财</a><a href="#" target="_blank" name="newcate1_4_4" dd_name="图书童书,经管,股票 "  >股票 </a><a href="#" target="_blank" name="newcate1_4_5" dd_name="图书童书,经管,金融"  >金融</a><a href="#" target="_blank" name="newcate1_4_6" dd_name="图书童书,经管,市场/销售"  >市场/销售</a><a href="#" target="_blank" name="newcate1_4_7" dd_name="图书童书,经管,会计"  >会计</a><a href="#" target="_blank" name="newcate1_4_8" dd_name="图书童书,经管,互联网"  >互联网</a></div>
+                </li>
+                <li id="category_1_5" onmouseover="li_On(5,1,1);" onmouseout="li_Out(5,1,1);" class="">
+                  <h4>励志</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_5_1" dd_name="图书童书,励志,励志/成功"  >励志/成功</a><a href="#" target="_blank" name="newcate1_5_2" dd_name="图书童书,励志,心灵修养"  >心灵修养</a><a href="#" target="_blank" name="newcate1_5_3" dd_name="图书童书,励志,职场"  >职场</a></div>
+                </li>
+                <li id="category_1_6" onmouseover="li_On(6,1,1);" onmouseout="li_Out(6,1,1);" class="">
+                  <h4>教育</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_6_1" dd_name="图书童书,教育,中小学教辅"  >中小学教辅</a><a href="#" target="_blank" name="newcate1_6_2" dd_name="图书童书,教育,考试"  >考试</a><a href="#" target="_blank" name="newcate1_6_3" dd_name="图书童书,教育,大中专教材"  >大中专教材</a><a href="#" target="_blank" name="newcate1_6_4" dd_name="图书童书,教育,外语"  >外语</a><a href="#" target="_blank" name="newcate1_6_5" dd_name="图书童书,教育,工具书"  >工具书</a><a href="#" target="_blank" name="newcate1_6_6" dd_name="图书童书,教育,教师用书"  >教师用书</a><a href="#" target="_blank" name="newcate1_6_7" dd_name="图书童书,教育,新概念"  >新概念</a><a href="#" target="_blank" name="newcate1_6_8" dd_name="图书童书,教育,黄冈小状元"  >黄冈小状元</a><a href="#" target="_blank" name="newcate1_6_9" dd_name="图书童书,教育,英语四级"  >英语四级</a><a href="#" target="_blank" name="newcate1_6_10" dd_name="图书童书,教育,英语六级"  >英语六级</a><a href="#" target="_blank" name="newcate1_6_11" dd_name="图书童书,教育,考研"  >考研</a><a href="#" target="_blank" name="newcate1_6_12" dd_name="图书童书,教育,公务员"  >公务员</a></div>
+                </li>
+                <li id="category_1_7" onmouseover="li_On(7,1,1);" onmouseout="li_Out(7,1,1);">
+                  <h4><a href="#" target="_blank" name="newcate1_7" dd_name="图书童书,科技"  >科技</a></h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_7_1" dd_name="图书童书,科技,科普读物　"  >科普读物　</a><a href="#" target="_blank" name="newcate1_7_2" dd_name="图书童书,科技,计算机/网络"  >计算机/网络</a><a href="#" target="_blank" name="newcate1_7_3" dd_name="图书童书,科技,医学"  >医学</a><a href="#" target="_blank" name="newcate1_7_4" dd_name="图书童书,科技,工业技术"  >工业技术</a><a href="#" target="_blank" name="newcate1_7_5" dd_name="图书童书,科技,建筑"  >建筑</a><a href="#" target="_blank" name="newcate1_7_6" dd_name="图书童书,科技,自然科学"  >自然科学</a><a href="#" target="_blank" name="newcate1_7_7" dd_name="图书童书,科技,农业/林业"  >农业/林业</a></div>
+                </li>
+                <li id="category_1_8" onmouseover="li_On(8,1,1);" onmouseout="li_Out(8,1,1);">
+                  <h4>生活</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_8_1" dd_name="图书童书,生活,两性"  >两性</a><a href="#" target="_blank" name="newcate1_8_2" dd_name="图书童书,生活,孕期"  >孕期</a><a href="#" target="_blank" name="newcate1_8_3" dd_name="图书童书,生活,育儿"  >育儿</a><a href="#" target="_blank" name="newcate1_8_4" dd_name="图书童书,生活,亲子家教"  >亲子家教</a><a href="#" target="_blank" name="newcate1_8_5" dd_name="图书童书,生活,保健"  >保健</a><a href="#" target="_blank" name="newcate1_8_6" dd_name="图书童书,生活,运动"  >运动</a><a href="#" target="_blank" name="newcate1_8_7" dd_name="图书童书,生活,休闲"  >休闲</a><a href="#" target="_blank" name="newcate1_8_8" dd_name="图书童书,生活,旅游"  >旅游</a><a href="#" target="_blank" name="newcate1_8_9" dd_name="图书童书,生活,美食"  >美食</a><a href="#" target="_blank" name="newcate1_8_10" dd_name="图书童书,生活,美妆"  >美妆</a><a href="#" target="_blank" name="newcate1_8_11" dd_name="图书童书,生活,手工DIY"  >手工DIY</a><a href="#" target="_blank" name="newcate1_8_12" dd_name="图书童书,生活,家庭家居"  >家庭家居</a><a href="#" target="_blank" name="newcate1_8_13" dd_name="图书童书,生活,风水占卜"  >风水占卜</a></div>
+                </li>
+                <li id="category_1_9" onmouseover="li_On(9,1,1);" onmouseout="li_Out(9,1,1);">
+                  <h4><a href="#" target="_blank" name="newcate1_9" dd_name="图书童书,当当出版"  >当当出版</a></h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_9_1" dd_name="图书童书,当当出版,小说"  >小说</a><a href="#" target="_blank" name="newcate1_9_2" dd_name="图书童书,当当出版,文学"  >文学</a><a href="#" target="_blank" name="newcate1_9_3" dd_name="图书童书,当当出版,社科"  >社科</a><a href="#" target="_blank" name="newcate1_9_4" dd_name="图书童书,当当出版,外语"  >外语</a><a href="#" target="_blank" name="newcate1_9_5" dd_name="图书童书,当当出版,教辅"  >教辅</a><a href="#" target="_blank" name="newcate1_9_6" dd_name="图书童书,当当出版,艺术"  >艺术</a><a href="#" target="_blank" name="newcate1_9_7" dd_name="图书童书,当当出版,童书"  >童书</a><a href="#" target="_blank" name="newcate1_9_8" dd_name="图书童书,当当出版,青春文学"  >青春文学</a><a href="#" target="_blank" name="newcate1_9_9" dd_name="图书童书,当当出版,生活"  >生活</a><a href="#" target="_blank" name="newcate1_9_10" dd_name="图书童书,当当出版,励志"  >励志</a></div>
+                </li>
+                <li id="category_1_10" onmouseover="li_On(10,1,1);" onmouseout="li_Out(10,1,1);">
+                  <h4>刊/进口书</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_10_1" dd_name="图书童书,刊/进口书,英文图书"  >英文图书</a><a href="#" target="_blank" name="newcate1_10_2" dd_name="图书童书,刊/进口书,港台图书"  >港台图书</a><a href="#" target="_blank" name="newcate1_10_3" dd_name="图书童书,刊/进口书,杂志"  >杂志</a><a href="#" target="_blank" name="newcate1_10_4" dd_name="图书童书,刊/进口书,英文原版小说"  >英文原版小说</a><a href="#" target="_blank" name="newcate1_10_5" dd_name="图书童书,刊/进口书,进口艺术画册" >进口艺术画册</a></div>
+                </li>
+                <li id="category_1_11" onmouseover="li_On(11,1,1);" onmouseout="li_Out(11,1,1);">
+                  <h4>音像</h4>
+                  <div class="e"><a href="#" target="_blank" name="newcate1_11_1" dd_name="图书童书,音像,音乐"  >音乐</a><a href="#" target="_blank" name="newcate1_11_2" dd_name="图书童书,音像,影视"  >影视</a><a href="#" target="_blank" name="newcate1_11_3" dd_name="图书童书,音像,软件"  >软件</a><a href="#" target="_blank" name="newcate1_11_4" dd_name="图书童书,音像,游戏"  >游戏</a><a href="#" target="_blank" name="newcate1_11_5" dd_name="图书童书,音像,教育音像"  >教育音像</a><a href="#" target="_blank" name="newcate1_11_6" dd_name="图书童书,音像,华语流行"  >华语流行</a><a href="#" target="_blank" name="newcate1_11_7" dd_name="图书童书,音像,儿童音乐"  >儿童音乐</a><a href="#" target="_blank" name="newcate1_11_8" dd_name="图书童书,音像,动画片"  >动画片</a></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="new_pub_nav_pop" id="con_fltab_2" style="display:none;" >
+                     	<div class="left_box"><div class="new_pub_pop_guan" style="border-top: 0px;"><a href="#" target="_blank" name="newguan_2_1" dd_name="电子书,免费书" class="">免费书</a><a href="#" target="_blank" name="newguan_2_2" dd_name="电子书,当当阅读器" class="">当当阅读器</a><a href="#" target="_blank" name="newguan_2_3" dd_name="电子书,电子书馆" class="">电子书馆</a></div><ul class="left left_03"></ul><ul class="left left_01"><li id="category_2_0" onmouseover="li_On(0,1,2);" onmouseout="li_Out(0,1,2);" class=""><h4><a href="#" target="_blank" name="newcate2_1" style="color:;" dd_name="电子书,阅读器">阅读器</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_1_1" style="color:;" dd_name="电子书,阅读器,当当阅读器（典雅灰）">当当阅读器（典雅灰）</a><a href="#" target="_blank" name="newcate2_1_2" style="color:;" dd_name="电子书,阅读器,当当阅读器（爵士白）">当当阅读器（爵士白）</a></div></li><li id="category_2_1" onmouseover="li_On(1,1,2);" onmouseout="li_Out(1,1,2);"><h4><a href="#" target="_blank" name="newcate2_2" style="color:;" dd_name="电子书,排行榜">排行榜</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_2_1" style="color:;" dd_name="电子书,排行榜,畅销总榜">畅销总榜</a><a href="#" target="_blank" name="newcate2_2_2" style="color:;" dd_name="电子书,排行榜,新书榜">新书榜</a><a href="#" target="_blank" name="newcate2_2_3" style="color:;" dd_name="电子书,排行榜,文艺小说榜">文艺小说榜</a><a href="#" target="_blank" name="newcate2_2_4" style="color:;" dd_name="电子书,排行榜,经管励志榜">经管励志榜</a><a href="#" target="_blank" name="newcate2_2_5" style="color:;" dd_name="电子书,排行榜,社科历史榜">社科历史榜</a><a href="#" target="_blank" name="newcate2_2_6" style="color:;" dd_name="电子书,排行榜,科教榜">科教榜</a><a href="#" target="_blank" name="newcate2_2_7" style="color:;" dd_name="电子书,排行榜,生活榜">生活榜</a></div></li><li id="category_2_2" onmouseover="li_On(2,1,2);" onmouseout="li_Out(2,1,2);"><h4><a href="#" target="_blank" name="newcate2_3" style="color:;" dd_name="电子书,特价">特价</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_3_1" style="color:;" dd_name="电子书,特价,免费书">免费书</a><a href="#" target="_blank" name="newcate2_3_2" style="color:;" dd_name="电子书,特价,特价书">特价书</a><a href="#" target="_blank" name="newcate2_3_3" style="color:;" dd_name="电子书,特价,限时抢">限时抢</a></div></li><li id="category_2_3" onmouseover="li_On(3,1,2);" onmouseout="li_Out(3,1,2);"><h4><a href="#" target="_blank" name="newcate2_4" style="color:;" dd_name="电子书,小说">小说</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_4_1" style="color:;" dd_name="电子书,小说,侦探/悬疑/推理">侦探/悬疑/推理</a><a href="#" target="_blank" name="newcate2_4_2" style="color:;" dd_name="电子书,小说,玄幻/惊悚">玄幻/惊悚</a><a href="#" target="_blank" name="newcate2_4_3" style="color:;" dd_name="电子书,小说,中国近当代小说">中国近当代小说</a><a href="#" target="_blank" name="newcate2_4_4" style="color:;" dd_name="电子书,小说,中国古典小说">中国古典小说</a><a href="#" target="_blank" name="newcate2_4_5" style="color:;" dd_name="电子书,小说,武侠小说">武侠小说</a><a href="#" target="_blank" name="newcate2_4_6" style="color:;" dd_name="电子书,小说,外国小说">外国小说</a><a href="#" target="_blank" name="newcate2_4_7" style="color:;" dd_name="电子书,小说,穿越/言情">穿越/言情</a><a href="#" target="_blank" name="newcate2_4_8" style="color:;" dd_name="电子书,小说,爱情/情感">爱情/情感</a><a href="#" target="_blank" name="newcate2_4_9" style="color:;" dd_name="电子书,小说,影视/娱乐">影视/娱乐</a></div></li><li id="category_2_4" onmouseover="li_On(4,1,2);" onmouseout="li_Out(4,1,2);"><h4><a href="#" target="_blank" name="newcate2_5" style="color:;" dd_name="电子书,文艺">文艺</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_5_1" style="color:;" dd_name="电子书,文艺,传记">传记</a><a href="#" target="_blank" name="newcate2_5_2" style="color:;" dd_name="电子书,文艺,文学评论与鉴赏">文学评论与鉴赏</a><a href="#" target="_blank" name="newcate2_5_3" style="color:;" dd_name="电子书,文艺,随笔">随笔</a><a href="#" target="_blank" name="newcate2_5_4" style="color:;" dd_name="电子书,文艺,文学作品集">文学作品集</a><a href="#" target="_blank" name="newcate2_5_5" style="color:;" dd_name="电子书,文艺,纪实文学">纪实文学</a><a href="#" target="_blank" name="newcate2_5_6" style="color:;" dd_name="电子书,文艺,艺术">艺术</a><a href="#" target="_blank" name="newcate2_5_7" style="color:;" dd_name="电子书,文艺,摄影">摄影</a></div></li><li id="category_2_5" onmouseover="li_On(5,1,2);" onmouseout="li_Out(5,1,2);"><h4><a href="#" target="_blank" name="newcate2_6" style="color:;" dd_name="电子书,经管">经管</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_6_1" style="color:;" dd_name="电子书,经管,成功/励志">成功/励志</a><a href="#" target="_blank" name="newcate2_6_2" style="color:;" dd_name="电子书,经管,管理">管理</a><a href="#" target="_blank" name="newcate2_6_3" style="color:;" dd_name="电子书,经管,投资理财">投资理财</a><a href="#" target="_blank" name="newcate2_6_4" style="color:;" dd_name="电子书,经管,经济">经济</a></div></li><li id="category_2_6" onmouseover="li_On(6,1,2);" onmouseout="li_Out(6,1,2);"><h4><a href="#" target="_blank" name="newcate2_7" style="color:;" dd_name="电子书,社科">社科</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_7_1" style="color:;" dd_name="电子书,社科,历史">历史</a><a href="#" target="_blank" name="newcate2_7_2" style="color:;" dd_name="电子书,社科,心理学">心理学</a><a href="#" target="_blank" name="newcate2_7_3" style="color:;" dd_name="电子书,社科,哲学">哲学</a><a href="#" target="_blank" name="newcate2_7_4" style="color:;" dd_name="电子书,社科,政治/军事">政治/军事</a><a href="#" target="_blank" name="newcate2_7_5" style="color:;" dd_name="电子书,社科,社会科学">社会科学</a><a href="#" target="_blank" name="newcate2_7_6" style="color:;" dd_name="电子书,社科,古籍">古籍</a><a href="#" target="_blank" name="newcate2_7_7" style="color:;" dd_name="电子书,社科,法律">法律</a></div></li><li id="category_2_7" onmouseover="li_On(7,1,2);" onmouseout="li_Out(7,1,2);"><h4><a href="#" target="_blank" name="newcate2_8" style="color:;" dd_name="电子书,生活">生活</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_8_1" style="color:;" dd_name="电子书,生活,亲子/家教">亲子/家教</a><a href="#" target="_blank" name="newcate2_8_2" style="color:;" dd_name="电子书,生活,育儿/早教">育儿/早教</a><a href="#" target="_blank" name="newcate2_8_3" style="color:;" dd_name="电子书,生活,两性关系">两性关系</a><a href="#" target="_blank" name="newcate2_8_4" style="color:;" dd_name="电子书,生活,孕产/胎教">孕产/胎教</a><a href="#" target="_blank" name="newcate2_8_5" style="color:;" dd_name="电子书,生活,保健/养生">保健/养生</a><a href="#" target="_blank" name="newcate2_8_6" style="color:;" dd_name="电子书,生活,旅游/地图">旅游/地图</a><a href="#" target="_blank" name="newcate2_8_7" style="color:;" dd_name="电子书,生活,烹饪/美食">烹饪/美食</a><a href="#" target="_blank" name="newcate2_8_8" style="color:;" dd_name="电子书,生活,时尚/美妆">时尚/美妆</a><a href="#" target="_blank" name="newcate2_8_9" style="color:;" dd_name="电子书,生活,手工/DIY">手工/DIY</a><a href="#" target="_blank" name="newcate2_8_10" style="color:;" dd_name="电子书,生活,家庭/家居">家庭/家居</a></div></li><li id="category_2_8" onmouseover="li_On(8,1,2);" onmouseout="li_Out(8,1,2);" class=""><h4><a href="#" target="_blank" name="newcate2_9" style="color:;" dd_name="电子书,科教/进口书">科教/进口书</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_9_1" style="color:;" dd_name="电子书,科教/进口书,计算机/网络">计算机/网络</a><a href="#" target="_blank" name="newcate2_9_2" style="color:;" dd_name="电子书,科教/进口书,医学">医学</a><a href="#" target="_blank" name="newcate2_9_3" style="color:;" dd_name="电子书,科教/进口书,考试">考试</a><a href="#" target="_blank" name="newcate2_9_4" style="color:;" dd_name="电子书,科教/进口书,外语">外语</a><a href="#" target="_blank" name="newcate2_9_5" style="color:;" dd_name="电子书,科教/进口书,中小学教辅">中小学教辅</a><a href="#" target="_blank" name="newcate2_9_6" style="color:;" dd_name="电子书,科教/进口书,大中专教材">大中专教材</a><a href="#" target="_blank" name="newcate2_9_7" style="color:;" dd_name="电子书,科教/进口书,工具书">工具书</a><a href="#" target="_blank" name="newcate2_9_8" style="color:;" dd_name="电子书,科教/进口书,童书">童书</a><a href="#" target="_blank" name="newcate2_9_9" style="color:;" dd_name="电子书,科教/进口书,进口书">进口书</a></div></li><li id="category_2_9" onmouseover="li_On(9,1,2);" onmouseout="li_Out(9,1,2);"><h4><a href="#" target="_blank" name="newcate2_10" style="color:;" dd_name="电子书,网络文学">网络文学</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_10_1" style="color:;" dd_name="电子书,网络文学,男频">男频</a><a href="#" target="_blank" name="newcate2_10_2" style="color:;" dd_name="电子书,网络文学,女频">女频</a><a href="#" target="_blank" name="newcate2_10_3" style="color:;" dd_name="电子书,网络文学,玄幻奇幻">玄幻奇幻</a><a href="#" target="_blank" name="newcate2_10_4" style="color:;" dd_name="电子书,网络文学,现代都市">现代都市</a><a href="#" target="_blank" name="newcate2_10_5" style="color:;" dd_name="电子书,网络文学,武侠仙侠">武侠仙侠</a><a href="#" target="_blank" name="newcate2_10_6" style="color:;" dd_name="电子书,网络文学,现代言情">现代言情</a><a href="#" target="_blank" name="newcate2_10_7" style="color:;" dd_name="电子书,网络文学,穿越重生">穿越重生</a><a href="#" target="_blank" name="newcate2_10_8" style="color:;" dd_name="电子书,网络文学,古装言情">古装言情</a></div></li><li id="category_2_10" onmouseover="li_On(10,1,2);" onmouseout="li_Out(10,1,2);"><h4><a href="#" target="_blank" name="newcate2_11" style="color:;" dd_name="电子书,当读VIP">当读VIP</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_11_1" style="color:;" dd_name="电子书,当读VIP,包月电子书">包月电子书</a></div></li><li id="category_2_11" onmouseover="li_On(11,1,2);" onmouseout="li_Out(11,1,2);"><h4><a href="#" target="_blank" name="newcate2_12" style="color:;" dd_name="电子书,下载app">下载app</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_12_1" style="color:;" dd_name="电子书,下载app,安卓版">安卓版</a><a href="#" target="_blank" name="newcate2_12_2" style="color:;" dd_name="电子书,下载app,iOS版">iOS版</a></div></li><li id="category_2_12" onmouseover="li_On(12,1,2);" onmouseout="li_Out(12,1,2);"><h4><a href="#" target="_blank" name="newcate2_13" style="color:;" dd_name="电子书,管理电子书">管理电子书</a></h4><div class="e"><a href="#" target="_blank" name="newcate2_13_1" style="color:;" dd_name="电子书,管理电子书,管理我的书架">管理我的书架</a><a href="#" target="_blank" name="newcate2_13_2" style="color:;" dd_name="电子书,管理电子书,查看我的账户">查看我的账户</a></div></li></ul></div>
+                     </div>
+                     <div class="new_pub_nav_pop" id="con_fltab_3" style="display:none;" >
+                     	<div class="left_box">
+  <div class="new_pub_pop_guan" style="border-top: 0px;"><a href="#" target="_blank" name="newguan_3_1" dd_name="创意文具拍卖,文创馆" class="">文创馆</a><a href="#" target="_blank" name="newguan_3_2" dd_name="创意文具拍卖,艺术品拍卖馆" class="">艺术品拍卖馆</a><a href="#" target="_blank" name="newguan_3_3" dd_name="创意文具拍卖,艺术设计/艺术衍生品馆" class="">艺术设计/艺术衍生品馆</a></div>
+  <ul class="left left_03">
+  </ul>
+ 
+
+</div>
+
+                     </div>
+                     <div class="new_pub_nav_pop" id="con_fltab_4" style="display:none;" >
+                     	<div class="left_box">
+  <div class="new_pub_pop_guan"><a href="#" target="_blank" name="newguan_4_1" dd_name="服饰内衣,服装馆" class="">服装馆</a><a href="#" target="_blank" name="newguan_4_2" dd_name="服饰内衣,内衣馆" class="">内衣馆</a><a href="#" target="_blank" name="newguan_4_3" dd_name="服饰内衣,银泰百货" class="">银泰百货</a></div>
+  <ul class="left left_03">
+    <div class="new_pub_pop_img" style="display:none;"><a href="#" target="_blank" name="newpic_4_1" dd_name="服饰内衣,茵曼"  ><img src="http://img59.ddimg.cn/53840016918729_y.jpg" width="215" title="茵曼"></a><a href="#" target="_blank" name="newpic_4_2" dd_name="服饰内衣,韩都衣舍"  ><img src="http://img57.ddimg.cn/46090018253817_y.jpg" width="215" title="韩都衣舍"></a><a href="#" target="_blank" name="newpic_4_3" dd_name="服饰内衣,AMII"  ><img src="http://img58.ddimg.cn/81320015659428_y.jpg" width="215" title="AMII"></a></div>
+  </ul>
+  <ul class="left left_01">
+    <li id="category_4_0" onmouseover="li_On(0,1,4);" onmouseout="li_Out(0,1,4);">
+      <h4><a href="#" target="_blank" name="newcate4_1" style="color:;" dd_name="服饰内衣,女装">女装</a></h4>
+      <div class="e"><a href="#" target="_blank" name="newcate4_1_1" style="color:#FF0000;" dd_name="服饰内衣,女装,羽绒服">羽绒服</a><a href="#" target="_blank" name="newcate4_1_2" style="color:#FF0000;" dd_name="服饰内衣,女装,新年换新衣">新年换新衣</a><a href="#" target="_blank" name="newcate4_1_3" style="color:;" dd_name="服饰内衣,女装,裙装">裙装</a><a href="#" target="_blank" name="newcate4_1_4" style="color:;" dd_name="服饰内衣,女装,毛呢大衣">毛呢大衣</a><a href="#" target="_blank" name="newcate4_1_5" style="color:;" dd_name="服饰内衣,女装,外套">外套</a><a href="#" target="_blank" name="newcate4_1_6" style="color:;" dd_name="服饰内衣,女装,T恤">T恤</a><a href="#" target="_blank" name="newcate4_1_7" style="color:;" dd_name="服饰内衣,女装,衬衫">衬衫</a><a href="#" target="_blank" name="newcate4_1_8" style="color:;" dd_name="服饰内衣,女装,针织衫/毛衣">针织衫/毛衣</a><a href="#" target="_blank" name="newcate4_1_9" style="color:;" dd_name="服饰内衣,女装,牛仔裤">牛仔裤</a><a href="#" target="_blank" name="newcate4_1_10" style="color:;" dd_name="服饰内衣,女装,休闲裤 ">休闲裤 </a><a href="#" target="_blank" name="newcate4_1_11" style="color:;" dd_name="服饰内衣,女装,小西装">小西装</a><a href="#" target="_blank" name="newcate4_1_12" style="color:;" dd_name="服饰内衣,女装,皮衣">皮衣</a><a href="#" target="_blank" name="newcate4_1_13" style="color:;" dd_name="服饰内衣,女装,大码女装">大码女装</a><a href="#" target="_blank" name="newcate4_1_14" style="color:;" dd_name="服饰内衣,女装,套装">套装</a><a href="#" target="_blank" name="newcate4_1_15" style="color:;" dd_name="服饰内衣,女装,裤装">裤装</a><a href="#" target="_blank" name="newcate4_1_16" style="color:;" dd_name="服饰内衣,女装,少女装">少女装</a><a href="#" target="_blank" name="newcate4_1_17" style="color:;" dd_name="服饰内衣,女装,淑女装">淑女装</a><a href="#" target="_blank" name="newcate4_1_18" style="color:;" dd_name="服饰内衣,女装,中老年服装">中老年服装</a><a href="#" target="_blank" name="newcate4_1_19" style="color:;" dd_name="服饰内衣,女装,少淑装">少淑装</a><a href="#" target="_blank" name="newcate4_1_20" style="color:;" dd_name="服饰内衣,女装,成熟女装">成熟女装</a><a href="#" target="_blank" name="newcate4_1_21" style="color:;" dd_name="服饰内衣,女装,婚纱礼服">婚纱礼服</a><a href="#" target="_blank" name="newcate4_1_22" style="color:;" dd_name="服饰内衣,女装,羊绒">羊绒</a><a href="#" target="_blank" name="newcate4_1_23" style="color:;" dd_name="服饰内衣,女装,真丝">真丝</a></div>
+    </li>
+  </ul>
+  <ul class="left left_02">
+    <li id="category_4_2" onmouseover="li_On(2,1,4);" onmouseout="li_Out(2,1,4);" class="">
+      <h4><a href="#" target="_blank" name="newcate4_2" dd_name="服饰内衣,男装"  >男装</a></h4>
+      <div class="e"><a href="#" target="_blank" name="newcate4_2_1" dd_name="服饰内衣,男装,羽绒服" style="color:#FF0000;" "="">羽绒服</a><a href="#" target="_blank" name="newcate4_2_2" dd_name="服饰内衣,男装,夹克"  >夹克</a><a href="#" target="_blank" name="newcate4_2_3" dd_name="服饰内衣,男装,毛呢外套"  >毛呢外套</a><a href="#" target="_blank" name="newcate4_2_4" dd_name="服饰内衣,男装,棉服"  >棉服</a><a href="#" target="_blank" name="newcate4_2_5" dd_name="服饰内衣,男装,针织衫/毛衣" style="color:#FF0000;" "="">针织衫/毛衣</a><a href="#" target="_blank" name="newcate4_2_6" dd_name="服饰内衣,男装,衬衫"  >衬衫</a><a href="#" target="_blank" name="newcate4_2_7" dd_name="服饰内衣,男装,牛仔裤"  >牛仔裤</a><a href="#" target="_blank" name="newcate4_2_8" dd_name="服饰内衣,男装,休闲裤"  >休闲裤</a><a href="#" target="_blank" name="newcate4_2_9" dd_name="服饰内衣,男装,卫衣"  >卫衣</a><a href="#" target="_blank" name="newcate4_2_10" dd_name="服饰内衣,男装,T恤"  >T恤</a><a href="#" target="_blank" name="newcate4_2_11" dd_name="服饰内衣,男装,皮衣/皮草"  >皮衣/皮草</a><a href="#" target="_blank" name="newcate4_2_12" dd_name="服饰内衣,男装,羊绒"  >羊绒</a><a href="#" target="_blank" name="newcate4_2_13" dd_name="服饰内衣,男装,外套"  >外套</a><a href="#" target="_blank" name="newcate4_2_14" dd_name="服饰内衣,男装,西服套装"  >西服套装</a><a href="#" target="_blank" name="newcate4_2_15" dd_name="服饰内衣,男装,西服"  >西服</a><a href="#" target="_blank" name="newcate4_2_16" dd_name="服饰内衣,男装,西裤"  >西裤</a><a href="#" target="_blank" name="newcate4_2_17" dd_name="服饰内衣,男装,POLO衫"  >POLO衫</a><a href="#" target="_blank" name="newcate4_2_18" dd_name="服饰内衣,男装,青春"  >青春</a><a href="#" target="_blank" name="newcate4_2_19" dd_name="服饰内衣,男装,休闲男装"  >休闲男装</a><a href="#" target="_blank" name="newcate4_2_20" dd_name="服饰内衣,男装,商务男装"  >商务男装</a><a href="#" target="_blank" name="newcate4_2_21" dd_name="服饰内衣,男装,大码男装"  >大码男装</a><a href="#" target="_blank" name="newcate4_2_22" dd_name="服饰内衣,男装,特色男装"  >特色男装</a><a href="#" target="_blank" name="newcate4_2_23" dd_name="服饰内衣,男装,中老年男装"  >中老年男装</a><a href="#" target="_blank" name="newcate4_2_24" dd_name="服饰内衣,男装,潮流原创"  >潮流原创</a></div>
+    </li>
+    <li id="category_4_3" onmouseover="li_On(3,1,4);" onmouseout="li_Out(3,1,4);">
+      <h4><a href="#" target="_blank" name="newcate4_3" dd_name="服饰内衣,内衣"  >内衣</a></h4>
+      <div class="e"><a href="#" target="_blank" name="newcate4_3_1" dd_name="服饰内衣,内衣,保暖" style="color:#FF0000;" "="">保暖</a><a href="#" target="_blank" name="newcate4_3_2" dd_name="服饰内衣,内衣,本命年内衣" style="color:#FF0000;" "="">本命年内衣</a><a href="#" target="_blank" name="newcate4_3_3" dd_name="服饰内衣,内衣,情侣家居服"  >情侣家居服</a><a href="#" target="_blank" name="newcate4_3_4" dd_name="服饰内衣,内衣,家居服"  >家居服</a><a href="#" target="_blank" name="newcate4_3_5" dd_name="服饰内衣,内衣,男士背心"  >男士背心</a><a href="#" target="_blank" name="newcate4_3_6" dd_name="服饰内衣,内衣,男士内裤"  >男士内裤</a><a href="#" target="_blank" name="newcate4_3_7" dd_name="服饰内衣,内衣,女士内裤"  >女士内裤</a><a href="#" target="_blank" name="newcate4_3_8" dd_name="服饰内衣,内衣,打底"  >打底</a><a href="#" target="_blank" name="newcate4_3_9" dd_name="服饰内衣,内衣,丝袜"  >丝袜</a><a href="#" target="_blank" name="newcate4_3_10" dd_name="服饰内衣,内衣,棉袜" style="color:#FF0000;" "="">棉袜</a><a href="#" target="_blank" name="newcate4_3_11" dd_name="服饰内衣,内衣,少女文胸"  >少女文胸</a><a href="#" target="_blank" name="newcate4_3_12" dd_name="服饰内衣,内衣,运动文胸"  >运动文胸</a><a href="#" target="_blank" name="newcate4_3_13" dd_name="服饰内衣,内衣,无钢圈文胸"  >无钢圈文胸</a><a href="#" target="_blank" name="newcate4_3_14" dd_name="服饰内衣,内衣,聚拢文胸"  >聚拢文胸</a><a href="#" target="_blank" name="newcate4_3_15" dd_name="服饰内衣,内衣,全棉睡衣" style="color:#FF0000;" "="">全棉睡衣</a><a href="#" target="_blank" name="newcate4_3_16" dd_name="服饰内衣,内衣,性感塑身"  >性感塑身</a><a href="#" target="_blank" name="newcate4_3_17" dd_name="服饰内衣,内衣,吊带/背心"  >吊带/背心</a><a href="#" target="_blank" name="newcate4_3_18" dd_name="服饰内衣,内衣,情趣内衣"  >情趣内衣</a><a href="#" target="_blank" name="newcate4_3_19" dd_name="服饰内衣,内衣,泳装"  >泳装</a></div>
+    </li>
+    <li id="category_4_4" onmouseover="li_On(4,1,4);" onmouseout="li_Out(4,1,4);">
+      <h4><a href="#" target="_blank" name="newcate4_4" dd_name="服饰内衣,服饰配件"  >服饰配件</a></h4>
+      <div class="e"><a href="#" target="_blank" name="newcate4_4_1" dd_name="服饰内衣,服饰配件,帽子" style="color:#FF0000;" "="">帽子</a><a href="#" target="_blank" name="newcate4_4_2" dd_name="服饰内衣,服饰配件,手套"  >手套</a><a href="#" target="_blank" name="newcate4_4_3" dd_name="服饰内衣,服饰配件,腰带/皮带/腰链/腰封"  >腰带/皮带/腰链/腰封</a><a href="#" target="_blank" name="newcate4_4_4" dd_name="服饰内衣,服饰配件,丝巾/围巾/披肩" style="color:#FF0000;" "="">丝巾/围巾/披肩</a><a href="#" target="_blank" name="newcate4_4_5" dd_name="服饰内衣,服饰配件,太阳镜"  >太阳镜</a><a href="#" target="_blank" name="newcate4_4_6" dd_name="服饰内衣,服饰配件,领带/领结/领带夹"  >领带/领结/领带夹</a><a href="#" target="_blank" name="newcate4_4_7" dd_name="服饰内衣,服饰配件,遮阳伞"  >遮阳伞</a><a href="#" target="_blank" name="newcate4_4_8" dd_name="服饰内衣,服饰配件,其他"  >其他</a></div>
+    </li>
+    <li id="category_4_5" onmouseover="li_On(5,1,4);" onmouseout="li_Out(5,1,4);">
+      <h4><a href="#" target="_blank" name="newcate4_5" dd_name="服饰内衣,银泰百货"  >银泰百货</a></h4>
+      <div class="e"><a href="#" target="_blank" name="newcate4_5_1" dd_name="服饰内衣,银泰百货,女包"  >女包</a><a href="#" target="_blank" name="newcate4_5_2" dd_name="服饰内衣,银泰百货,男包"  >男包</a><a href="#" target="_blank" name="newcate4_5_3" dd_name="服饰内衣,银泰百货,太阳镜"  >太阳镜</a><a href="#" target="_blank" name="newcate4_5_4" dd_name="服饰内衣,银泰百货,男士服装"  >男士服装</a><a href="#" target="_blank" name="newcate4_5_5" dd_name="服饰内衣,银泰百货,珠宝/配饰"  >珠宝/配饰</a><a href="#" target="_blank" name="newcate4_5_6" dd_name="服饰内衣,银泰百货,皮带"  >皮带</a><a href="#" target="_blank" name="newcate4_5_7" dd_name="服饰内衣,银泰百货,施华洛世奇" style="color:#FF0000;" "="">施华洛世奇</a><a href="#" target="_blank" name="newcate4_5_8" dd_name="服饰内衣,银泰百货,MK" style="color:#FF0000;" "="">MK</a><a href="#" target="_blank" name="newcate4_5_9" dd_name="服饰内衣,银泰百货,PRADA"  >PRADA</a><a href="#" target="_blank" name="newcate4_5_10" dd_name="服饰内衣,银泰百货,gucci"  >gucci</a><a href="#" target="_blank" name="newcate4_5_11" dd_name="服饰内衣,银泰百货,BURBERRY"  >BURBERRY</a><a href="#" target="_blank" name="newcate4_5_12" dd_name="服饰内衣,银泰百货,coach"  >coach</a><a href="#" target="_blank" name="newcate4_5_13" dd_name="服饰内衣,银泰百货,CK"  >CK</a><a href="#" target="_blank" name="newcate4_5_14" dd_name="服饰内衣,银泰百货,万宝龙"  >万宝龙</a><a href="#" target="_blank" name="newcate4_5_15" dd_name="服饰内衣,银泰百货,FENDI"  >FENDI</a><a href="#" target="_blank" name="newcate4_5_16" dd_name="服饰内衣,银泰百货,Salvatore Ferragamo"  >Salvatore Ferragamo</a><a href="#" target="_blank" name="newcate4_5_17" dd_name="服饰内衣,银泰百货,Bally"  >Bally</a></div>
+    </li>
+  </ul>
+</div>
+
+                     </div>
+                     <div class="new_pub_nav_pop" id="con_fltab_5" style="display:none;" ><div class="left_box">
+</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div id="bd_auto" name="9149">
+  <div class="top_ad_banner"><a href="#"><img src="{% static 'images/1200x65_sk_1229.jpg' %}" width="1200" height="65" /></a></div>
+  <div class="con storey_one" name="9150">
+    <div class="col storey_one_left" name="9163">
+      <div class="sidemenu" name="m403752_pid0_t9141" dd_name="左侧分类" ddt-area="mix_403752" ddt-floor="mix_403752">
+        <div class="con flq_head" >图书分类</div>
+        <div class="con flq_body" >
+
+            <div class="level_one">
+                {% for cate1 in category1 %}
+                    <dl class="con primary_dl">
+                        <dt class="con " name="m403752_pid5367_t10276"><span><a
+                                href="{% url 'ddapp:booklist' %}?id={{ cate1.id }}"
+                                target="_blank">{{ cate1.category }}</a></span></dt>
+                        <dd class="con sec_cate dd_level1">
+                            {% for cate2 in category2 %}
+                                {% if cate2.parent_id == cate1.id %}
+                                    <a href="{% url 'ddapp:booklist' %}?id1={{ cate2.id }}" target="_blank" title="教材"
+                                       class=""> {{ cate2.category }} </a>
+                                {% endif %}
+
+                            {% endfor %}
+                        </dd>
+                    </dl>
+
+                {% endfor %}
+
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+    <div class="col storey_one_center" name="9164">
+      <div class="fl_w" >
+        <div id="banner_tabs" class="flexslider">
+          <ul class="slides">
+            <li> <a href="http://www.yuloo.com/slschool/gjgz/"> <img src="{% static 'images/750x315_djj_1230.JPG' %}" width="750" height="315" alt=""> </a> </li>
+            <li> <a href="http://www.yuloo.com/slschool/international/"> <img src="{% static 'images/750x315wen0103.jpg' %}" width="750" height="315" alt=""> </a> </li>
+            <li> <a href="http://www.yuloo.com/slschool/Primary/"> <img src="{% static 'images/750x315wen0103.jpg' %}" width="750" height="315" alt=""> </a> </li>
+            <li> <a href="http://www.yuloo.com/slschool/junior/"> <img src="{% static 'images/750x315wen0103.jpg' %}" width="750" height="315" alt=""> </a> </li>
+          </ul>
+          <ul class="flex-direction-nav">
+            <li><a class="flex-prev">Previous</a></li>
+            <li><a class="flex-next">Next</a></li>
+          </ul>
+          <ul id="bannerCtrl" class="flex-control-nav flex-control-paging">
+            <li class="active"><a></a></li>
+            <li><a></a></li>
+            <li><a></a></li>
+            <li><a></a></li>
+          </ul>
+          <div class="adver_icon"></div>
+        </div>
+      </div>
+      <!-- End 焦点图 -->
+      
+      <div class="bys clearfix">
+        <div class="book_online_title" name="m403754_pid5292_t9125"></div>
+        <script type="text/javascript">
+		$(function(){
+			$('#slides01').slides({
+				effect: 'slide01'
+			});
+		})
+	</script>
+        <div id="slides01" class="center_shop clearfix">
+          <div class="auto1 clearfix" >
+            <ul class="slides_container clearfix">
+              
+              <li  >
+                  {% for new in new_book %}
+                      <dl class="clearfix">
+                  <dt><a class="img" href="{% url 'ddapp:bookde' %}?id={{ new.id }}" target="_blank"><img src="{% static new.pictures %}" alt=""></a></dt>
+                  <dd>
+                    <p class="name" ><a title="" href="{% url 'ddapp:bookde' %}?id={{ new.id }}" target="_blank" style=" ">{{ new.title }}</a></p>
+                    <p class="author"><span class="author_t"></span>{{ new.author }}</p>
+                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">{{ new.discount }}</span><span class="price_r"><span class="sign">￥</span><span class="num">{{ new.price }}</span></span></p>
+                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>
+                </dl>
+                  {% endfor %}
+
+
+{#                <dl class="clearfix">#}
+{#                  <dt><a class="img" href="#" target="_blank"><img src="{% static 'images/22876893-1_l.jpg' %}" alt=""></a></dt>#}
+{#                  <dd>#}
+{#                    <p class="name" ><a title="" href="#" target="_blank" style=" ">家庭系统排列――重建家庭秩序&nbsp;让爱自然流动</a></p>#}
+{#                    <p class="author"><span class="author_t"></span>郑立峰  著</p>#}
+{#                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">19</span><span class="tail">.00</span></span><span class="price_r"><span class="sign">￥</span><span class="num">38</span><span class="tail">.00</span></span></p>#}
+{#                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>#}
+{#                </dl>#}
+{#                <dl class="clearfix">#}
+{#                  <dt><a class="img" href="#" target="_blank"><img src="{% static 'images/22876893-1_l.jpg' %}" alt=""></a></dt>#}
+{#                  <dd>#}
+{#                    <p class="name" ><a title="" href="#" target="_blank" style=" ">家庭系统排列――重建家庭秩序&nbsp;让爱自然流动</a></p>#}
+{#                    <p class="author"><span class="author_t"></span>郑立峰  著</p>#}
+{#                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">19</span><span class="tail">.00</span></span><span class="price_r"><span class="sign">￥</span><span class="num">38</span><span class="tail">.00</span></span></p>#}
+{#                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>#}
+{#                </dl>#}
+{#                <dl class="clearfix">#}
+{#                  <dt><a class="img" href="#" target="_blank"><img src="{% static 'images/22876893-1_l.jpg' %}" alt=""></a></dt>#}
+{#                  <dd>#}
+{#                    <p class="name" ><a title="" href="#" target="_blank" style=" ">家庭系统排列――重建家庭秩序&nbsp;让爱自然流动</a></p>#}
+{#                    <p class="author"><span class="author_t"></span>郑立峰  著</p>#}
+{#                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">19</span><span class="tail">.00</span></span><span class="price_r"><span class="sign">￥</span><span class="num">38</span><span class="tail">.00</span></span></p>#}
+{#                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>#}
+{#                </dl>#}
+{#                <dl class="clearfix">#}
+{#                  <dt><a class="img" href="#" target="_blank"><img src="{% static 'images/22876893-1_l.jpg' %}" alt=""></a></dt>#}
+{#                  <dd>#}
+{#                    <p class="name" ><a title="" href="#" target="_blank" style=" ">家庭系统排列――重建家庭秩序&nbsp;让爱自然流动</a></p>#}
+{#                    <p class="author"><span class="author_t"></span>郑立峰  著</p>#}
+{#                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">19</span><span class="tail">.00</span></span><span class="price_r"><span class="sign">￥</span><span class="num">38</span><span class="tail">.00</span></span></p>#}
+{#                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>#}
+{#                </dl>#}
+{#                <dl class="clearfix">#}
+{#                  <dt><a class="img" href="#" target="_blank"><img src="{% static 'images/22876893-1_l.jpg' %}" alt=""></a></dt>#}
+{#                  <dd>#}
+{#                    <p class="name" ><a title="" href="#" target="_blank" style=" ">家庭系统排列――重建家庭秩序&nbsp;让爱自然流动</a></p>#}
+{#                    <p class="author"><span class="author_t"></span>郑立峰  著</p>#}
+{#                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">19</span><span class="tail">.00</span></span><span class="price_r"><span class="sign">￥</span><span class="num">38</span><span class="tail">.00</span></span></p>#}
+{#                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>#}
+{#                </dl>#}
+{#                <dl class="clearfix">#}
+{#                  <dt><a class="img" href="#" target="_blank"><img src="{% static 'images/22876893-1_l.jpg' %}" alt=""></a></dt>#}
+{#                  <dd>#}
+{#                    <p class="name" ><a title="" href="#" target="_blank" style=" ">家庭系统排列――重建家庭秩序&nbsp;让爱自然流动</a></p>#}
+{#                    <p class="author"><span class="author_t"></span>郑立峰  著</p>#}
+{#                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">19</span><span class="tail">.00</span></span><span class="price_r"><span class="sign">￥</span><span class="num">38</span><span class="tail">.00</span></span></p>#}
+{#                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>#}
+{#                </dl>#}
+{#                <dl class="clearfix">#}
+{#                  <dt><a class="img" href="#" target="_blank"><img src="{% static 'images/22876893-1_l.jpg' %}" alt=""></a></dt>#}
+{#                  <dd>#}
+{#                    <p class="name" ><a title="" href="#" target="_blank" style=" ">家庭系统排列――重建家庭秩序&nbsp;让爱自然流动</a></p>#}
+{#                    <p class="author"><span class="author_t"></span>郑立峰  著</p>#}
+{#                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">19</span><span class="tail">.00</span></span><span class="price_r"><span class="sign">￥</span><span class="num">38</span><span class="tail">.00</span></span></p>#}
+{#                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>#}
+{#                </dl>#}
+              </li>
+            </ul>
+            <a href="#" class="prev">prev</a> <a href="#" class="next">next</a> </div>
+        </div>
+      </div>
+    </div>
+    <div class="col storey_one_right" name="9165">
+      <div class="con " name="9166">
+       
+        <div class="spacer"></div>
+      </div>
+      <script type="text/javascript" src="{% static 'js/jquery-latest.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/slides.min.jquery.js' %}"></script>
+      <div><a href="#"><img src="{% static 'images/199x178ts720.jpg' %}" width="240" height="195" /></a></div>
+      
+      <script type="text/javascript">
+    function player1(id){
+    var id=document.getElementById(id)
+    id.style.display="block";
+    }
+    function clocer1(id){
+    var id=document.getElementById(id)
+    id.style.display="none";
+    }
+    </script>
+    <div style="margin-top:14px; margin-bottom:23px;"><a href="#"><img src="{% static 'images/1yuan240-120.jpg' %}" width="240" height="105" /></a></div>
+      <div class="con " name="9168">
+        <div class="con title" name="m403757_pid0_t9121"> <a nname="book-65152-9168_1-473546_1" href="http://bang.dangdang.com/books/newhotsales/01.00.00.00.00.00-recent7-0-0-1-1" target="_blank" title="新书热卖榜" class="hot_link" ddt-pit="text_1" ddt-src="http://bang.dangdang.com/books/newhotsales/01.00.00.00.00.00-recent7-0-0-1-1">新书热卖榜</a> </div>
+        <div class="head01">
+          <ul class="tab_aa">
+            <li id="two1" onmouseover="setTab('two',1,5)" class="hover"><a href="#" target="_blank" ><span>总榜</span></a></li>
+            
+          </ul>
+        </div>
+        <div class="bor_list_con">
+          <div  id="con_two_1" style="display:block;" >
+            <ul class="list01">
+                {% for nw in new_hot %}
+                    {% if forloop.counter == 1 %}
+                        <li class="active"> <span class="num num1">{{ forloop.counter }}</span>
+                <div> <a class="list_name" href="{% url 'ddapp:bookde' %}?id={{ nw.id }}">{{ nw.title }}</a>
+                  <dl class="list_con clearfix">
+                    <dt><a href="{% url 'ddapp:bookde' %}?id={{ nw.id }}"><img src="{% static nw.pictures %}" /></a></dt>
+                    <dd>
+                      <p class="name"><a href="{% url 'ddapp:bookde' %}?id={{ nw.id }}">{{ nw.title }}</a></p>
+                      <b>￥{{ nw.discount }}</b><em>￥{{ nw.price }}</em><a class="pl" href="{% url 'ddapp:bookde' %}?id={{ nw.id }}">{{ nw.review_count }}条评论</a></dd>
+                  </dl>
+                </div>
+              </li>
+                        {% else %}
+                        <li class=""> <span class="num num1">{{ forloop.counter }}</span>
+                <div> <a class="list_name" href="{% url 'ddapp:bookde' %}?id={{ nw.id }}">{{ nw.title }}</a>
+                  <dl class="list_con clearfix">
+                    <dt><a href="{% url 'ddapp:bookde' %}?id={{ nw.id }}"><img src="{% static nw.pictures %}" /></a></dt>
+                    <dd>
+                      <p class="name"><a href="{% url 'ddapp:bookde' %}?id={{ nw.id }}">{{ nw.title }}</a></p>
+                      <b>￥{{ nw.discount }}</b><em>￥{{ nw.price }}</em><a class="pl" href="{% url 'ddapp:bookde' %}?id={{ nw.id }}">{{ nw.review_count }}条评论</a></dd>
+                  </dl>
+                </div>
+              </li>
+
+                    {% endif %}
+
+                {% endfor %}
+            </ul>
+          </div>
+          <a href="#" target="_blank" title="查看完整榜单>>" class="more_top" ddt-pit="text_1" ddt-src="http://bang.dangdang.com/books/bestsellers/01.00.00.00.00.00-recent7-0-0-1-1"> 查看完整榜单&gt;&gt; </a> </div>
+      </div>
+      <script>$(document).ready(function() {
+            $list_li = $(".list01 li");
+            $list_li.eq(0).addClass("active");
+            $list_li.mouseover(function(){
+                $(this).addClass("active").siblings().removeClass("active");
+           });
+        });</script>
+      <style>
+		.list_name{ display:block;}
+		.list_con{ display:none;}
+		.active .list_con{ display:block;}
+		.active div .list_name{ display:none;}
+        </style>
+    </div>
+  </div>
+  <div class="con storey_two" name="9151">
+    <div class="col storey_two_left" name="9161">
+    <div class="book_online_title1" name="m403754_pid5292_t9125"></div>
+         <script type="text/javascript">
+		$(function(){
+			$('#slides02').slides({
+				effect: 'slide02'
+			});
+		})
+	</script>
+        <div id="slides02" class="center_shop clearfix">
+          <div class="auto1 clearfix" style="padding-left: 100px">
+            <ul class="slides_container clearfix">
+              <li>
+                  {% for zb in zhubian %}
+                      <dl class="clearfix">
+                  <dt><a class="img" href="{% url 'ddapp:bookde' %}?id={{ zb.id }}" target="_blank"><img src="{% static zb.pictures %}" alt=""></a></dt>
+                  <dd>
+                    <p class="name" ><a title="" href="{% url 'ddapp:bookde' %}?id={{ zb.id }}" target="_blank" style=" ">{{ zb.title }}</a></p>
+                    <p class="author"><span class="author_t"></span>{{ zb.author }}</p>
+                    <p class="price"><span class="rob"><span class="sign">￥</span><span class="num">{{ zb.discount }}</span></span><span class="price_r"><span class="sign">￥</span><span class="num">{{ zb.price }}</span></span></p>
+                    <span style="background: url(http://img4.ddimg.cn/00035/pic/xsq.png) no-repeat 0px 0px; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img4.ddimg.cn/00035/pic/xsq.png',sizingMethod='noscale');" class="product_tags"></span></dd>
+                </dl>
+                  {% endfor %}
+
+              </li>
+            </ul>
+            <a href="#" class="prev">prev</a> <a href="#" class="next">next</a> </div>
+        </div>
+      <div class="spacer"></div>
+    </div>
+    <div class="col storey_two_right">
+      <div class="con " name="9168">
+        <div class="con title" name="m403757_pid0_t9121"> <a nname="book-65152-9168_1-473546_1" href="http://bang.dangdang.com/books/newhotsales/01.00.00.00.00.00-recent7-0-0-1-1" target="_blank" title="新书热卖榜" class="hot_link" ddt-pit="text_1" ddt-src="http://bang.dangdang.com/books/newhotsales/01.00.00.00.00.00-recent7-0-0-1-1">新书热卖榜</a> </div>
+        <div class="head01">
+          <ul class="tab_aa">
+            <li id="four1" onmouseover="setTab('four',1,5)" class=""><a href="#" target="_blank"><span>总榜</span></a></li>
+          </ul>
+        </div>
+        <div class="bor_list_con">
+          <div id="con_four_1">
+            <ul class="list01">
+              <li class="active"> <span class="num num1">1</span>
+                {% for nw2 in new_hot2 %}
+                    {% if forloop.counter == 1 %}
+                        <li class="active"> <span class="num num1">{{ forloop.counter }}</span>
+                <div> <a class="list_name" href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}">{{ nw2.title }}</a>
+                  <dl class="list_con clearfix">
+                    <dt><a href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}"><img src="{% static nw2.pictures %}" /></a></dt>
+                    <dd>
+                      <p class="name"><a href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}">{{ nw2.title }}</a></p>
+                      <b>￥{{ nw2.discount }}</b><em>￥{{ nw2.price }}</em><a class="pl" href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}">{{ nw2.review_count }}条评论</a></dd>
+                  </dl>
+                </div>
+              </li>
+                        {% else %}
+                        <li class=""> <span class="num num1">{{ forloop.counter }}</span>
+                <div> <a class="list_name" href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}">{{ nw2.title }}</a>
+                  <dl class="list_con clearfix">
+                    <dt><a href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}"><img src="{% static nw2.pictures %}" /></a></dt>
+                    <dd>
+                      <p class="name"><a href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}">{{ nw2.title }}</a></p>
+                      <b>￥{{ nw2.discount }}</b><em>￥{{ nw2.price }}</em><a class="pl" href="{% url 'ddapp:bookde' %}?id={{ nw2.id }}">{{ nw2.review_count }}条评论</a></dd>
+                  </dl>
+                </div>
+              </li>
+                    {% endif %}
+
+
+                {% endfor %}
+                  </dl>
+
+              </li>
+
+            </ul>
+          </div>
+          <a href="#" target="_blank" title="查看完整榜单>>" class="more_top" ddt-pit="text_1" ddt-src="http://bang.dangdang.com/books/bestsellers/01.00.00.00.00.00-recent7-0-0-1-1"> 查看完整榜单&gt;&gt; </a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <link href="{% static 'css/footer_150526.css'%}" rel="stylesheet" type="text/css">
+  <div class="footer" dd_name="页尾">
+    <div class="footer_pic_new">
+      <div class="footer_pic_new_inner"> <a name="foot_1" href="http://help.dangdang.com/details/page13" target="_blank" class="footer_pic01"><span>正规渠道正品保障</span></a> <a name="foot_2" class="footer_pic02" href="http://help.dangdang.com/details/page21" target="_blank"><span>放心购物货到付款</span></a> <a name="foot_3" class="footer_pic03" href="http://help.dangdang.com/details/page16" target="_blank"><span>150城市次日送达</span></a> <a name="foot_4" class="footer_pic04" href="http://help.dangdang.com/details/page29" target="_blank"><span>上门退货当场退款</span></a> </div>
+    </div>
+    <div class="public_footer_new">
+      <div class="footer_sort footer_nvice"> <span class="f_title">购物指南</span>
+        <ul>
+          <li><a name="foot_gouwu" href="http://help.dangdang.com/details/page2" target="_blank" class="main" rel="nofollow">购物流程</a></li>
+          <li><a name="foot_jifen" href="http://help.dangdang.com/details/page6" target="_blank" rel="nofollow">发票制度</a></li>
+          <li><a name="foot_fapiao" href="http://safe.dangdang.com" target="_blank" rel="nofollow">账户管理</a></li>
+          <li><a name="foot_mydangdang" href="http://help.dangdang.com/details/page8" target="_blank" rel="nofollow">会员优惠</a></li>
+        </ul>
+      </div>
+      <div class="footer_sort footer_pay"> <span class="f_title">支付方式</span>
+        <ul>
+          <li><a name="foot_tuihuanhuoliucheng" href="http://help.dangdang.com/details/page21" target="_blank" rel="nofollow">货到付款</a></li>
+          <li><a name="foot_tuihuanhuo" href="http://help.dangdang.com/details/page22" target="_blank" rel="nofollow">网上支付</a></li>
+          <li><a name="foot_huanhuo" href="http://help.dangdang.com/details/page24" target="_blank" rel="nofollow">礼品卡支付</a></li>
+          <li><a name="foot_tuihuo" href="http://help.dangdang.com/details/page23" target="_blank" rel="nofollow">银行转帐</a></li>
+        </ul>
+      </div>
+      <div class="footer_sort footer_characteristic"> <span class="f_title">订单服务</span>
+        <ul>
+          <li><a name="foot_jifen" href="http://help.dangdang.com/details/page19" target="_blank" class="main" rel="nofollow">订单配送查询</a></li>
+          <li><a name="foot_lipinka" href="http://help.dangdang.com/details/page4" target="_blank" rel="nofollow">订单状态说明</a></li>
+          <li><a name="foot_ershoushu" href="http://orderb.dangdang.com/myallorders.aspx" target="_blank" rel="nofollow">自助取消订单</a></li>
+          <li><a name="foot_shouji" href="http://orderb.dangdang.com/myallorders.aspx" target="_blank" rel="nofollow">自助修改订单</a></li>
+        </ul>
+      </div>
+      <div class="footer_sort footer_distribution"> <span class="f_title">配送方式</span>
+        <ul>
+          <li><a name="foot_huodaofukuan" href="http://help.dangdang.com/details/page14" target="_blank" class="main" rel="nofollow">配送范围及免邮标准</a></li>
+          <li><a name="foot_yinhangzhuanzhang" href="http://help.dangdang.com/details/page15" target="_blank" class="main" rel="nofollow">当日递/次日达</a></li>
+          <li><a name="foot_dangdanglijuan" href="http://help.dangdang.com/details/page18" target="_blank" rel="nofollow">订单自提</a></li>
+          <li><a name="foot_dangdanglijuan" href="http://help.dangdang.com/details/page20" target="_blank" rel="nofollow">验货与签收</a></li>
+        </ul>
+      </div>
+      <div class="footer_sort footer_help"> <span class="f_title">退换货</span>
+        <ul>
+          <li><a name="foot_faq" href="http://help.dangdang.com/details/page28" target="_blank" rel="nofollow">退换货政策</a></li>
+          <li><a name="foot_zhaohuimima" href="http://return.dangdang.com/reverseapplyselect.aspx" target="_blank" rel="nofollow">自助申请退换货</a></li>
+          <li><a name="foot_huikuandan" href="http://return.dangdang.com/reverseapplylist.aspx" target="_blank" rel="nofollow">退换货进度查询</a></li>
+          <li><a name="foot_tuiding" href="http://help.dangdang.com/details/page31" target="_blank" rel="nofollow">退款方式和时间</a></li>
+        </ul>
+      </div>
+      <div class="footer_sort footer_shangjia"> <span class="f_title">商家服务</span>
+        <ul>
+          <li><a name="foot_zhaohuimima" href="http://shop.dangdang.com/shangjia" target="_blank" rel="nofollow">商家中心</a></li>
+          <li><a name="foot_huikuandan" href="http://outlets.dangdang.com/merchants_cooperation" target="_blank" rel="nofollow">运营服务</a></li>
+          <li><a name="foot_tuiding" href="http://outlets.dangdang.com/merchants_outlets" target="_blank" rel="nofollow">加入尾品汇</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer_nav_box">
+      <div class="footer_nav"><a href="http://static.dangdang.com/topic/2227/176801.shtml" target="_blank" rel="nofollow">公司简介</a><span class="sep">| </span><a href="http://ir.dangdang.com/" target="_blank">Investor Relations</a><span class="sep">|</span><a href="http://zhaopin.dangdang.com" target="_blank">诚聘英才</a><span class="sep">|</span><a href="http://union.dangdang.com/" target="_blank">网站联盟</a><span class="sep">|</span><a href="http://outlets.dangdang.com/merchants_open" target="_blank">当当招商</a><span class="sep">|</span><a href="http://misc.dangdang.com/groupbuy/Default.aspx" target="_blank" rel="nofollow">机构销售</a><span class="sep">|</span><a href="http://static.dangdang.com/topic/744/200778.shtml" target="_blank">手机当当</a><span class="sep">|</span><a href="http://blog.dangdang.com/" target="_blank">官方
+        
+        Blog</a> <span class="sep">|</span>
+        <div class="footer_hot_search"><a href="http://www.dangdang.com/sales/brands/" target="_blank" class="footer_a" id="hot_search" onmouseover="showghotsearch('hot_search','hot_search_content')" onmouseout="hidehotsearch('hot_search','hot_search_content');">热词搜索</a>
+          <div class="pos_a_box" style="display: none;" id="hot_search_content" onmouseover="showghotsearch('hot_search','hot_search_content')" onmouseout="hidehotsearch('hot_search','hot_search_content');"> <a href="http://www.dangdang.com/sales/brands/a-1.html" target="_blank">A</a><a href="http://www.dangdang.com/sales/brands/b-1.html" target="_blank">B</a><a href="http://www.dangdang.com/sales/brands/c-1.html" target="_blank">C</a><a href="http://www.dangdang.com/sales/brands/d-1.html" target="_blank">D</a><a href="http://www.dangdang.com/sales/brands/e-1.html" target="_blank">E</a><a href="http://www.dangdang.com/sales/brands/f-1.html" target="_blank">F</a><a href="http://www.dangdang.com/sales/brands/g-1.html" target="_blank">G</a> <a href="http://www.dangdang.com/sales/brands/h-1.html" target="_blank">H</a><a href="http://www.dangdang.com/sales/brands/i-1.html" target="_blank">I</a><a href="http://www.dangdang.com/sales/brands/j-1.html" target="_blank">J</a><a href="http://www.dangdang.com/sales/brands/k-1.html" target="_blank">K</a><a href="http://www.dangdang.com/sales/brands/l-1.html" target="_blank">L</a><a href="http://www.dangdang.com/sales/brands/m-1.html" target="_blank">M</a><a href="http://www.dangdang.com/sales/brands/n-1.html" target="_blank">N</a> <a href="http://www.dangdang.com/sales/brands/o-1.html" target="_blank">O</a><a href="http://www.dangdang.com/sales/brands/p-1.html" target="_blank">P</a><a href="http://www.dangdang.com/sales/brands/q-1.html" target="_blank">Q</a><a href="http://www.dangdang.com/sales/brands/r-1.html" target="_blank">R</a><a href="http://www.dangdang.com/sales/brands/s-1.html" target="_blank">S</a><a href="http://www.dangdang.com/sales/brands/t-1.html" target="_blank">T</a><a href="http://www.dangdang.com/sales/brands/u-1.html" target="_blank">U</a> <a href="http://www.dangdang.com/sales/brands/v-1.html" target="_blank">V</a><a href="http://www.dangdang.com/sales/brands/w-1.html" target="_blank">W</a><a href="http://www.dangdang.com/sales/brands/x-1.html" target="_blank">X</a><a href="http://www.dangdang.com/sales/brands/y-1.html" target="_blank">Y</a><a href="http://www.dangdang.com/sales/brands/z-1.html" target="_blank">Z</a><a href="http://www.dangdang.com/sales/brands/other-1.html" target="_blank">0-9</a> <i></i></div>
+        </div>
+        <script>
+    var setTo = null;
+    function showghotsearch(){
+        clearTimeout(setTo);
+        document.getElementById("hot_search_content").style.display="block";
+    }
+    function hidehotsearch(){
+        setTo = setTimeout(function(){
+          document.getElementById("hot_search_content").style.display="none";
+        },100)                        
+    }
+</script> 
+      </div>
+      <div class="footer_copyright"><span>Copyright (C) 当当网 2004-2016, All Rights Reserved</span><a href="http://www.hd315.gov.cn/beian/view.asp?
+
+bianhao=010202001051000098" target="_blank" class="footer_img" rel="nofollow"><img src="http://img60.ddimg.cn/upload_img/00459/index/validate.gif"></a><span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span>出版物经营许可证 新出发京批字第直0673号</span></div>
+    </div>
+  </div>
+</div>
+<div class="sidebar_wrap" id="sidebar_wrap_id">
+  <div class="sidebar">
+    <div class="sale"> <a href="http://coupon.dangdang.com" target="_blank" dd_name="活动图片小图"> <img class="right_ad_pic" src="http://img61.ddimg.cn/2016/11/1/2016110120354244376.hpiabBPM" width="34" height="135"> </a> </div>
+    <div class="sidebar_top"> <a href="http://shopping.dangdang.com/shoppingcart/shopping_cart.aspx" class="cart" target="_blank" dd_name="购物车"><span style="left: 0px;">购物车</span><em style="text-align: center">0</em></a> <a href="javascript:void(0)" class="collect" dd_name="我的收藏"><span class="name" style="left: 0px;">我的收藏</span></a> <a href="javascript:void(0)" class="footprint" dd_name="我的浏览"><span class="name" style="left: 0px;">我的浏览</span></a> <a href="http://point.dangdang.com/index.html" target="_blank" class="sidebar_points" dd_name="我的积分"><span class="name" style="left: 0px;">我的积分</span></a> </div>
+    <div class="sidebar_b">
+      <div class="sidebar_code2"> <a href="javascript:void(0)" class="code2s"></a> <a href="" class="code2b" style="display:none"><img src="http://img62.ddimg.cn/f9229d67-4b33-47a6-b3b4-3a0490d513c7.hpMg2KFb"></a> </div>
+      <a href="javascript:void(0);" class="back_top" dd_name="返回顶部"><span class="name">返回顶部</span></a> <a href="http://survey.dangdang.com/html/2487.html" class="survey" target="_blank" dd_name="意见反馈"><span class="name">意见反馈</span></a> <span class="guanggao">广告</span> </div>
+  </div>
+  
+  <!-- 右侧面板 -->
+  <div class="sidebar_open" id="my_collect" style="display:none"> </div>
+  <div class="sidebar_open" id="my_history" style="display:none"> </div>
+  <div class="sidebar_open" id="expand_content" style="display:none"> </div>
+  
+  <!--右侧广告内容-->
+  <div id="expand_content_hidden" style="display:none"> </div>
+  <div id="collect_load_html" style="display:none">
+    <h4><a href="javascript:sidebar_open_close()" class="close">close</a>我的收藏</h4>
+    <div class="sidebar_loading">
+      <p>加载中请稍后</p>
+      <p><img src="http://img60.ddimg.cn/upload_img/00111/home/loading.gif"></p>
+    </div>
+  </div>
+  <div id="history_load_html" style="display:none">
+    <h4><a href="javascript:sidebar_open_close()" class="close">close</a>我浏览过的商品</h4>
+    <div class="sidebar_loading">
+      <p>加载中请稍后</p>
+      <p><img src="http://img60.ddimg.cn/upload_img/00111/home/loading.gif"></p>
+    </div>
+  </div>
+  <script>
+    var float_right_ajax_url = '/Standard/Framework/Core/hosts/get_right_float_data.php';
+    var collect_url = 'http%3A%2F%2Fwish.dangdang.com%2Fwishlist%2Fcust_wish_list.aspx';
+</script> 
+</div>
+<script src="{% static 'js/pagetop2015_0827.js' %}" charset="gb2312" type="text/javascript"></script>
+<script src="{% static 'js/slider.js' %}"></script>
+<script type="text/javascript">
+$(function() {
+	var bannerSlider = new Slider($('#banner_tabs'), {
+		time: 5000,
+		delay: 400,
+		event: 'hover',
+		auto: true,
+		mode: 'fade',
+		controller: $('#bannerCtrl'),
+		activeControllerCls: 'active'
+	});
+	$('#banner_tabs .flex-prev').click(function() {
+		bannerSlider.prev()
+	});
+	$('#banner_tabs .flex-next').click(function() {
+		bannerSlider.next()
+	});
+})
+</script> 
+<script>
+        $(function(){
+            /**
+             * 返回顶部
+             */
+            $('.back_top').click(function(){
+                $("html,body").animate({"scrollTop":"0"},500);
+            });
+
+            /**
+             * 二维码
+             */
+            $(".code2s").hover(function(){
+                $('.code2b').css('display','block');
+            },function(){
+                $('.code2b').css('display','none');
+            });
+
+            /**
+             * 右边栏购物车数量
+             */
+            var cart_items_count = getCookie_one("cart_items_count","");
+            if(cart_items_count ==""){cart_items_count = "0";}
+            var number = cart_items_count <= 99 ? cart_items_count : '99+';
+            $(".cart em").text(number);
+        
+        
+            /**
+             * 页头购物车数量
+             */
+            var CartCountHead=getCookie_one("cart_items_count","");
+            if(CartCountHead==""){CartCountHead = "0";}
+            var cartItemsCount_head=Number(CartCountHead);
+            if(isNaN(Number(cartItemsCount_head))){
+                cart_Count_head = "0";
+            }else{
+                cart_Count_head = CartCountHead;
+            }
+            if(cart_Count_head!=null&&cart_Count_head.length>0&&cart_Count_head!="undefined")
+            {
+                var cic_head=document.getElementById("cart_items_count_head");
+                if(cic_head!=''){
+                    cart_Count_head = cart_Count_head <= 99 ? cart_Count_head : '99+';
+                    cic_head.innerHTML= cart_Count_head;
+                }
+            }
+        
+            /**
+             * 我的收藏
+             * 第一次加载时，会提示"加载中请稍后"
+             * 当加载过内容之后，就不再出现上述提示，之后就是对已加载过来的内容的显示与隐藏的操作
+             * 采用_.throttle（）方法是用来避免指定时间内用户频繁点击导致的频繁发送请求
+             * 这里设定了3秒，也就是说当用户触发了一次点击操作，此时不是立马发送请求，而是等待3秒，在这3秒内无论用户又触发了多少次操作，3秒之后，只发送一次请求
+             */
+            $(".collect").click(function(){               
+                //判断是否登录
+                $.ajax({
+                    type: "GET",
+                    url: float_right_ajax_url, 
+                    data: "action=is_login",
+                    complete :function(data){ 
+                        var data = data.responseText; 
+                        if(data == 0){ //未登录
+                            showMsgBox('','','',show_collect_html);
+                        }else{  
+                            //加上该class之后，才能将竖条向左移动指定距离
+                            if(!$("#sidebar_wrap_id").hasClass("sidebar_wrap_open")){
+                                $("#sidebar_wrap_id").addClass("sidebar_wrap_open");
+                            }
+
+                            //判断收藏div是否有数据，一般访问页面后第一次点击收藏按钮，div下会没有数据，此时给出友好提示"加载中请稍后"
+                            var my_collect_html = $("#my_collect").html();
+                            my_collect_html = $.trim(my_collect_html);
+                            if(my_collect_html == ""){
+                                $("#my_collect").html($("#collect_load_html").html());
+                            }
+
+                            //显示收藏div，隐藏足迹div和右侧展开内容div
+                            $("#my_collect").show();
+                            $("#my_history").hide();
+                            $("#expand_content").hide();
+
+                            //异步调取数据，但是会对调取频率进行控制
+                            show_my_collect();
+                        }       
+                    }
+                });       
+            }); 
+            var show_my_collect = _.throttle(function(){            
+                //异步请求数据
+                $.ajax({
+                    type: "GET",
+                    url: float_right_ajax_url, 
+                    data: "action=collect&collect_url="+collect_url,
+                    complete :function(data){ 
+                        var show_html = data.responseText; 
+                        $("#my_collect").html(show_html); //对数据进行覆盖                               
+                    }
+                });              
+            }, 3000);
+
+        
+            /**
+             * 登录之后调用该函数进行收藏数据的加载
+             */
+            function show_collect_html(){
+                //加上该class之后，才能将竖条向左移动指定距离
+                if(!$("#sidebar_wrap_id").hasClass("sidebar_wrap_open")){
+                    $("#sidebar_wrap_id").addClass("sidebar_wrap_open");
+                }
+            
+                //判断收藏div是否有数据，一般访问页面后第一次点击收藏按钮，div下会没有数据，此时给出友好提示"加载中请稍后"
+                var my_collect_html = $("#my_collect").html();
+                my_collect_html =  $.trim(my_collect_html);
+                if(my_collect_html == ""){
+                    $("#my_collect").html($("#collect_load_html").html());
+                }
+            
+                //显示收藏div，隐藏足迹div和右侧展开内容div
+                $("#my_collect").show();
+                $("#my_history").hide();
+                $("#expand_content").hide();
+            
+                //异步调取数据，但是会对调取频率进行控制
+                show_my_collect();
+            }
+        
+        
+            /**
+             * 我的足迹
+             * 第一次加载时，会提示"加载中请稍后"
+             * 当加载过内容之后，就不再出现上述提示，之后就是对已加载过来的内容的显示与隐藏的操作
+             * 采用_.throttle（）方法是用来避免指定时间内用户频繁点击导致的频繁发送请求
+             * 这里设定了3秒，也就是说当用户触发了一次点击操作，此时不是立马发送请求，而是等待3秒，在这3秒内无论用户又触发了多少次操作，3秒之后，只发送一次请求
+             */
+            $(".footprint").click(function(){
+                //加上该class之后，才能将竖条向左移动指定距离
+                if(!$("#sidebar_wrap_id").hasClass("sidebar_wrap_open")){
+                    $("#sidebar_wrap_id").addClass("sidebar_wrap_open");
+                }
+            
+                //判断足迹div是否有数据，一般访问页面后第一次点击足迹按钮，div下会没有数据，此时给出友好提示"加载中请稍后"
+                var my_history_html = $("#my_history").html();
+                my_history_html =  $.trim(my_history_html);
+                if(my_history_html == ""){
+                    $("#my_history").html($("#history_load_html").html());
+                }
+            
+                //显示足迹div，隐藏收藏div和右侧展开内容div
+                $("#my_history").show();
+                $("#my_collect").hide();
+                $("#expand_content").hide();
+         
+                //异步调取数据，但是会对调取频率进行控制
+                show_my_history();
+            });
+        
+            var show_my_history = _.throttle(function(){
+                //异步请求数据
+                $.ajax({
+                    type: "GET",
+                    url: float_right_ajax_url, 
+                    data: "action=history",
+                    complete :function(data){                      
+                        var result = data.responseText;                    
+                        $("#my_history").html(result);  //对数据进行覆盖
+                    }
+                });        
+            }, 3000);
+        
+        });
+
+        /**
+         * hover展示大图
+         */
+        $(".sale").hover(function(){
+            $(this).find('.sale_big').css('display','block');
+        },function(){
+            $(this).find('.sale_big').css('display','none');
+        });
+
+
+        /**
+         * hover展示左侧提示区域
+         */
+        $(".sidebar_points,.sidebar_top .cart,.sidebar_top .collect,.sidebar_top .footprint,.sidebar_b .back_top").hover(function(){
+            $(this).addClass('on');
+            $(this).find('span').stop(true,false).animate({"left":"-79px"},200);
+        },function(){
+            $(this).removeClass('on');
+            $(this).find('span').stop(true,false).animate({"left":"0"},200);
+        });
+    
+       
+    
+    </script>
+</body>
+</html>

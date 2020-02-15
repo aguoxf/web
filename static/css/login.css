@@ -1,0 +1,106 @@
+@charset "utf-8";
+body,h1,h2,h3,p,ol,ul,dl,dd{margin:0;padding:0; font-size:12px;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{border:none;}
+li{list-style:none;}
+html{font-family: "Microsoft Yahei";}
+body{background:#f5f9fc;}
+.clearfix{zoom:1;}
+.clearfix:after{content:''; display:block;clear:both;}
+
+
+
+.head{margin:12px auto 14px;width:960px;height:75px;}
+.head img{float:left; margin:7px 0 0 0;}
+.head ul{line-height:24px;float:right;}
+.head ul li{float:left;margin-right:16px;background:url(../images/login_icon.png) no-repeat;padding-top:42px;overflow: hidden;}
+.head .n1{background-position: 5px 0;}
+.head .n2{background-position:-65px 0;}
+.head .n3{background-position:-136px 0;}
+.head li a{color:#787878;}
+.wrap{background: #fff;float: right;width:320px;color:#6e6e6e;margin:0px 20px 0 0; position:relative; }
+.wrap a,.wrap a:hover{color:#1a66b3;}
+.wrap input{outline:none;}
+.wrap .pic{width:480px;height:384px;float:left;}
+.wrap .pic img{width:480px;height:384px;}
+.infro{width:311px;float:right;}
+.infro .title{height:46px;font:normal 14px/46px "Microsoft Yahei";color: #666;font-size:14px;}
+.infro .username,.infro .password,.infro .code{height:36px;border:1px solid #e6e6e6;width:310px; border-radius:2px; }
+.infro .username { margin-top:0px; position:relative;}
+.infro .text_del { width:10px; height:11px; display:block; top:12px; left:290px; position:absolute; background:url(../images/icon_20150706.png) 0 -230px no-repeat;}
+.infro .text_del:hover { background-position:-31px -230px;}
+.infro .pwdReplace { float:left; font-size:13px; height:21px; line-height:21px; cursor:text; margin-top:-28px; color:#B0B0B0;}
+.infro .replacetype01 { position: absolute;top: 44px; right:0;}
+.infro .code_wrap{height: 38px;}
+.infro .code{width:126px;float: left;}
+.infro .username span,.infro .password span,.infro .code span{width:30px; margin-right:10px;height:36px;float:left;background:url("../images/icon_20150706.png") 10px -110px no-repeat;}
+.infro .password span{background-position:10px -150px;}
+.infro .code span{background-position:10px -189px;}
+.infro .username.error span{background-position:-14px -110px;}
+.infro .password.error span{background-position:-14px -150px;}
+.infro .code.error span{background-position:-16px -189px;}
+.infro .username input,.infro .password input,.infro .code input{float:left; height:34px; line-height:34px;border:0;color:#333;font-family: "Microsoft Yahei"; padding:0;}
+.infro .username input,.infro .password input{width:270px;}
+.infro .code input{width:86px;float:left;}
+.tips{height:30px;line-height:30px; padding-left:10px;}
+.tips span{display:none;}
+.tips span.big_tip, .tips span.error_choose { background:url(../images/big_tip_bg.png) 0 0 no-repeat; margin-left:-10px; color:#ff8400; padding-left:32px;}
+.tips span.error_choose { padding-left:10px; color:#505050;}
+.tips span.error_choose b { background-color:#fff0cf;}
+.tips span.error_choose input { margin:0 3px 0 7px; vertical-align: text-bottom;}
+.code_pic{width:86px;height:38px;float: left;margin:0 15px 0 5px;}
+.code_pic img{width:86px;height:38px;} .code_wrap a { line-height:38px;}
+.infro .error{border-color:#f44700; border:1px solid #ff0000;}
+.error_words{color:#f42e00;}
+.auto_login{width:310px;height:27px;line-height:22px;padding-top:7px;overflow:hidden;}
+.auto_login a{float:right;}
+.auto_login input{vertical-align: middle;margin-top:-1px;}
+.safe{display:none;}
+.infro .btn a{width:100%;border-radius:5px;color:#fff;display: inline-block;height:44px;text-align: center;font:normal 20px/44px "Microsoft Yahei";background:#ff2832;}
+.infro .btn a:hover{background:#f01923;text-decoration:none;}
+
+.register{height:24px;line-height: 24px;padding-top:6px;}
+.register span{}
+.register .register_btn{float:right;color:#6e6e6e;}
+.register .register_btn:hover { color:#505050;}
+.register .other{float:left;}
+.partner{}
+.partner dt { float:left; margin-right:5px;}
+.partner dt a { width:20px; height:20px; display:block; background:url(../images/icon_20150706.png) 0 -260px no-repeat; text-indent:99em; overflow:hidden;}
+.partner dt a.qq:hover { background-position:-20px -260px;}
+.partner dt a.wx { background-position:0 -280px;} .partner dt a.wx:hover { background-position:-20px -280px;}
+.partner dt a.wb { background-position:0 -300px;} .partner dt a.wb:hover { background-position:-20px -300px;}
+.partner dt a.alpay { background-position:0 -320px;} .partner dt a.alpay:hover { background-position:-20px -320px;}
+
+.partner dd { padding-left:10px; position:relative; float:left; line-height:20px;}
+.partner dd a { color:#969696;} .partner dd a:hover { color:#787878; text-decoration:none;}
+.partner dd a em { width:8px; height:20px; display:inline-block; background:url(../images/icon_20150706.png) 0 -340px no-repeat; vertical-align:text-bottom; margin-left:5px;}
+
+.partner dd ul{position:absolute; width:190px; padding:5px 0 1px 10px; background-color:#fafafa; border:1px solid #eaeaea; border-radius:2px; left:10px; top:24px;}
+.partner dd ul li.arrow { position:absolute; width:10px; height:6px; top:-5px; left:7px; background:url(../images/more_arr.png) 0 0 no-repeat;}
+.partner dd ul li{float:left;margin-right:22px;height:18px;line-height: 18px;}
+.partner dd ul li.mr0{margin-right:0;}
+.partner dd li a{color:#6e6e6e;} .partner dd li a:hover{color:#505050; text-decoration:underline;}
+
+.account{ line-height: 37px;font-size:14px;color:#666;}
+.account span{font-family: arial; display:block; font-weight:bold; color:#505050; line-height:22px;}
+.asure{ height:32px;line-height:32px;}
+
+.new_tip {    width: 520px; float:right; margin-bottom:3px;    height: 24px; line-height:24px; color:#828282; padding-left:22px; background:url(../images/new_tip.png) 3px 5px no-repeat #fef7f5;border: 1px solid #fedbd1; }
+.new_tip a { color:#1a66b3;}
+.infro .username.focus,.infro .password.focus,.infro .code.focus{border-color:#969696;}
+.infro .username.blur,.infro .password.blur,.infro .code.blur{border-color:#e6e6e6; color:#a0a0a0;}
+.partner dd a.hover em { background-position: -33px -340px;}
+#vcodeImgWrap {outline:none;}
+.clear {clear: both;font-size: 0;height: 0;line-height: 0;overflow: hidden;}
+
+/*login_news 2016/12/21 wl*/
+.login_bg{background:url("../p/get_login_ad.php") no-repeat center center;height:520px;}
+.login_bg .set_area{width:900px;margin:0 auto;position: relative; background:url(../images/sigin_bg.jpg) no-repeat left #fff; border:1px solid #dedede; padding:40px 30px; float:left;  }
+.login_bg .set_area .click_area{display: block;width: 655px;height: 415px;position: absolute;z-index: 100;top: 85px;left: 5px;}
+.improve {float: right;margin-top:10px;}
+.improve .icon{display: inline-block;width:15px;height:19px;background: url("../images/improve.png") no-repeat 0 0;vertical-align:middle;}
+.improve .info{color:#787878}
+@media screen and (max-width: 800px){.login_bg .set_area {width: 350px;}}
+@media screen and (max-width: 800px){.login_bg .set_area .click_area {display: none;}}
